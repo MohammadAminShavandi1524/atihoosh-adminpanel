@@ -4,10 +4,13 @@ import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import AnimatedArrowButton from "../AnimatedArrowButton";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
+import { cn } from "@/lib/utils";
 
 export default function TeamSection() {
+  const t = useTranslations("HomePage.TeamSection");
   const locale = useLocale();
+  const isRtl = locale === "fa";
 
   const sectionRef = useRef<HTMLDivElement>(null);
 
@@ -16,9 +19,6 @@ export default function TeamSection() {
     offset: ["start start", "end end"],
   });
 
-  const finalTop = "15vh";
-
-  // Image animation
   const imageWidth = useTransform(
     scrollYProgress,
     [0, 0.15, 0.55],
@@ -28,19 +28,17 @@ export default function TeamSection() {
   const imageTop = useTransform(
     scrollYProgress,
     [0, 0.15, 0.55],
-    ["0vh", "0vh", finalTop],
+    ["0vh", "0vh", "15vh"],
   );
 
-  const imageLeft = useTransform(
+  // direction-aware animation
+  const textX = useTransform(
     scrollYProgress,
-    [0, 0.15, 0.55],
-    ["0vw", "0vw", "0vw"],
+    [0.58, 0.8],
+    isRtl ? [-80, 0] : [80, 0],
   );
 
-  // Text animation
   const textOpacity = useTransform(scrollYProgress, [0.58, 0.8], [0, 1]);
-
-  const textX = useTransform(scrollYProgress, [0.58, 0.8], [80, 0]);
 
   return (
     <section ref={sectionRef} className="relative h-[180vh]">
@@ -50,7 +48,6 @@ export default function TeamSection() {
           style={{
             width: imageWidth,
             top: imageTop,
-            left: imageLeft,
           }}
           className="absolute aspect-[3/2] overflow-hidden will-change-transform"
         >
@@ -69,27 +66,24 @@ export default function TeamSection() {
             opacity: textOpacity,
             x: textX,
           }}
-          className="absolute top-[22vh] right-[6vw] w-[26vw] text-white"
+          className={cn(
+            "absolute top-[22vh] w-[26vw] text-white",
+            isRtl ? "left-[6vw] text-right" : "right-[6vw] text-left",
+          )}
         >
           <span className="mb-8 block text-lg font-medium tracking-[0.15em] text-white/70 uppercase">
-            OUR TEAM
+            {t("badge")}
           </span>
 
           <h2 className="mb-10 text-5xl leading-tight font-bold">
-            The People Behind Exceptional Digital Products
+            {t("title")}
           </h2>
 
-          <p
-            style={
-              locale === "en" ? { fontFamily: "var(--font-playfair)" } : {}
-            }
-            className="mb-9 text-[28px] text-white/90"
-          >
-            Our team brings together expertise in software engineering, design,
-            and AI to create scalable digital solutions.
+          <p className="font-playfair mb-9 text-[28px] text-white/90">
+            {t("description")}
           </p>
 
-          <AnimatedArrowButton label="join us" labelClassName="text-xl" />
+          <AnimatedArrowButton label={t("button")} labelClassName="text-xl" />
         </motion.div>
       </div>
     </section>

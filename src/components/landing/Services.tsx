@@ -116,7 +116,7 @@ const Services = () => {
               {service.title}
             </motion.h3>
 
-            {/* Description */}
+            {/* sub title */}
             <motion.p
               variants={{
                 initial: {
@@ -135,8 +135,9 @@ const Services = () => {
                 },
               }}
               className={cn(
-                "mt-5 max-w-md text-lg",
+                "mt-5 max-w-md text-lg ",
                 service.color === "black" ? "text-black" : "text-white",
+                locale
               )}
             >
               {service.subTitle}
@@ -153,14 +154,23 @@ const Services = () => {
                 ease: [0.19, 1, 0.22, 1],
               }}
               className={cn(
-                "mt-auto flex items-center",
+                "mt-auto flex cursor-pointer items-center",
                 service.color === "black" ? "text-black" : "text-white",
                 locale === "en"
                   ? "gap-x-1.5 self-end text-[22px]"
                   : "gap-x-4 self-end text-lg",
               )}
             >
-              <span className="pb-0.5 font-medium">{t("expandButton")}</span>
+              <span
+                className={cn(
+                  "pb-0.5 font-medium",
+                  locale === "en"
+                    ? "enServicesExpandButton"
+                    : "faServicesExpandButton",
+                )}
+              >
+                {t("expandButton")}
+              </span>
 
               <motion.div
                 variants={{

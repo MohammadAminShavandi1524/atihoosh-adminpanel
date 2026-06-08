@@ -1,11 +1,12 @@
 import AnimatedArrowButton from "@/components/AnimatedArrowButton";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
+import CTA from "@/components/landing/CTA";
 import HeroSection from "@/components/landing/HeroSection";
 import Services from "@/components/landing/Services";
 import StickyTitle from "@/components/landing/StickyTitle";
 import TeamSection from "@/components/landing/TeamSection";
 import { cn } from "@/lib/utils";
-import { ChevronDown, ChevronRight } from "lucide-react";
+
 import { Locale, useTranslations } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import Image from "next/image";
@@ -34,27 +35,7 @@ export default function IndexPage({ params }: PageProps<"/[locale]">) {
       {/* style={locale === "en" ? { fontFamily: "var(--font-space)" } : {}} */}
 
       {/* Entrust Your Project To Us */}
-      <div className="mt-50 flex w-full flex-col items-center">
-        {/* title */}
-        <div
-          style={locale === "en" ? { fontFamily: "var(--font-space)" } : {}}
-          className="mb-12 text-[120px] font-semibold"
-        >
-          <span>Entrust Your </span>
-          <span className="text-[#219ebc]">Project </span>
-          <span>To Us</span>
-        </div>
-        {/* description */}
-        <div
-          style={locale === "en" ? { fontFamily: "var(--font-playfair)" } : {}}
-          className="mb-15 flex flex-col items-center text-[40px]"
-        >
-          <span>software design is not just about coding ,</span>
-          <span>we are with the project at all stages</span>
-        </div>
-        {/* button */}
-        <AnimatedArrowButton label="Get Started" />
-      </div>
+      <CTA />
 
       {/* read more carousel  */}
       <div className="mt-50 h-125 w-full border-y-2 border-y-blue-400"></div>

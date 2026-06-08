@@ -2,28 +2,35 @@
 
 import { cn } from "@/lib/utils";
 import ProcessCard from "./ProcessCard";
-import { useLocale } from "next-intl";
-
-const cards = [
-  {
-    title: "Structured Execution",
-    description:
-      "Projects are implemented with\nspecific phasing, control points,\nand measurable outputs.",
-  },
-  {
-    title: "Contract Driven Scope",
-    description:
-      "The scope, time, cost, and\ncommitments are clearly defined\nand in writing before the project begins.",
-  },
-  {
-    title: "Continuous Responsibility",
-    description:
-      "After delivery, support,\nimprovement and development\ncontinue alongside you.",
-  },
-];
+import { useLocale, useTranslations } from "next-intl";
 
 export default function ProcessSection() {
   const locale = useLocale();
+  const t = useTranslations("HomePage.ProcessSection");
+
+  const cards = [
+    {
+      key: "structuredExecution",
+      title: t("cards.structuredExecution.title"),
+      description: t("cards.structuredExecution.description"),
+      className: "mr-auto bg-[#0041f0]",
+      accentColor: "#60A5FA",
+    },
+    {
+      key: "contractDrivenScope",
+      title: t("cards.contractDrivenScope.title"),
+      description: t("cards.contractDrivenScope.description"),
+      className: "ml-auto bg-[#901a30]",
+      accentColor: "#FB7185",
+    },
+    {
+      key: "continuousResponsibility",
+      title: t("cards.continuousResponsibility.title"),
+      description: t("cards.continuousResponsibility.description"),
+      className: "mr-auto ml-60 bg-[#460073]",
+      accentColor: "#C084FC",
+    },
+  ];
 
   return (
     <section className="relative min-h-[300vh]">
@@ -33,7 +40,8 @@ export default function ProcessSection() {
           style={locale === "en" ? { fontFamily: "var(--font-space)" } : {}}
           className="absolute top-1/2 left-1/2 w-[90%] -translate-x-1/2 -translate-y-1/2 text-center text-[120px]/[120px] font-semibold"
         >
-          How We Run Software Projects
+          {t("title")}
+         
         </div>
       </div>
 

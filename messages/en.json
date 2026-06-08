@@ -48,6 +48,45 @@
         "title": "Logo And Motion Logo",
         "subTitle": "Distinctive brand identities and animated logos that help businesses stand out and leave a lasting impression."
       }
+    },
+
+    "CTASection": {
+      "title": {
+        "part1": "Entrust Your ",
+        "part2": "Project ",
+        "part3": "To Us"
+      },
+      "description": {
+        "line1": "Software design is not just about coding,",
+        "line2": "we are with the project at all stages"
+      },
+      "button": "Get Started"
+    },
+
+    "ProcessSection": {
+      "title": "How We Run Software Projects",
+      "button": "learn more",
+      "cards": {
+        "structuredExecution": {
+          "title": "Structured Execution",
+          "description": "Projects are implemented with specific phasing, control points, and measurable outputs."
+        },
+        "contractDrivenScope": {
+          "title": "Contract Driven Scope",
+          "description": "The scope, time, cost, and commitments are clearly defined and agreed before the project begins."
+        },
+        "continuousResponsibility": {
+          "title": "Continuous Responsibility",
+          "description": "After delivery, support, improvement, and development continue alongside you."
+        }
+      }
+    },
+
+    "TeamSection": {
+      "badge": "OUR TEAM",
+      "title": "The People Behind Exceptional Digital Products",
+      "description": "Our team brings together expertise in software engineering, design, and AI to create scalable digital solutions.",
+      "button": "Join us"
     }
   }
 }

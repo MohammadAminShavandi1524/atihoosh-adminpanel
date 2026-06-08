@@ -116,8 +116,6 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
-
-
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -195,6 +193,61 @@
   }
 
   .footer-link:hover::after {
+    transform: scaleX(1);
+  }
+
+  /***    enServicesExpandButton   ***/
+
+  .enServicesExpandButton {
+    position: relative;
+    width: fit-content;
+    transition: color 300ms;
+  }
+
+
+  .enServicesExpandButton::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    height: 2px;
+    width: 100%;
+    background-color: currentColor;
+
+    transform: scaleX(0);
+    transform-origin: left;
+
+    transition: transform 300ms;
+  }
+
+  .enServicesExpandButton:hover::after {
+    transform: scaleX(1);
+  }
+  /***    faServicesExpandButton   ***/
+
+  .faServicesExpandButton {
+    position: relative;
+    width: fit-content;
+    transition: color 300ms;
+  }
+
+
+  .faServicesExpandButton::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    height: 2px;
+    width: 100%;
+    background-color: currentColor;
+
+    transform: scaleX(0);
+    transform-origin: right;
+
+    transition: transform 300ms;
+  }
+
+  .faServicesExpandButton:hover::after {
     transform: scaleX(1);
   }
 }
