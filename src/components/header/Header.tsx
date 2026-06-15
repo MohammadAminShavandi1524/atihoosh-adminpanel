@@ -32,7 +32,7 @@ const Header = ({ locale }: HeaderProps) => {
             </li>
 
             <li>
-              <Link href={`/${locale}`}>{t("aboutUs")}</Link>
+              <Link href={`/${locale}/aboutUs`}>{t("aboutUs")}</Link>
             </li>
 
             <li>

@@ -2,6 +2,7 @@ import AnimatedArrowButton from "@/components/AnimatedArrowButton";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import CTA from "@/components/landing/CTA";
 import HeroSection from "@/components/landing/HeroSection";
+import OurCustomers from "@/components/landing/OurCustomers";
 import Services from "@/components/landing/Services";
 import StickyTitle from "@/components/landing/StickyTitle";
 import TeamSection from "@/components/landing/TeamSection";
@@ -38,7 +39,7 @@ export default function IndexPage({ params }: PageProps<"/[locale]">) {
       <CTA />
 
       {/* read more carousel  */}
-      <div className="mt-50 h-125 w-full border-y-2 border-y-blue-400"></div>
+      <OurCustomers/>
 
       {/* How We Run Software Project  stiky title !!*/}
 
