@@ -14,7 +14,6 @@ interface HeaderProps {
 
 const Header = ({ locale }: HeaderProps) => {
   const t = useTranslations("Header.Navigation");
- 
 
   return (
     <div>
@@ -23,12 +22,15 @@ const Header = ({ locale }: HeaderProps) => {
         className="w90 flex items-center justify-between py-4"
       >
         {/* logo */}
-        <Link className="bg-[#00304a33] pl-3.75 pr-4.25 pb-3 pt-2.5 rounded-lg border border-custom-primary" href={`/${locale}`}>
+        <Link
+          className="border-custom-primary rounded-lg border bg-[#00304a33] pt-2.5 pr-4.25 pb-3 pl-3.75"
+          href={`/${locale}`}
+        >
           <Image src="/logo.png" alt="logo" width={56} height={56} />
         </Link>
 
         {/* nav */}
-       <Nav/>
+        <Nav />
 
         {/* search language and theme buttons container */}
         <div className="flex items-center gap-x-2">

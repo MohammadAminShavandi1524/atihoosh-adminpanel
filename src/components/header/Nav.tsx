@@ -17,8 +17,11 @@ const Nav = ({}: NavProps) => {
       <ul className="flex items-center gap-x-9 ps-12 text-lg">
         <li>
           <Link
-            className="hover:text-custom-primary transition-all"
-            href={`/${locale}`}
+            className={cn(
+              "hover:text-custom-primary transition-all",
+              pathname === `/${locale}/whatWeDo` && "text-custom-primary",
+            )}
+            href={`/${locale}/whatWeDo`}
           >
             {t("whatWeDo")}
           </Link>
