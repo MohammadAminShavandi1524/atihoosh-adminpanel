@@ -1,8 +1,9 @@
 "use client";
 
-import { cn } from "@/lib/utils";
+import { cn, englishToPersianNumber } from "@/lib/utils";
 import { div } from "framer-motion/client";
 import { ArrowRight, Clock } from "lucide-react";
+import { useLocale } from "next-intl";
 import Image from "next/image";
 
 interface BlogSummaryProps {
@@ -22,6 +23,7 @@ const BlogSummary = ({
   imageSrc,
   avgReadTime,
 }: BlogSummaryProps) => {
+  const locale = useLocale();
   return (
     <div className="bg-secondary relative min-h-[500px] w-full overflow-hidden rounded-2xl">
       {/* index */}
@@ -54,6 +56,7 @@ const BlogSummary = ({
           className={cn(
             "mb-5 text-[22px]",
             (indexNumber === "03" || indexNumber === "04") && "min-h-[66px]",
+            locale === "fa" && "min-h-[66px]",
           )}
         >
           {title}
@@ -69,15 +72,29 @@ const BlogSummary = ({
           {/* avg readtime */}
           <div className="flex items-center gap-x-1.25">
             <Clock className="text-primary size-4" />
-            <span className="text-muted-foreground pt-[0px]">
-              {avgReadTime}
-            </span>
-            <span className="text-muted-foreground pt-[0px]">min read</span>
+            {locale === "en" ? (
+              <>
+                <span className="text-muted-foreground pt-[0px]">
+                  {avgReadTime}
+                </span>
+                <span className="text-muted-foreground pt-[0px]">min read</span>
+              </>
+            ) : (
+              <>
+                <span className="text-muted-foreground">مدت مطالعه: </span>
+                <span className="text-muted-foreground pt-[0px]">
+                  {englishToPersianNumber(avgReadTime.toString())}
+                </span>
+                <span className="text-muted-foreground pt-[0px]"> دقیقه</span>
+              </>
+            )}
           </div>
           {/* readmore article */}
           <div className="text-primary flex cursor-pointer items-center gap-x-1">
-            <span className="">Read article</span>
-            <ArrowRight className="size-5 pt-px" />
+            <span className="">
+              {locale === "en" ? " Read more" : "ادامه مطلب"}
+            </span>
+            <ArrowRight className="size-5 pt-px rtl:rotate-180" />
           </div>
         </div>
       </div>

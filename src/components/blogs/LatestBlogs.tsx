@@ -1,6 +1,6 @@
 "use client";
 
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import BlogSummary from "./BlogSummary";
 import { EN_latestBlogsSample, FA_latestBlogsSample } from "@/data/BlogsSample";
 
@@ -8,19 +8,23 @@ interface LatestBlogsProps {}
 
 const LatestBlogs = ({}: LatestBlogsProps) => {
   const locale = useLocale();
-
+  const t = useTranslations("Blogs.LatestBlogs");
   const activeBlogs =
     locale === "en" ? EN_latestBlogsSample : FA_latestBlogsSample;
 
   return (
     <div className="px-50">
       {/* title */}
-      <div className="text-primary mb-4 text-lg">Latest Posts</div>
-      {/*  */}
+      <div className="text-primary mb-4 text-lg">
+        {t("titlePart1")} {t("titlePart2")}
+      </div>
+
+      {/* main header */}
       <div className="mb-13 flex items-center justify-between">
-        <div className="text-[38px]">From the journal</div>
+        <div className="text-[38px]">{t("heading")}</div>
+
         <div className="bg-tertiary text-primary border-primary rounded-full border px-6 py-3 text-base">
-          4 articles
+          {t("badge")}
         </div>
       </div>
       {/* latest blogs */}

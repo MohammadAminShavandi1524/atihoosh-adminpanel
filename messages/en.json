@@ -248,6 +248,34 @@
     }
   },
 
+  "Blogs": {
+    "HeroSection": {
+      "titlePart1": "Ideas about",
+      "titlePart2": "Artificial Intelligence",
+      "titlePart3": ", software",
+      "titlePart4": "and building lasting solutions",
+      "description": "Articles on artificial intelligence, software engineering, and cybersecurity — for teams that build, not just talk."
+    },
+    "Stats": {
+      "articlesPublished": "Articles published",
+      "topicsCovered": "Topics covered",
+      "latestEdition": "Latest edition",
+      "avgReadTime": "Avg. read time"
+    },
+    "LatestBlogs": {
+      "titlePart1": "Latest",
+      "titlePart2": "Posts",
+      "heading": "From the journal",
+      "badge": "4 articles"
+    },
+    "GetNewArticle": {
+      "title": "Get new articles in your inbox",
+      "description": "Practical insights on AI, software and security — no noise, just what's useful for your business.",
+      "inputPlaceholder": "Your email address",
+      "button": "Subscribe"
+    }
+  },
+
   "Footer": {
     "title": "Engineered To Evolve",
     "links": {
