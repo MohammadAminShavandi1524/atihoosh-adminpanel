@@ -11,7 +11,8 @@ import {
   X,
 } from "lucide-react";
 import { ContactItem } from "./contactItem";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
+import { englishToPersianNumber } from "@/lib/utils";
 
 interface ContactInfoProps {}
 
@@ -36,10 +37,11 @@ const socials = [
 
 const ContactInfo = ({}: ContactInfoProps) => {
   const t = useTranslations("ContactUs.ContactInfo");
+  const locale = useLocale();
 
   return (
     <div className="border-border bg-secondary-bg col-span-1 flex flex-col rounded-2xl border p-8 md:p-10">
-      <span className="text-primary  text-sm font-medium tracking-[0.15em] uppercase">
+      <span className="text-primary text-sm font-medium tracking-[0.15em] uppercase">
         {t("badge")}
       </span>
 
@@ -52,10 +54,10 @@ const ContactInfo = ({}: ContactInfoProps) => {
 
         <ContactItem Logo={Mail} label={t("emailLabel")}>
           <Link
-            href="mailto:hello@atihoosh.com"
+            href="mailto:atihooshco@gmail.com"
             className="hover:text-primary transition-colors"
           >
-            hello@atihoosh.com
+            atihooshco@gmail.com
           </Link>
         </ContactItem>
 
@@ -65,7 +67,11 @@ const ContactInfo = ({}: ContactInfoProps) => {
             dir="ltr"
             className="hover:text-primary inline-block transition-colors"
           >
-            +98 21 0000 0000
+            {locale === "en" ? (
+              <>{t("phoneNumber")}</>
+            ) : (
+              <>{englishToPersianNumber(t("phoneNumber"))}</>
+            )}
           </Link>
         </ContactItem>
       </div>
