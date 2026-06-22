@@ -5,12 +5,13 @@ import { FormField } from "../FormField";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
-import { ArrowRight, Upload } from "lucide-react";
+import { Upload } from "lucide-react";
 
 interface ApplyFormProps {}
 
 const ApplyForm = ({}: ApplyFormProps) => {
   const { theme } = useTheme();
+  const t = useTranslations("Talent.ApplyForm");
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -20,60 +21,64 @@ const ApplyForm = ({}: ApplyFormProps) => {
   if (!mounted) return null;
 
   return (
-    <div className="mt-24 mb-18 flex flex-col items-center">
+    <div className="mt-24 mb-24 flex flex-col items-center">
       <div className="flex max-w-200 flex-col items-center">
         <span className="text-primary text-sm font-medium tracking-[0.15em] uppercase">
-          Apply Now
+          {t("badge")}
         </span>
-        <h2 className="mt-5 text-4xl font-bold">Tell us about yourself</h2>
+
+        <h2 className="mt-5 text-4xl font-bold">{t("title")}</h2>
 
         <p className="text-muted-foreground mt-4 mb-12 text-lg">
-          Fill in your details and attach your resume. We typically respond
-          within a few days.
+          {t("description")}
         </p>
 
         {/* form */}
-
         <form className="bg-secondary-bg border-foreground/8 w-full space-y-6 rounded-xl border p-10">
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-            <FormField label="Full name" placeholder="ali karimi" />
+            <FormField
+              label={t("fullName")}
+              placeholder={t("fullNamePlaceholder")}
+            />
 
             <FormField
-              label="Phone number"
+              label={t("phone")}
               type="tel"
               dir="ltr"
-              placeholder="+98 912 000 0000"
+              placeholder={t("phonePlaceholder")}
             />
           </div>
 
           <FormField
-            label="Email"
+            label={t("email")}
             type="email"
             dir="ltr"
-            placeholder="Ali@email.com"
+            placeholder={t("emailPlaceholder")}
           />
 
           <div className="flex flex-col gap-y-3">
             <label className="text-foreground ps-1.5 text-sm font-semibold">
-              Resume
+              {t("resume")}
             </label>
 
             {/* dropbox */}
             <div
               className={cn(
-                "border-foreground/20 mb-4 flex h-45 w-full flex-col items-center rounded-xl border-2 border-dashed pt-8 cursor-pointer",
+                "border-foreground/20 mb-4 flex h-45 w-full cursor-pointer flex-col items-center rounded-xl border-2 border-dashed pt-8",
                 theme === "dark" ? "bg-[#151515]" : "bg-[#F5F5F5]",
               )}
             >
               <div className="bg-primary/50 mb-2 flex size-11 items-center justify-center rounded-lg">
                 <Upload className="text-primary size-5" />
               </div>
+
               <div className="mb-2 text-lg">
-                <span>Drag & drop your resume, or </span>
-                <span className="text-primary">click to upload</span>
+                <span>{t("resumeUploadText")} </span>
+                <span className="text-primary">{t("resumeUploadAction")}</span>
               </div>
+
               <div className="text-muted-foreground text-sm">
-                PDF only, up to 10MB
+                {t("resumeHint")}
               </div>
             </div>
           </div>
@@ -85,12 +90,11 @@ const ApplyForm = ({}: ApplyFormProps) => {
               theme === "dark" ? "text-[#06151a]" : "text-[#f8fafc]",
             )}
           >
-            Submit application
+            {t("button")}
           </button>
 
           <p className="text-muted-foreground text-center text-sm">
-            Your information is reviewed only by our HR team and is never shared
-            with sales or third parties.
+            {t("privacy")}
           </p>
         </form>
       </div>

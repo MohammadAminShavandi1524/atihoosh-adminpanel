@@ -318,6 +318,43 @@
     }
   },
 
+  "Talent": {
+    "HeroSection": {
+      "titlePart1": "Build a career that's as",
+      "titlePart2": "exciting",
+      "titlePart3": "as the world we're shaping",
+      "description": "We're a team of designers and developers who use AI to build better digital experiences. Send us your resume — we'd love to know what you're great at."
+    },
+    "Stats": {
+      "successfulProjects": "Successful projects",
+      "teamMembers": "Team members",
+      "yearsOfExperience": "Years of experience"
+    },
+    "ApplyForm": {
+      "badge": "Apply Now",
+      "title": "Tell us about yourself",
+      "description": "Fill in your details and attach your resume. We typically respond within a few days.",
+
+      "fullName": "Full name",
+      "fullNamePlaceholder": "Ali Karimi",
+
+      "phone": "Phone number",
+      "phonePlaceholder": "+98 912 000 0000",
+
+      "email": "Email",
+      "emailPlaceholder": "Ali@email.com",
+
+      "resume": "Resume",
+      "resumeUploadText": "Drag & drop your resume, or",
+      "resumeUploadAction": "click to upload",
+      "resumeHint": "PDF only, up to 10MB",
+
+      "button": "Submit application",
+
+      "privacy": "Your information is reviewed only by our HR team and is never shared with sales or third parties."
+    }
+  },
+
   "Footer": {
     "title": "Engineered To Evolve",
     "links": {
