@@ -236,6 +236,11 @@
     padding: 0 24px;
   }
 
+  .customGradient{
+background: #bababa;
+background: linear-gradient(90deg, rgb(153, 153, 153) 0%, rgba(31, 31, 31, 1) 35%, rgba(0, 0, 0, 1) 100%);
+  }
+
   /* =========================
      FOOTER LINK (FIXED)
   ========================= */

@@ -29,11 +29,13 @@ const Header = ({}: HeaderProps) => {
 
   if (!mounted) return null;
 
+  // bg-linear-to-r from-[#7d7d7d] to-[#000]
+
   if (pathname === `/${locale}/project-start`)
     return <div className="hidden"></div>;
 
   return (
-    <div className={cn(theme === "dark" ? "bg-[#0f0f0f]" : "bg-[#e8e8e8]")}>
+    <div className={cn(theme === "dark" ? "customGradient" : "bg-[#e8e8e8]")}>
       <div
         style={locale === "en" ? { fontFamily: "var(--font-noto-serif)" } : {}}
         className="w90 flex items-center justify-between py-4"

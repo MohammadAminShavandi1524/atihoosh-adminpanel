@@ -19,10 +19,6 @@ export default function IndexPage({ params }: PageProps<"/[locale]">) {
   // Enable static rendering
   setRequestLocale(locale as Locale);
 
- 
-  
- 
-
   return (
     <div>
       {/* hero section */}
@@ -39,7 +35,7 @@ export default function IndexPage({ params }: PageProps<"/[locale]">) {
       <CTA />
 
       {/* read more carousel  */}
-      <OurCustomers/>
+      <OurCustomers />
 
       {/* How We Run Software Project  stiky title !!*/}
 
@@ -51,6 +47,3 @@ export default function IndexPage({ params }: PageProps<"/[locale]">) {
     </div>
   );
 }
-
-
-

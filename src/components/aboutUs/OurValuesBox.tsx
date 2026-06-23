@@ -5,7 +5,7 @@ import { LucideIcon } from "lucide-react";
 interface OurValuesBoxProps {
   Logo: LucideIcon;
   title: string;
-  description: string;
+  description?: string;
 }
 
 const OurValuesBox = ({ description, Logo, title }: OurValuesBoxProps) => {
@@ -20,7 +20,7 @@ const OurValuesBox = ({ description, Logo, title }: OurValuesBoxProps) => {
       <div className="mb-5 text-[28px]">{title}</div>
 
       {/* description */}
-      <div className="text-muted">{description}</div>
+      <div className="text-muted hidden">{description}</div>
     </div>
   );
 };

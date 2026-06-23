@@ -49,7 +49,7 @@ const page = ({}: pageProps) => {
 
         {/* experience */}
         <div className="border-y-border my-10 border-y py-25">
-          <div className="w90 flex items-center justify-between max-w-[1000px]">
+          <div className="w90 flex max-w-[1000px] items-center justify-between">
             {/* experience section */}
             <ExpSection
               number="+50"
@@ -109,7 +109,7 @@ const page = ({}: pageProps) => {
         </div>
       </section>
 
-      <section className="relative my-15 flex h-120 w-full hidden">
+      <section className="relative my-15 flex hidden h-120 w-full">
         {/* banner */}
         <div className="relative flex w-full flex-col">
           {/* image */}
@@ -146,22 +146,32 @@ const page = ({}: pageProps) => {
 
             <div className="mb-10 text-[48px]">{t("ValuesSection.title")}</div>
 
-            <div className="flex items-center justify-between gap-x-18">
+            <div className="grid grid-cols-3 gap-x-18 gap-y-18 2xl:grid-cols-5 2xl:gap-x-10 2xl:gap-y-10">
               <OurValuesBox
-                title={values.innovation.title}
-                description={values.innovation.description}
+                title="Commitment to timely project delivery"
+                // description={values.innovation.description}
                 Logo={Lightbulb}
               />
 
               <OurValuesBox
-                title={values.teamwork.title}
-                description={values.teamwork.description}
+                title="Quality"
+                // description={values.teamwork.description}
                 Logo={Users}
               />
 
               <OurValuesBox
-                title={values.quality.title}
-                description={values.quality.description}
+                title="Innovation"
+                // description={values.quality.description}
+                Logo={BadgeCheck}
+              />
+              <OurValuesBox
+                title="Continuous support and companionship"
+                // description={values.quality.description}
+                Logo={BadgeCheck}
+              />
+              <OurValuesBox
+                title="Expert and experienced team"
+                // description={values.quality.description}
                 Logo={BadgeCheck}
               />
             </div>
