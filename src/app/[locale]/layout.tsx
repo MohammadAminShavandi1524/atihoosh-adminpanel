@@ -15,6 +15,8 @@ import { routing } from "@/i18n/routing";
 import { cn } from "@/lib/utils";
 import { Metadata } from "next";
 import { ThemeProvider } from "@/components/theme/Providers";
+import { Sidebar } from "lucide-react";
+import Header from "@/components/layout/Header";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -92,8 +94,14 @@ export default async function LocaleLayout({
       >
         <NextIntlClientProvider>
           <ThemeProvider>
-            <div className="text-foreground bg-background relative">
-              {children}
+            <div className="bg-background text-foreground flex h-screen overflow-hidden">
+              <Sidebar />
+
+              <div className="flex flex-1 flex-col overflow-hidden">
+                <Header />
+
+                {children}
+              </div>
             </div>
           </ThemeProvider>
         </NextIntlClientProvider>
