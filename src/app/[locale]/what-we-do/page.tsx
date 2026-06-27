@@ -8,7 +8,7 @@ interface pageProps {}
 
 const page = ({}: pageProps) => {
   return (
-    <div>
+    <div className="headerPadding">
       {/* HeroSection */}
       <HeroSection />
 

@@ -236,13 +236,26 @@
     padding: 0 24px;
   }
 
+  .headerPadding {
+    padding-top: 98px;
+  }
+
   .customGradient {
-    background: #bababa;
     background: linear-gradient(
       90deg,
       rgb(153, 153, 153) 0%,
-      rgba(31, 31, 31, 1) 35%,
-      rgba(0, 0, 0, 1) 100%
+      rgb(31, 31, 31) 35%,
+      rgb(0, 0, 0) 100%
+    );
+  }
+
+  /* وقتی RTL شد */
+  :dir(rtl) .customGradient {
+    background: linear-gradient(
+      270deg,
+      rgb(153, 153, 153) 0%,
+      rgb(31, 31, 31) 35%,
+      rgb(0, 0, 0) 100%
     );
   }
 

@@ -12,7 +12,7 @@ const Logo = ({}: LogoProps) => {
   const locale = useLocale();
 
   return (
-    <Link className="" href={`/${locale}`}>
+    <Link className="min-h-[65px]" href={`/${locale}`}>
       <Image src="/logo.png" alt="logo" width={95} height={95} />
     </Link>
   );

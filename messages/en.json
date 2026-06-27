@@ -81,7 +81,7 @@
           "title": "Design and Implementation",
           "description": "We transform ideas into practical solutions. Once the requirements are clearly defined, the design and development process begins. Throughout implementation, we carefully consider technical requirements, user experience, and long-term scalability to deliver not just a product, but a reliable and effective solution."
         },
-       
+
         "continuousResponsibility": {
           "title": "Delivery, support, and improvement",
           "description": "A project doesn't just end with delivery. After launch, we check how the system is performing, and make any needed tweaks and provide support. Our goal is to give you a solution that can grow along with your business."
@@ -182,13 +182,13 @@
   },
 
   "AboutPage": {
-   "HeroSection": {
-    "titlePart1": "We are",
-    "titlePart2": "Ati Hoosh",
-    "titlePart3": "",
-    "description": "Ati Hoosh Bonyan is a team of IT professionals dedicated to delivering practical and reliable technology solutions for businesses. We specialize in technology infrastructure design and implementation, software and web development, network support, process automation, and artificial intelligence solutions.\n\nWe believe technology creates real value only when it solves real business challenges. That is why, in every project, we focus on delivering solutions that not only meet high technical standards but also improve efficiency, enhance productivity, and support sustainable business growth."
+    "HeroSection": {
+      "titlePart1": "We are",
+      "titlePart2": "Ati Hoosh",
+      "titlePart3": "",
+      "description": "Ati Hoosh Bonyan is a team of IT professionals dedicated to delivering practical and reliable technology solutions for businesses. We specialize in technology infrastructure design and implementation, software and web development, network support, process automation, and artificial intelligence solutions.\n\nWe believe technology creates real value only when it solves real business challenges. That is why, in every project, we focus on delivering solutions that not only meet high technical standards but also improve efficiency, enhance productivity, and support sustainable business growth."
     },
-    
+
     "StatsSection": {
       "successfulProjects": "Successful Projects",
       "teamMembers": "Team Members",
@@ -245,6 +245,15 @@
           "role": "Project Manager"
         }
       }
+    },
+    "LeadershipSection": {
+      "badge": "Our Leadership",
+      "title": "A Word from the CEO",
+      "paragraph1": "We believe that the gap between Iranian businesses and the world's leading brands is more about vision and intelligent use of technology than about capabilities.",
+      "paragraph2": "Our goal is to provide a platform for Iranian companies to compete with global standards by applying innovative solutions in the fields of information technology, artificial intelligence, and digital marketing.",
+      "paragraph3": "For us, each project is not just a service; it is a step on the path of growth, innovation, and sustainable value creation. The future belongs to organizations that embrace change, and we will be their companion and development partner on this path.",
+      "name": "Nahid Shams",
+      "role": "CEO & Founder"
     }
   },
 

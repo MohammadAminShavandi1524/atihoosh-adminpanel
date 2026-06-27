@@ -1,6 +1,7 @@
 "use client";
 
 import ExpSection from "@/components/aboutUs/ExpSection";
+import LeadershipSection from "@/components/aboutUs/LeaderShip";
 import OurTeamBox from "@/components/aboutUs/OurTeamBox";
 
 import OurValuesBox from "@/components/aboutUs/OurValuesBox";
@@ -29,10 +30,10 @@ const page = ({}: pageProps) => {
   if (!mounted) return null;
 
   return (
-    <div className="">
+    <div className="headerPadding">
       <section className="flex flex-col">
         {/* hero section */}
-        <div className="border-t-border mb-18.75 border-t pt-18.75">
+        <div className="mb-18.75 pt-18.75">
           <div className="w90 flex flex-col gap-y-12.5 text-center">
             <div className="text-[90px] font-medium">
               <span>{t("HeroSection.titlePart1") + " "}</span>
@@ -203,6 +204,9 @@ const page = ({}: pageProps) => {
           </div>
         </div> */}
       </section>
+
+      {/* ceo */}
+      <LeadershipSection />
     </div>
   );
 };

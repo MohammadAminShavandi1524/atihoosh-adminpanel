@@ -9,7 +9,7 @@ interface pageProps {}
 
 const page = ({}: pageProps) => {
   return (
-    <div className="">
+    <div className="headerPadding">
       <HeroSection />
       <LatestBlogs />
       <GetNewArticle />

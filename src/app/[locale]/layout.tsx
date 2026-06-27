@@ -93,13 +93,11 @@ export default async function LocaleLayout({
         )}
       >
         <NextIntlClientProvider>
-          <ThemeProvider
-            
-          >
-            <div className="text-foreground bg-background">
+          <ThemeProvider>
+            <div className="text-foreground bg-background relative">
               <Header />
 
-              {children}
+             {children}
 
               <Footer />
             </div>

@@ -8,7 +8,7 @@ const HeroSection = ({}: HeroSectionProps) => {
   const t = useTranslations("ContactUs.HeroSection");
 
   return (
-    <div className="border-y-border mb-12 border-y pt-20 pb-20">
+    <div className="border-b-border mb-12 border-b pt-20 pb-20">
       <div className="w90 flex flex-col items-center">
         {/* title */}
         <div className="mb-12 text-center text-[80px]">

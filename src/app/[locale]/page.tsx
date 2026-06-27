@@ -20,7 +20,7 @@ export default function IndexPage({ params }: PageProps<"/[locale]">) {
   setRequestLocale(locale as Locale);
 
   return (
-    <div>
+    <div className="headerPadding">
       {/* hero section */}
       <HeroSection />
 
