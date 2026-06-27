@@ -12,8 +12,6 @@ import {
   Noto_Serif,
 } from "next/font/google";
 import { routing } from "@/i18n/routing";
-import Header from "@/components/header/Header";
-import Footer from "@/components/footer/Footer";
 import { cn } from "@/lib/utils";
 import { Metadata } from "next";
 import { ThemeProvider } from "@/components/theme/Providers";
@@ -95,11 +93,7 @@ export default async function LocaleLayout({
         <NextIntlClientProvider>
           <ThemeProvider>
             <div className="text-foreground bg-background relative">
-              <Header />
-
-             {children}
-
-              <Footer />
+              {children}
             </div>
           </ThemeProvider>
         </NextIntlClientProvider>
