@@ -5,375 +5,85 @@
   },
 
   "LocaleLayout": {
-    "title": "Ati Hoosh Bonyan"
+    "title": "AtiHoosh AdminPanel"
   },
 
-  "Header": {
-    "Navigation": {
-      "home": "Home",
-      "whatWeDo": "What we do",
-      "aboutUs": "About us",
-      "contactUs": "Contact us",
-      "blog": "Blog",
-      "projectStart": "Project start"
-    }
+  "Sidebar": {
+    "logoTitle": "Ati Hoosh",
+    "logoSubtitle": "Admin Panel",
+
+    "overview": "Overview",
+    "dashboard": "Dashboard",
+
+    "requests": "Requests",
+    "clientRequests": "Client Requests",
+    "jobApplications": "Job Applications",
+
+    "teamCollaboration": "Team Collaboration",
+    "teamChat": "Team Chat",
+    "blog": "Blog",
+
+    "system": "System",
+    "settings": "Settings & Permissions"
   },
 
-  "HomePage": {
-    "HeroSection": {
-      "content": {
-        "title": "Shaping tomorrow, today",
-        "description": "In a world of constant change, innovation is a continuous strategy. We help organizations rewrite the rules of growth, innovation, and resilience.",
-        "buttonText": "See what we do"
+  "Dashboard": {
+    "greeting": "Hi, Sohrab 👋",
+    "subtitle": "A quick summary of what's happening at Ati Hoosh today",
+
+    "overviewBoxes": {
+      "clientRequests": {
+        "title": "Client Requests",
+        "label": "1 new"
+      },
+      "jobApplications": {
+        "title": "Job Applications",
+        "label": "1 new"
+      },
+      "teamChat": {
+        "title": "Team Chat",
+        "label": "1 new"
+      },
+      "publishedArticles": {
+        "title": "Published Articles",
+        "label": "1 draft"
       }
     },
+    "recentActivities": {
+      "title": "Recent Activity",
+      "description": "Latest requests and updates",
+      "refresh": "Refresh",
 
-    "ServicesSection": {
-      "expandButton": "Expand",
-
-      "1": {
-        "title": "Design and production of monitoring and automation systems",
-        "subTitle": "Automation and monitoring systems enable continuous monitoring of processes and automated execution of tasks. These solutions increase the speed of work, reduce human errors, and help improve overall system performance."
+      "requestTypes": {
+        "client": "Client Request",
+        "job": "Job Application"
       },
 
-      "2": {
-        "title": "Website and software design and production",
-        "subTitle": "We turn your ideas into digital solutions. We offer practical solutions tailored to your business needs through website design and dedicated software. Our focus is on beauty, efficiency, and creating a professional presence in the digital world."
-      },
-
-      "3": {
-        "title": "Network and system support",
-        "subTitle": "Stable infrastructure is the beating heart of everyone and successful work. By providing specialized network services and support, we guarantee the security and stability of your systems. From start-up to maintenance and troubleshooting, we are with you so that you can focus on growing your business by reducing downtime."
-      },
-
-      "4": {
-        "title": "Logo And Logo Motion",
-        "subTitle": "Your brand identity starts with a professional logo. We give winners personality and longevity by designing creative logos and engaging motion logos."
+      "status": {
+        "new": "New",
+        "inProgress": "In Progress",
+        "done": "Done"
       }
-    },
-
-    "CTASection": {
-      "title": {
-        "part1": "Entrust Your ",
-        "part2": "Project ",
-        "part3": "To Us"
-      },
-      "description": {
-        "line1": "Software design is not just about coding,",
-        "line2": "we are with the project at all stages"
-      },
-      "button": "Get Started"
-    },
-
-    "OurCustomersSection": {
-      "badge": "Partnering with Leading Organizations and Businesses"
-    },
-
-    "ProcessSection": {
-      "title": "How We Run Software Projects",
-      "button": "learn more",
-      "cards": {
-        "structuredExecution": {
-          "title": "Understanding and Reviewing Needs",
-          "description": "Every project starts with a clear understanding of the problem. Before taking any action, we look into your business needs, goals, and challenges to create a solution that fits your real situation. This step ensures the project gets off on the right track from the very beginning."
-        },
-        "contractDrivenScope": {
-          "title": "Design and Implementation",
-          "description": "We transform ideas into practical solutions. Once the requirements are clearly defined, the design and development process begins. Throughout implementation, we carefully consider technical requirements, user experience, and long-term scalability to deliver not just a product, but a reliable and effective solution."
-        },
-        "continuousResponsibility": {
-          "title": "Delivery, support, and improvement",
-          "description": "A project doesn't just end with delivery. After launch, we check how the system is performing, and make any needed tweaks and provide support. Our goal is to give you a solution that can grow along with your business."
-        }
-      }
-    },
-
-    "TeamSection": {
-      "badge": "OUR TEAM",
-      "title": "The People Behind Exceptional Digital Products",
-      "description": "Our team brings together expertise in software engineering, design, and AI to create scalable digital solutions.",
-      "button": "Join us"
     }
   },
 
-  "whatWeDo": {
-    "hero": {
-      "titlePart1": "We Build",
-      "titleHighlight": "Software",
-      "titlePart2": "That Works",
-      "description": "From idea to deployment — we design and develop software solutions tailored to your business needs."
+  "TeamChat": {
+    "title": "Team Chat",
+    "description": "Internal admin coordination",
+
+    "adminsTitle": "System Admins",
+
+    "newMessages": "New messages in this room",
+
+    "roles": {
+      "salesAdmin": "Sales Admin",
+      "superAdmin": "Super Admin",
+      "hrAdmin": "HR Admin"
     },
-    "services": {
-      "sectionTitle": "Our Services",
-      "sectionHeading": "What We Offer",
-      "learnMore": "Learn more",
-      "cards": {
-        "web": {
-          "title": "Web Application Development",
-          "description": "We build fast, scalable, and modern web applications from scratch — tailored to your business logic and goals.",
-          "tags": {
-            "frontend": "Frontend",
-            "backend": "Backend",
-            "fullStack": "Full Stack"
-          }
-        },
-        "mobile": {
-          "title": "Mobile App Development",
-          "description": "Native and cross-platform mobile apps that deliver smooth experiences on both iOS and Android.",
-          "tags": {
-            "ios": "iOS",
-            "android": "Android",
-            "crossPlatform": "Cross-platform"
-          }
-        },
-        "ai": {
-          "title": "AI Integration",
-          "description": "We integrate intelligent AI features into your existing software — chatbots, automation, data analysis and more.",
-          "tags": {
-            "machineLearning": "Machine Learning",
-            "automation": "Automation",
-            "chatbot": "Chatbot"
-          }
-        },
-        "consulting": {
-          "title": "Software Consulting",
-          "description": "Not sure where to start? We help you plan, architect, and choose the right tech stack for your project.",
-          "tags": {
-            "strategy": "Strategy",
-            "architecture": "Architecture",
-            "techStack": "Tech Stack"
-          }
-        }
-      }
-    },
-    "howWeWork": {
-      "sectionTitle": "How We Work",
-      "sectionHeading": "Our Process",
-      "steps": {
-        "discovery": {
-          "title": "Discovery",
-          "description": "We listen to your idea and understand your goals."
-        },
-        "design": {
-          "title": "Design",
-          "description": "Wireframes, prototypes and UI design."
-        },
-        "development": {
-          "title": "Development",
-          "description": "Clean code, agile sprints and regular updates."
-        },
-        "launch": {
-          "title": "Launch",
-          "description": "Deploy, test and support after delivery."
-        }
-      }
-    },
-    "technology": {
-      "title": "Technology",
-      "subtitle": "Tools We Use"
-    },
-    "readyToBuild": {
-      "title": "Ready to Build Something?",
-      "description": "Tell us about your project and we'll get back to you within 24 hours.",
-      "primaryButton": "Start a Project",
-      "secondaryButton": "See Our Work"
-    }
-  },
 
-  "AboutPage": {
-    "HeroSection": {
-      "titlePart1": "We are",
-      "titlePart2": "Ati Hoosh",
-      "titlePart3": "",
-      "description": "A team of designers and developers who use AI to create better digital experiences."
-    },
-    "StatsSection": {
-      "successfulProjects": "Successful Projects",
-      "teamMembers": "Team Members",
-      "yearsOfExperience": "Years of Experience",
-      "support": "Support"
-    },
-    "StorySection": {
-      "badge": "Our Story",
-      "title": "Where did we start?",
-      "description": "Ati Housh started with a simple idea: creating digital products that are truly designed for people. We believe technology should serve humans.",
-      "timeline": {
-        "founded": {
-          "title": "Company founded",
-          "description": "Started with 3 people and a small office"
-        },
-        "firstProduct": {
-          "title": "First major product",
-          "description": "Launching the AI platform"
-        },
-        "teamGrowth": {
-          "title": "Team growth",
-          "description": "Expanding to 8 expert members"
-        }
-      }
-    },
-    "BannerSection": {
-      "title": "Making reinvention real for our clients",
-      "description": "Reinvention Services brings together the full breadth of Accenture, enabling us to solve your most complex problems and deliver reinvention at greater scale and impact."
-    },
-    "ValuesSection": {
-      "badge": "Our values",
-      "title": "What makes us different",
-      "items": {
-        "innovation": {
-          "title": "Innovation",
-          "description": "We're always looking for creative and different solutions"
-        },
-        "teamwork": {
-          "title": "Teamwork",
-          "description": "We consider the customer's success as our own success"
-        },
-        "quality": {
-          "title": "Quality",
-          "description": "We never compromise on quality at any stage"
-        }
-      }
-    },
-    "TeamSection": {
-      "badge": "our team",
-      "title": "The people behind the project",
-      "members": {
-        "default": {
-          "name": "Masoud VZ",
-          "role": "Project Manager"
-        }
-      }
-    },
-    "LeadershipSection": {
-      "badge": "Our Leadership",
-      "title": "A Word from the CEO",
-      "paragraph1": "We believe that the gap between Iranian businesses and the world's leading brands is more about vision and intelligent use of technology than about capabilities.",
-      "paragraph2": "Our goal is to provide a platform for Iranian companies to compete with global standards by applying innovative solutions in the fields of information technology, artificial intelligence, and digital marketing.",
-      "paragraph3": "For us, each project is not just a service; it is a step on the path of growth, innovation, and sustainable value creation. The future belongs to organizations that embrace change, and we will be their companion and development partner on this path.",
-      "name": "Nahid Shams",
-      "role": "CEO & Founder"
-    }
-  },
-
-  "ContactUs": {
-    "HeroSection": {
-      "titlePart1": "Let's talk about",
-      "titlePart2": "your",
-      "titlePart3": "next project",
-      "description": "Have a question, a project in mind, or just want to get in touch? Send us a message and our team will get back to you as soon as possible."
-    },
-    "SendMessageForm": {
-      "badge": "Send a message",
-      "title": "Get in touch",
-      "description": "Fill out the form below and we'll respond within one business day.",
-
-      "fullName": "Full name",
-      "fullNamePlaceholder": "Ali Karimi",
-
-      "phone": "Phone number",
-      "phonePlaceholder": "+98 912 000 0000",
-
-      "email": "Email",
-      "emailPlaceholder": "example@email.com",
-
-      "message": "Message",
-      "messagePlaceholder": "Tell us about your project or question...",
-
-      "button": "Send message",
-
-      "privacy": "We respect your privacy. Your details are never shared with third parties."
-    },
-    "ContactInfo": {
-      "badge": "Contact Info",
-      "title": "Reach us directly",
-
-      "addressLabel": "Address",
-      "addressValue": "Unit 4, Second Floor, Ghaem Building, No. 23, Tabatabaei Alley, Ashrafi Esfahani Street, after Hemmat Bridge, Tehran, Iran",
-
-      "emailLabel": "Email",
-      "phoneLabel": "Phone",
-      "phoneNumber": "09126079834",
-
-      "followTitle": "Follow us"
-    }
-  },
-
-  "Blogs": {
-    "HeroSection": {
-      "titlePart1": "Ideas about",
-      "titlePart2": "Artificial Intelligence",
-      "titlePart3": ", software",
-      "titlePart4": "and building lasting solutions",
-      "description": "Articles on artificial intelligence, software engineering, and cybersecurity — for teams that build, not just talk."
-    },
-    "Stats": {
-      "articlesPublished": "Articles published",
-      "topicsCovered": "Topics covered",
-      "latestEdition": "Latest edition",
-      "avgReadTime": "Avg. read time"
-    },
-    "LatestBlogs": {
-      "titlePart1": "Latest",
-      "titlePart2": "Posts",
-      "heading": "From the journal",
-      "badge": "4 articles"
-    },
-    "GetNewArticle": {
-      "title": "Get new articles in your inbox",
-      "description": "Practical insights on AI, software and security — no noise, just what's useful for your business.",
-      "inputPlaceholder": "Your email address",
-      "button": "Subscribe"
-    }
-  },
-
-  "Talent": {
-    "HeroSection": {
-      "titlePart1": "Build a career that's as",
-      "titlePart2": "exciting",
-      "titlePart3": "as the world we're shaping",
-      "description": "We're a team of designers and developers who use AI to build better digital experiences. Send us your resume — we'd love to know what you're great at."
-    },
-    "Stats": {
-      "successfulProjects": "Successful projects",
-      "teamMembers": "Team members",
-      "yearsOfExperience": "Years of experience"
-    },
-    "ApplyForm": {
-      "badge": "Apply Now",
-      "title": "Tell us about yourself",
-      "description": "Fill in your details and attach your resume. We typically respond within a few days.",
-
-      "fullName": "Full name",
-      "fullNamePlaceholder": "Ali Karimi",
-
-      "phone": "Phone number",
-      "phonePlaceholder": "+98 912 000 0000",
-
-      "email": "Email",
-      "emailPlaceholder": "Ali@email.com",
-
-      "resume": "Resume",
-      "resumeUploadText": "Drag & drop your resume, or",
-      "resumeUploadAction": "click to upload",
-      "resumeHint": "PDF only, up to 10MB",
-
-      "button": "Submit application",
-
-      "privacy": "Your information is reviewed only by our HR team and is never shared with sales or third parties."
-    }
-  },
-
-  "Footer": {
-    "title": "Engineered To Evolve",
-    "links": {
-      "whatWeDo": "What we do",
-      "aboutUs": "About us",
-      "blog": "Blog",
-      "projectStart": "Project start",
-      "terms": "Terms & Conditions",
-      "conatctUs": "Contact Us",
-      "talent": "Talent"
-    },
-    "copyright": "© 2026 ATI HOOSH BONYAN"
+    "inputPlaceholder": "Type your message here...",
+    "send": "Send",
+    "inputHint": "Press Enter to send · Shift+Enter for new line",
+    "connectionStatus": "WebSocket connected"
   }
 }

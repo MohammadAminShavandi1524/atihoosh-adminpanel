@@ -1,34 +1,40 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { MessagesSquare } from "lucide-react";
 import OverViewBox from "./OverViewBox";
 
 interface OverViewBoxesProps {}
 
 const OverViewBoxes = ({}: OverViewBoxesProps) => {
+  const t = useTranslations("Dashboard.overviewBoxes");
+
   return (
-    <div className="grid grid-cols-4 gap-x-4 gap-y-4 mb-8">
+    <div className="mb-8 grid grid-cols-4 gap-x-4 gap-y-4">
       <OverViewBox
-        title="Client Requests"
-        label="1 new"
+        title={t("clientRequests.title")}
+        label={t("clientRequests.label")}
         Icon={MessagesSquare}
         qty="3"
       />
+
       <OverViewBox
-        title="Job Applications"
-        label="1 new"
+        title={t("jobApplications.title")}
+        label={t("jobApplications.label")}
         Icon={MessagesSquare}
         qty="2"
       />
+
       <OverViewBox
-        title="Team Chat"
-        label="1 new"
+        title={t("teamChat.title")}
+        label={t("teamChat.label")}
         Icon={MessagesSquare}
         qty="4"
       />
+
       <OverViewBox
-        title="Published Articles"
-        label="1 draft"
+        title={t("publishedArticles.title")}
+        label={t("publishedArticles.label")}
         Icon={MessagesSquare}
         qty="1"
       />

@@ -7,8 +7,8 @@ import { useEffect, useState } from "react";
 interface ActivityItemProps {
   profileImage?: string;
   userName: string;
-  RequestType: "Client request" | "Job request";
-  status: "New" | "In progress" | "Done";
+  RequestType: string;
+  status: string;
   Date: string;
   time: string;
 }
@@ -38,7 +38,7 @@ const ActivityItem = ({
   const isDark = theme === "dark";
 
   return (
-    <div className="border-border-secondary shadow-sm shadow-secondary flex min-h-14 cursor-pointer items-center justify-between rounded-md border px-4 py-3 transition-colors">
+    <div className="border-border-secondary shadow-secondary flex min-h-14 cursor-pointer items-center justify-between rounded-md border px-4 py-3 shadow-sm transition-colors">
       <div className="flex gap-x-4">
         <div className="bg-secondary text-primary flex size-12 items-center justify-center rounded-lg font-medium">
           {profileWords}
@@ -59,17 +59,17 @@ const ActivityItem = ({
         className={cn(
           "rounded-full border px-2.5 py-1 text-xs font-medium",
 
-          status === "New" &&
+          (status === "New" || status === "جدید") &&
             (isDark
               ? "border-[#63461f] bg-[#292014] text-[#e8a13a]"
               : "border-[#f6d28b] bg-[#fff8ea] text-[#b66b00]"),
 
-          status === "In progress" &&
+          (status === "In Progress" || status === "در حال بررسی") &&
             (isDark
               ? "border-[#32275b] bg-[#1c182c] text-[#b8a8ff]"
               : "border-[#cfc5ff] bg-[#f5f3ff] text-[#6d4aff]"),
 
-          status === "Done" &&
+          (status === "Done" || status === "انجام شده") &&
             (isDark
               ? "border-[#1a4831] bg-[#13241c] text-[#33c379]"
               : "border-[#b8ebcf] bg-[#edfdf3] text-[#15803d]"),

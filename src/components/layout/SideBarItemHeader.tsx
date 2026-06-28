@@ -6,7 +6,7 @@ interface SideBarItemHeaderProps {
 
 const SideBarItemHeader = ({ label }: SideBarItemHeaderProps) => {
   return (
-    <div className="text-muted-foreground ps-4.5 pb-2 text-base">Overview</div>
+    <div className="text-muted-foreground ps-4.5 pb-2 text-base">{label}</div>
   );
 };
 
