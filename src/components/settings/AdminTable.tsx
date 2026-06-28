@@ -185,7 +185,7 @@ export default function AdminTable() {
 
               <ChevronDown className="text-muted-foreground pointer-events-none absolute top-1/2 right-4 h-4 w-4 -translate-y-1/2 rtl:right-auto rtl:left-4" />
             </div>
-          </div>
+          </div> 
 
           <div className="px-6 pe-6">
             <button className="border-primary bg-secondary text-primary cursor-pointer rounded-xl border px-5 py-3 text-sm font-medium transition">
