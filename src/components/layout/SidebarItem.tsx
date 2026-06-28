@@ -14,10 +14,10 @@ const SidebarItem = ({ href, icon: Icon, title, active }: SidebarItemProps) => {
     <Link
       href={href}
       className={cn(
-        "flex h-12 items-center gap-3 rounded-xl px-4 transition-all",
+        "mb-1 flex h-12 items-center gap-3 rounded-xl px-4 transition-all",
         active
-          ? "bg-primary text-primary-foreground"
-          : "text-muted-foreground hover:bg-accent hover:text-foreground",
+          ? "from-primary via-primary to-primary-hover shadow-primary/20 bg-gradient-to-r text-white shadow-lg"
+          : "text-muted-foreground hover:bg-muted-foreground hover:text-foreground",
       )}
     >
       <Icon size={20} />

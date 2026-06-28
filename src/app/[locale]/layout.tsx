@@ -15,8 +15,9 @@ import { routing } from "@/i18n/routing";
 import { cn } from "@/lib/utils";
 import { Metadata } from "next";
 import { ThemeProvider } from "@/components/theme/Providers";
-import { Sidebar } from "lucide-react";
+
 import Header from "@/components/layout/Header";
+import Sidebar from "@/components/layout/Sidebar";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -89,7 +90,7 @@ export default async function LocaleLayout({
           space.variable,
           notoSerif.variable,
 
-          locale === "fa" ? "font-IRANYekanX" : notoSerif.className,
+          locale === "fa" ? "font-IRANYekanX" : inter.className,
         )}
       >
         <NextIntlClientProvider>
@@ -98,8 +99,6 @@ export default async function LocaleLayout({
               <Sidebar />
 
               <div className="flex flex-1 flex-col overflow-hidden">
-                <Header />
-
                 {children}
               </div>
             </div>
