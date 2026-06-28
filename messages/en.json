@@ -85,5 +85,69 @@
     "send": "Send",
     "inputHint": "Press Enter to send · Shift+Enter for new line",
     "connectionStatus": "WebSocket connected"
+  },
+
+  "Settings": {
+    "title": "Settings & Permissions",
+    "description": "Manage admin emails, access matrix for system sections and blog articles",
+
+    "tabs": {
+      "users": "Manage users and permissions",
+      "blog": "Blog article management"
+    },
+
+    "footer": {
+      "description": "The access matrix is applied in real time — emails will receive limited notifications.",
+      "save": "Save permissions"
+    },
+
+    "overview": {
+      "title": "Access overview",
+      "totalAdmins": "Total admins",
+      "onlineNow": "Online now",
+      "activePermissions": "Active perms",
+      "sections": "Sections"
+    },
+
+    "permissionSummary": {
+      "title": "Permission summary",
+      "user": "User",
+      "accessLevel": "Access level"
+    },
+
+    "accessLevels": {
+      "fullAccess": "Full access",
+      "salesChat": "Sales + chat",
+      "hrChat": "HR + chat",
+      "blogChat": "Blog + chat"
+    },
+    "AdminTable": {
+      "headers": {
+        "admin": "Admin",
+        "sales": "Sales",
+        "team": "Team",
+        "chat": "Chat",
+        "blog": "Blog",
+        "actions": "Account actions"
+      },
+
+      "roles": {
+        "superAdmin": "Super Admin",
+        "salesAdmin": "Sales Admin",
+        "hrAdmin": "HR Admin",
+        "contentWriter": "Content Writer"
+      },
+
+      "buttons": {
+        "changeEmail": "Change email",
+        "remove": "Remove",
+        "addAdmin": "Add admin"
+      },
+
+      "placeholders": {
+        "email": "New admin email address...",
+        "selectRole": "Select role..."
+      }
+    }
   }
 }

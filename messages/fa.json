@@ -85,5 +85,70 @@
     "send": "ارسال",
     "inputHint": "برای ارسال Enter و برای رفتن به خط بعد Shift+Enter را فشار دهید",
     "connectionStatus": "اتصال برقرار است"
+  },
+
+  "Settings": {
+    "title": "تنظیمات و سطح دسترسی",
+    "description": "مدیریت ایمیل مدیران، سطح دسترسی بخش‌های مختلف سیستم و مقالات وبلاگ",
+
+    "tabs": {
+      "users": "مدیریت کاربران و دسترسی‌ها",
+      "blog": "مدیریت مقالات وبلاگ"
+    },
+
+    "footer": {
+      "description": "تغییرات سطح دسترسی به‌صورت لحظه‌ای اعمال می‌شوند و ایمیل‌ها فقط اعلان‌های مجاز را دریافت خواهند کرد.",
+      "save": "ذخیره دسترسی‌ها"
+    },
+
+    "overview": {
+      "title": "نمای کلی دسترسی‌ها",
+      "totalAdmins": "کل مدیران",
+      "onlineNow": "آنلاین",
+      "activePermissions": "دسترسی‌های فعال",
+      "sections": "بخش‌ها"
+    },
+
+    "permissionSummary": {
+      "title": "خلاصه دسترسی‌ها",
+      "user": "کاربر",
+      "accessLevel": "سطح دسترسی"
+    },
+
+    "accessLevels": {
+      "fullAccess": "دسترسی کامل",
+      "salesChat": "فروش + چت",
+      "hrChat": "منابع انسانی + چت",
+      "blogChat": "وبلاگ + چت"
+    },
+
+    "AdminTable": {
+      "headers": {
+        "admin": "مدیر",
+        "sales": "فروش",
+        "team": "تیم",
+        "chat": "چت",
+        "blog": "وبلاگ",
+        "actions": "عملیات حساب"
+      },
+
+      "roles": {
+        "superAdmin": "مدیر ارشد",
+        "salesAdmin": "مدیر فروش",
+        "hrAdmin": "مدیر منابع انسانی",
+        "contentWriter": "نویسنده محتوا"
+      },
+
+      "buttons": {
+        "changeEmail": "تغییر ایمیل",
+        "remove": "حذف",
+        "addAdmin": "افزودن مدیر"
+      },
+
+      "placeholders": {
+        "email": "ایمیل مدیر جدید...",
+        "selectRole": "انتخاب نقش..."
+      }
+    }
   }
 }
