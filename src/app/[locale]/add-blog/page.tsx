@@ -1,5 +1,6 @@
 "use client";
 
+import AnimatedForm from "@/components/addBlog/AnimatedForm";
 import { CategorySelect } from "@/components/addBlog/CategorySelect";
 import Header from "@/components/addBlog/Header";
 import SubmitButton from "@/components/addBlog/SubmitButton";
@@ -20,23 +21,19 @@ const Page = ({}: PageProps) => {
   const [current, setCurrent] = useState<BlogTab>("parentBlog");
   const [selectedTags, setSelectedTags] = useState<TagOption[]>([]);
 
-  console.log(t("forms.category.label"));
+  const tabOrder: Record<BlogTab, number> = {
+    category: 0,
+    parentBlog: 1,
+    blog: 2,
+  };
 
-  return (
-    <div className="flex flex-1 flex-col">
-      <Header current={current} />
+  const [previous, setPrevious] = useState(current);
+  const direction = tabOrder[current] > tabOrder[previous] ? 1 : -1;
 
-      {/* content */}
-      <div className="flex flex-1 flex-col px-10 pb-10">
-        {/* tabs */}
-        <div className="border-b-border-secondary mt-10 mb-6 flex border-b text-sm">
-          <Tab label="category" current={current} setCurrent={setCurrent} />
-          <Tab label="parentBlog" current={current} setCurrent={setCurrent} />
-          <Tab label="blog" current={current} setCurrent={setCurrent} />
-        </div>
-
-        {/* Category Form */}
-        {current === "category" && (
+  const renderForm = () => {
+    switch (current) {
+      case "category":
+        return (
           <form className="bg-secondary-bg relative flex h-full flex-col gap-y-6 rounded-xl p-7">
             <FormField
               label={t("forms.category.label")}
@@ -46,10 +43,10 @@ const Page = ({}: PageProps) => {
 
             <SubmitButton current={current} />
           </form>
-        )}
+        );
 
-        {/* Parent Blog Form */}
-        {current === "parentBlog" && (
+      case "parentBlog":
+        return (
           <form className="bg-secondary-bg relative flex h-full flex-col gap-y-6 rounded-xl p-7">
             <CategorySelect label={t("forms.parentBlog.category")} />
 
@@ -81,10 +78,10 @@ const Page = ({}: PageProps) => {
 
             <SubmitButton current={current} />
           </form>
-        )}
+        );
 
-        {/* Blog Form */}
-        {current === "blog" && (
+      case "blog":
+        return (
           <form className="bg-secondary-bg relative flex h-full flex-col gap-y-6 rounded-xl p-7">
             <FormField
               label={t("forms.blog.title")}
@@ -106,7 +103,47 @@ const Page = ({}: PageProps) => {
 
             <SubmitButton current={current} />
           </form>
-        )}
+        );
+    }
+  };
+
+  return (
+    <div className="flex flex-1 flex-col">
+      <Header current={current} />
+
+      {/* content */}
+      <div className="flex flex-1 flex-col px-10 pb-10">
+        {/* tabs */}
+        <div className="border-b-border-secondary mt-10 mb-6 flex border-b text-sm">
+          <Tab
+            label="category"
+            current={current}
+            setCurrent={(value) => {
+              setPrevious(current);
+              setCurrent(value);
+            }}
+          />
+          <Tab
+            label="parentBlog"
+            current={current}
+            setCurrent={(value) => {
+              setPrevious(current);
+              setCurrent(value);
+            }}
+          />
+          <Tab
+            label="blog"
+            current={current}
+            setCurrent={(value) => {
+              setPrevious(current);
+              setCurrent(value);
+            }}
+          />
+        </div>
+
+        <AnimatedForm formKey={current} direction={direction}>
+          {renderForm()}
+        </AnimatedForm>
       </div>
     </div>
   );
