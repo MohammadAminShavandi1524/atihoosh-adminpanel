@@ -7,6 +7,7 @@ import {
   MessagesSquare,
   Newspaper,
   ShieldCheck,
+  FilePenLine,
 } from "lucide-react";
 
 import SidebarItem from "./SidebarItem";
@@ -89,10 +90,17 @@ const Sidebar = () => {
           />
 
           <SidebarItem
-            href={`/${locale}/blog`}
-            title={t("blog")}
+            href={`/${locale}/blogs`}
+            title={t("blogs")}
             icon={Newspaper}
-            active={pathname.startsWith(`/${locale}/blog`)}
+            active={pathname.startsWith(`/${locale}/blogs`)}
+          />
+
+          <SidebarItem
+            href={`/${locale}/add-blog`}
+            title={t("addBlog")}
+            icon={FilePenLine}
+            active={pathname.startsWith(`/${locale}/add-blog`)}
           />
         </div>
 
@@ -113,7 +121,7 @@ const Sidebar = () => {
       <div dir="ltr" className="px-6">
         <div className="border-t-border-secondary border-t">
           <div className="bg-tertiary mt-5 mb-5 flex w-full items-center gap-x-2.5 rounded-lg px-4 py-2.5">
-            <div className="bg-secondary text-primary border-primary flex size-10 items-center justify-center rounded-full border text-base pt-0.5">
+            <div className="bg-secondary text-primary border-primary flex size-10 items-center justify-center rounded-full border pt-0.5 text-base">
               {profileWords}
             </div>
 

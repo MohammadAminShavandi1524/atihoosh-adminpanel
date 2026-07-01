@@ -45,7 +45,7 @@ const Page = ({}: PageProps) => {
 
   return (
     <div className="flex">
-      {/* body 1*/}
+      {/* body */}
       <div className="flex flex-1 flex-col">
         {/* header */}
         <div className="border-b-border-secondary h-fit w-full border-b px-8 py-6">

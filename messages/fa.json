@@ -21,7 +21,8 @@
 
     "teamCollaboration": "همکاری تیمی",
     "teamChat": "گفتگوی تیم",
-    "blog": "وبلاگ",
+    "blogs": "وبلاگ ها",
+    "addBlog": "اضافه کردن وبلاگ",
 
     "system": "سیستم",
     "settings": "تنظیمات و دسترسی‌ها"
@@ -149,6 +150,63 @@
         "email": "ایمیل مدیر جدید...",
         "selectRole": "انتخاب نقش..."
       }
+    }
+  },
+
+  "addBlog": {
+    "header": {
+      "category": {
+        "title": "ایجاد دسته‌بندی",
+        "description": "یک دسته‌بندی جدید برای سازمان‌دهی محتوای وبلاگ ایجاد کنید."
+      },
+      "parentBlog": {
+        "title": "ایجاد بلاگ والد",
+        "description": "یک بلاگ والد ایجاد کنید تا مقالات مرتبط در زیرمجموعه آن قرار بگیرند."
+      },
+      "blog": {
+        "title": "ایجاد بلاگ",
+        "description": "یک مقاله جدید ایجاد کرده و آن را به یک بلاگ والد اختصاص دهید."
+      }
+    },
+    "tabs": {
+      "category": "دسته‌بندی",
+      "parentBlog": "بلاگ والد",
+      "blog": "بلاگ"
+    },
+    "forms": {
+      "category": {
+        "label": "دسته‌بندی",
+        "placeholder": "مثلاً تکنولوژی",
+        "selectCategory": "انتخاب دسته‌بندی"
+      },
+      "parentBlog": {
+        "category": "دسته‌بندی",
+        "tags": "برچسب‌ها",
+        "tagsPlaceholder": "برچسب‌ها را انتخاب کنید",
+        "createTag": "ایجاد برچسب جدید",
+        "tagNamePlaceholder": "نام برچسب...",
+        "cancel": "انصراف",
+        "save": "ذخیره",
+        "title": "عنوان",
+        "titlePlaceholder": "عنوان بلاگ والد را وارد کنید",
+        "featuredImage": "آدرس تصویر شاخص",
+        "featuredImagePlaceholder": "https://example.com/image.jpg",
+        "description": "توضیحات",
+        "descriptionPlaceholder": "توضیح کوتاهی برای بلاگ والد بنویسید"
+      },
+      "blog": {
+        "title": "عنوان",
+        "titlePlaceholder": "عنوان بلاگ را وارد کنید",
+        "featuredImage": "آدرس تصویر شاخص",
+        "featuredImagePlaceholder": "https://example.com/image.jpg",
+        "description": "توضیحات",
+        "descriptionPlaceholder": "توضیح کوتاهی برای بلاگ بنویسید"
+      }
+    },
+    "submitButton": {
+      "category": "ذخیره دسته‌بندی",
+      "parentBlog": "ذخیره بلاگ والد",
+      "blog": "ذخیره بلاگ"
     }
   }
 }

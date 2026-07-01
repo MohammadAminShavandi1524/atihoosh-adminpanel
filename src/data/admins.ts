@@ -69,3 +69,26 @@ export const admins: Admin[] = [
     },
   },
 ];
+
+export const tags = [
+  {
+    id: "1",
+    label: "هوش مصنوعی",
+  },
+  {
+    id: "2",
+    label: "برنامه‌نویسی",
+  },
+  {
+    id: "3",
+    label: "طراحی وب",
+  },
+  {
+    id: "4",
+    label: "امنیت",
+  },
+  {
+    id: "5",
+    label: "آموزش",
+  },
+];

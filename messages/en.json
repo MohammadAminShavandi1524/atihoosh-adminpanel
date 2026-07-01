@@ -21,7 +21,8 @@
 
     "teamCollaboration": "Team Collaboration",
     "teamChat": "Team Chat",
-    "blog": "Blog",
+    "blogs": "Blogs",
+    "addBlog": "add blog",
 
     "system": "System",
     "settings": "Settings & Permissions"
@@ -148,6 +149,63 @@
         "email": "New admin email address...",
         "selectRole": "Select role..."
       }
+    }
+  },
+
+  "addBlog": {
+    "header": {
+      "category": {
+        "title": "Add Category",
+        "description": "Create a new category to organize your blog content."
+      },
+      "parentBlog": {
+        "title": "Add Parent Blog",
+        "description": "Create a parent blog that acts as the main container for related blog posts."
+      },
+      "blog": {
+        "title": "Add Blog",
+        "description": "Create a new blog post and assign it to an existing parent blog."
+      }
+    },
+    "tabs": {
+      "category": "Category",
+      "parentBlog": "Parent Blog",
+      "blog": "Blog"
+    },
+    "forms": {
+      "category": {
+        "label": "Category",
+        "placeholder": "e.g. Technology",
+        "selectCategory": "Select category"
+      },
+      "parentBlog": {
+        "category": "Category",
+        "tags": "Tags",
+        "tagsPlaceholder": "Select tags",
+        "createTag": "Create new tag",
+        "tagNamePlaceholder": "Tag name...",
+        "cancel": "Cancel",
+        "save": "Save",
+        "title": "Title",
+        "titlePlaceholder": "Enter the parent blog title",
+        "featuredImage": "Featured Image URL",
+        "featuredImagePlaceholder": "https://example.com/image.jpg",
+        "description": "Description",
+        "descriptionPlaceholder": "Write a short description for this parent blog"
+      },
+      "blog": {
+        "title": "Title",
+        "titlePlaceholder": "Enter the blog title",
+        "featuredImage": "Featured Image URL",
+        "featuredImagePlaceholder": "https://example.com/image.jpg",
+        "description": "Description",
+        "descriptionPlaceholder": "Write a short description for this blog"
+      }
+    },
+    "submitButton": {
+      "category": "Save Category",
+      "parentBlog": "Save Parent Blog",
+      "blog": "Save Blog"
     }
   }
 }
