@@ -207,5 +207,26 @@
       "parentBlog": "Save Parent Blog",
       "blog": "Save Blog"
     }
+  },
+
+  "login": {
+    "header": {
+      "title": "Ati Hoosh",
+      "subtitle": "Admin Panel"
+    },
+    "title": "Welcome back",
+    "description": "Sign in to access the Ati Hoosh control panel",
+    "form": {
+      "email": "Email Address",
+      "emailPlaceholder": "admin@atihoosh.com",
+      "password": "Password",
+      "passwordPlaceholder": "Enter your password"
+    },
+    "forgotPassword": "Forgot password?",
+    "submit": "Sign In to Dashboard",
+    "footer": {
+      "security": "256-bit TLS",
+      "adminOnly": "Admin access only"
+    }
   }
 }

@@ -29,6 +29,7 @@ const Sidebar = () => {
     .map((word) => word[0])
     .join("");
 
+  if (pathname === `/${locale}/login`) return <></>;
   return (
     <aside className="border-e-border-secondary flex h-screen w-75 flex-col border-e">
       {/* header */}

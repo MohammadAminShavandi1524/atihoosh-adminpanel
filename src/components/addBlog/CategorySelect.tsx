@@ -136,7 +136,7 @@ export const CategorySelect = ({
                         setOpen(false);
                       }}
                       className={cn(
-                        "flex w-full cursor-pointer items-center justify-between rounded-lg px-3 py-2.5 text-sm transition-colors",
+                        "flex w-full cursor-pointer items-center justify-between rounded-lg px-3 py-2.5 text-sm transition-colors font-IRANYekanX",
                         active
                           ? "bg-primary/10 text-primary"
                           : "hover:bg-foreground/5",

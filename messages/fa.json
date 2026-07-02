@@ -208,5 +208,26 @@
       "parentBlog": "ذخیره بلاگ والد",
       "blog": "ذخیره بلاگ"
     }
+  },
+
+  "login": {
+    "header": {
+      "title": "آتی هوش",
+      "subtitle": "پنل مدیریت"
+    },
+    "title": "خوش آمدید",
+    "description": "برای دسترسی به پنل مدیریت آتی هوش وارد حساب کاربری خود شوید.",
+    "form": {
+      "email": "آدرس ایمیل",
+      "emailPlaceholder": "admin@atihoosh.com",
+      "password": "رمز عبور",
+      "passwordPlaceholder": "رمز عبور خود را وارد کنید"
+    },
+    "forgotPassword": "رمز عبور را فراموش کرده‌اید؟",
+    "submit": "ورود به پنل مدیریت",
+    "footer": {
+      "security": "رمزنگاری TLS 256 بیتی",
+      "adminOnly": "فقط دسترسی مدیران"
+    }
   }
 }

@@ -36,6 +36,7 @@ const Page = ({}: PageProps) => {
         return (
           <form className="bg-secondary-bg relative flex h-full flex-col gap-y-6 rounded-xl p-7">
             <FormField
+              varient="default"
               label={t("forms.category.label")}
               placeholder={t("forms.category.placeholder")}
               as="input"
@@ -59,18 +60,21 @@ const Page = ({}: PageProps) => {
             />
 
             <FormField
+              varient="default"
               label={t("forms.parentBlog.title")}
               placeholder={t("forms.parentBlog.titlePlaceholder")}
               as="input"
             />
 
             <FormField
+              varient="default"
               label={t("forms.parentBlog.featuredImage")}
               placeholder={t("forms.parentBlog.featuredImagePlaceholder")}
               as="input"
             />
 
             <FormField
+              varient="default"
               label={t("forms.parentBlog.description")}
               placeholder={t("forms.parentBlog.descriptionPlaceholder")}
               as="input"
@@ -84,18 +88,21 @@ const Page = ({}: PageProps) => {
         return (
           <form className="bg-secondary-bg relative flex h-full flex-col gap-y-6 rounded-xl p-7">
             <FormField
+              varient="default"
               label={t("forms.blog.title")}
               placeholder={t("forms.blog.titlePlaceholder")}
               as="input"
             />
 
             <FormField
+              varient="default"
               label={t("forms.blog.featuredImage")}
               placeholder={t("forms.blog.featuredImagePlaceholder")}
               as="input"
             />
 
             <FormField
+              varient="default"
               label={t("forms.blog.description")}
               placeholder={t("forms.blog.descriptionPlaceholder")}
               as="input"
