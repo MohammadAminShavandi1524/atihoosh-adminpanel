@@ -8,12 +8,13 @@ import { Tab } from "@/components/addBlog/Tab";
 import { TagOption, TagSelector } from "@/components/addBlog/TagSelector";
 import { FormField } from "@/components/FormField";
 import { tags } from "@/data/admins";
+import { BlogTab } from "@/types/objectTypes";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 
 interface PageProps {}
 
-export type BlogTab = "category" | "parentBlog" | "blog";
+
 
 const Page = ({}: PageProps) => {
   const t = useTranslations("addBlog");

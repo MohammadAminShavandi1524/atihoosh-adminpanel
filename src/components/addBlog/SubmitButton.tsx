@@ -1,7 +1,8 @@
 "use client";
 
-import { BlogTab } from "@/app/[locale]/add-blog/page";
+
 import { cn } from "@/lib/utils";
+import { BlogTab } from "@/types/objectTypes";
 import { useTranslations } from "next-intl";
 
 interface SubmitButtonProps {

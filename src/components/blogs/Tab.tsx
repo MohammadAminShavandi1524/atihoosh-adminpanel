@@ -4,13 +4,13 @@ import { Dispatch, SetStateAction } from "react";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
-import { BlogTab } from "@/types/objectTypes";
+import { BlogsTab } from "@/types/objectTypes";
 
 
 interface TabProps {
-  label: BlogTab;
-  current: BlogTab;
-  setCurrent: Dispatch<SetStateAction<BlogTab>>;
+  label: BlogsTab;
+  current: BlogsTab;
+  setCurrent: Dispatch<SetStateAction<BlogsTab>>;
 }
 
 export const Tab = ({ label, current, setCurrent }: TabProps) => {
@@ -32,7 +32,7 @@ export const Tab = ({ label, current, setCurrent }: TabProps) => {
             : "text-muted-foreground hover:text-foreground",
         )}
       >
-        {t(label)}
+        {label}
       </span>
 
       {active && (
