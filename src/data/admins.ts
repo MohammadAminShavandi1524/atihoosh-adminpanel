@@ -375,3 +375,111 @@ export const blogs: BlogRowProps[] = [
 
   // ...
 ];
+
+
+
+
+export const services = [
+  "Website design and development",
+  "Logo and motion design",
+  "SEO and digital marketing",
+  "UI/UX Design",
+  "Branding",
+  "Network Support",
+];
+
+
+export const clientRequests = [
+  {
+    id: "CR-1001",
+    fullName: "Ali Ahmadi",
+    phoneNumber: "+98 912 345 6789",
+    services: ["Website design and development"],
+    date: "2026-07-10",
+  },
+  {
+    id: "CR-1002",
+    fullName: "Sara Mohammadi",
+    phoneNumber: "+98 935 421 8765",
+    services: ["UI/UX Design", "Branding"],
+    date: "2026-07-09",
+  },
+  {
+    id: "CR-1003",
+    fullName: "Reza Karimi",
+    phoneNumber: "+98 913 567 2341",
+    services: [
+      "SEO and digital marketing",
+      "Website design and development",
+      "Branding",
+    ],
+    date: "2026-07-08",
+  },
+  {
+    id: "CR-1004",
+    fullName: "Fatemeh Hosseini",
+    phoneNumber: "+98 991 654 7823",
+    services: ["Logo and motion design"],
+    date: "2026-07-07",
+  },
+  {
+    id: "CR-1005",
+    fullName: "Mohammad Jafari",
+    phoneNumber: "+98 939 112 3344",
+    services: [
+      "Network Support",
+      "Website design and development",
+      "SEO and digital marketing",
+      "UI/UX Design",
+    ],
+    date: "2026-07-06",
+  },
+  {
+    id: "CR-1006",
+    fullName: "Narges Ebrahimi",
+    phoneNumber: "+98 915 778 9911",
+    services: ["Branding", "Logo and motion design"],
+    date: "2026-07-05",
+  },
+  {
+    id: "CR-1007",
+    fullName: "Hossein Shafiei",
+    phoneNumber: "+98 937 245 6688",
+    services: [
+      "Website design and development",
+      "UI/UX Design",
+      "Branding",
+      "SEO and digital marketing",
+      "Logo and motion design",
+    ],
+    date: "2026-07-04",
+  },
+  {
+    id: "CR-1008",
+    fullName: "Maryam Norouzi",
+    phoneNumber: "+98 901 556 2244",
+    services: ["Network Support", "SEO and digital marketing"],
+    date: "2026-07-03",
+  },
+  {
+    id: "CR-1009",
+    fullName: "Amir Rahimi",
+    phoneNumber: "+98 933 841 1902",
+    services: [
+      "Website design and development",
+      "Logo and motion design",
+      "UI/UX Design",
+      "Branding",
+      "SEO and digital marketing",
+      "Network Support",
+    ],
+    date: "2026-07-02",
+  },
+  {
+    id: "CR-1010",
+    fullName: "Zahra Kazemi",
+    phoneNumber: "+98 914 632 5577",
+    services: ["UI/UX Design"],
+    date: "2026-07-01",
+  },
+];

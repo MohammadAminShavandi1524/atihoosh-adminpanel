@@ -230,6 +230,7 @@ const page = ({}: pageProps) => {
                 </ScrollArea>
               </div>
             </div>
+            
           </section>
         );
     }

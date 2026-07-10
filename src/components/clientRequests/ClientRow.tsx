@@ -1,0 +1,93 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { Trash } from "lucide-react";
+import { formatDate } from "../blogs/CategoryRow";
+
+interface ClientRowProps {
+  id: string;
+  fullName: string;
+  phoneNumber: string;
+  services: string[];
+  date: string;
+  onDelete: () => void;
+}
+
+const ClientRow = ({
+  id,
+  fullName,
+  phoneNumber,
+  services,
+  date,
+  onDelete,
+}: ClientRowProps) => {
+  return (
+    <motion.div
+      layout="position"
+      initial={{ opacity: 0, y: 16, scale: 0.98 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      exit={{ opacity: 0, y: -16, scale: 0.98 }}
+      transition={{
+        layout: {
+          type: "spring",
+          stiffness: 380,
+          damping: 32,
+        },
+        opacity: {
+          duration: 0.2,
+        },
+        y: {
+          duration: 0.2,
+        },
+        scale: {
+          duration: 0.2,
+        },
+      }}
+      className="mb-3 last:mb-0"
+    >
+      <div className="group border-border-secondary bg-secondary-bg hover:border-primary/20 hover:bg-secondary relative grid min-h-16 grid-cols-[90px_1.5fr_1.5fr_2fr_140px_120px] items-center rounded-xl border px-5 py-3 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md">
+        {/* ID */}
+        <div className="text-muted-foreground font-mono text-sm">#{id}</div>
+
+        {/* Full Name */}
+        <div className="pr-4">
+          <p className="text-foreground font-medium">{fullName}</p>
+        </div>
+
+        {/* Phone */}
+        <div className="text-muted-foreground text-sm">{phoneNumber}</div>
+
+        {/* Services */}
+        <div className="flex flex-wrap gap-1.5">
+          {services.map((service) => (
+            <span
+              key={service}
+              className="bg-primary/10 text-primary hover:bg-primary/15 rounded-md px-2 py-1 text-xs font-medium transition-colors"
+            >
+              {service}
+            </span>
+          ))}
+        </div>
+
+        {/* Date */}
+        <div className="text-muted-foreground text-sm">{formatDate(date)}</div>
+
+        {/* Actions */}
+        <div className="flex justify-end">
+          <button
+            onClick={onDelete}
+            className="group/delete flex cursor-pointer items-center gap-1 rounded-lg border border-red-400 bg-red-500/10 px-3 py-2 text-sm font-medium text-red-500 transition-all hover:bg-red-500/20"
+          >
+            <Trash className="size-4 transition-transform duration-200 group-hover/delete:scale-110 group-hover/delete:-rotate-6" />
+            Delete
+          </button>
+        </div>
+
+        {/* Left Indicator */}
+        <div className="bg-primary absolute top-2 bottom-2 left-0 w-1 rounded-r-full opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
+      </div>
+    </motion.div>
+  );
+};
+
+export default ClientRow;
