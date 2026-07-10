@@ -1,6 +1,5 @@
 "use client";
 
-import { admins } from "@/data/admins";
 import { MoreHorizontal } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useTranslations } from "next-intl";
@@ -8,8 +7,34 @@ import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { ScrollArea } from "../ui/scroll-area";
 import AdminRow from "./AdminRow";
+import { getUsers } from "@/services/users";
+
+interface User {
+  id: number;
+  email: string;
+  request: boolean;
+  resume: boolean;
+  chat: boolean;
+  blog: boolean;
+}
 
 export default function AdminTable() {
+  const [users, setUsers] = useState<User[]>([]);
+  console.log("🚀 ~ Page ~ users:", users);
+
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        const data = await getUsers();
+        setUsers(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchUsers();
+  }, []);
+
   const t = useTranslations("Settings.AdminTable");
 
   const roleStyles = {
@@ -27,7 +52,6 @@ export default function AdminTable() {
   return (
     <div className="border-border-secondary h-full overflow-hidden rounded-2xl border">
       <div className="flex h-full flex-col justify-between overflow-x-auto">
-
         <div className="border-border bg-background overflow-hidden rounded-xl border">
           {/* Header */}
           <div className="bg-tertiary border-border border-b">
@@ -37,11 +61,11 @@ export default function AdminTable() {
               </div>
 
               <div className="text-muted-foreground px-4 py-4 text-center text-sm font-medium">
-                {t("headers.sales")}
+                request
               </div>
 
               <div className="text-muted-foreground px-4 py-4 text-center text-sm font-medium">
-                {t("headers.team")}
+                resume
               </div>
 
               <div className="text-muted-foreground px-4 py-4 text-center text-sm font-medium">
@@ -52,7 +76,7 @@ export default function AdminTable() {
                 {t("headers.blog")}
               </div>
 
-              <div className="text-muted-foreground px-6 py-4 pe-24 text-end text-sm font-medium">
+              <div className="text-muted-foreground px-6 py-4 text-center text-sm font-medium">
                 {t("headers.actions")}
               </div>
             </div>
@@ -61,19 +85,17 @@ export default function AdminTable() {
           {/* Body */}
           <ScrollArea className="h-[500px]">
             <div>
-              {admins.map(
-                ({ email, id, initials, name, permissions, role }, index) => (
-                  <AdminRow
-                    key={index}
-                    email={email}
-                    id={id}
-                    initials={initials}
-                    name={name}
-                    permissions={permissions}
-                    role={role}
-                  />
-                ),
-              )}
+              {users.map((user) => (
+                <AdminRow
+                  key={user.id}
+                  id={user.id}
+                  email={user.email}
+                  request={user.request}
+                  resume={user.resume}
+                  chat={user.chat}
+                  blog={user.blog}
+                />
+              ))}
             </div>
           </ScrollArea>
         </div>
