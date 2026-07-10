@@ -68,6 +68,97 @@ export const admins: Admin[] = [
       blog: true,
     },
   },
+  {
+    id: 4,
+    initials: "SK",
+    name: "Sara Karimi",
+    role: "Content Writer",
+    email: "content.writer@atihoosh.com",
+    permissions: {
+      sales: false,
+      team: false,
+      chat: true,
+      blog: true,
+    },
+  },
+  {
+    id: 4,
+    initials: "SK",
+    name: "Sara Karimi",
+    role: "Content Writer",
+    email: "content.writer@atihoosh.com",
+    permissions: {
+      sales: false,
+      team: false,
+      chat: true,
+      blog: true,
+    },
+  },
+  {
+    id: 4,
+    initials: "SK",
+    name: "Sara Karimi",
+    role: "Content Writer",
+    email: "content.writer@atihoosh.com",
+    permissions: {
+      sales: false,
+      team: false,
+      chat: true,
+      blog: true,
+    },
+  },
+  {
+    id: 4,
+    initials: "SK",
+    name: "Sara Karimi",
+    role: "Content Writer",
+    email: "content.writer@atihoosh.com",
+    permissions: {
+      sales: false,
+      team: false,
+      chat: true,
+      blog: true,
+    },
+  },
+  {
+    id: 4,
+    initials: "SK",
+    name: "Sara Karimi",
+    role: "Content Writer",
+    email: "content.writer@atihoosh.com",
+    permissions: {
+      sales: false,
+      team: false,
+      chat: true,
+      blog: true,
+    },
+  },
+  {
+    id: 4,
+    initials: "SK",
+    name: "Sara Karimi",
+    role: "Content Writer",
+    email: "content.writer@atihoosh.com",
+    permissions: {
+      sales: false,
+      team: false,
+      chat: true,
+      blog: true,
+    },
+  },
+  {
+    id: 4,
+    initials: "SK",
+    name: "Sara Karimi",
+    role: "Content Writer",
+    email: "content.writer@atihoosh.com",
+    permissions: {
+      sales: false,
+      team: false,
+      chat: true,
+      blog: true,
+    },
+  },
 ];
 
 export const tags = [
@@ -196,12 +287,19 @@ export const categories = [
   },
 ];
 
-interface BlogRowProps {
+export interface ChildBlog {
+  id: string;
+  title: string;
+  description: string;
+}
+
+export interface BlogRowProps {
   id: string;
   category: string;
   tags: string[];
   title: string;
   date: string;
+  children: ChildBlog[];
 }
 
 export const blogs: BlogRowProps[] = [
@@ -211,6 +309,26 @@ export const blogs: BlogRowProps[] = [
     tags: ["AI", "Machine Learning", "Business"],
     title: "AI in 2026: Which Businesses Are Falling Behind the Competition?",
     date: "2026-07-01",
+    children: [
+      {
+        id: "1-1",
+        title: "How AI Is Transforming Small Businesses",
+        description:
+          "Discover how startups and small businesses are using artificial intelligence to automate daily operations and reduce costs.",
+      },
+      {
+        id: "1-2",
+        title: "The Future of AI-Powered Customer Support",
+        description:
+          "Learn how AI chatbots and virtual assistants are improving customer experience across industries.",
+      },
+      {
+        id: "1-3",
+        title: "Common AI Adoption Mistakes",
+        description:
+          "Explore the most frequent mistakes companies make when implementing AI solutions.",
+      },
+    ],
   },
   {
     id: "2",
@@ -218,6 +336,20 @@ export const blogs: BlogRowProps[] = [
     tags: ["JavaScript", "TypeScript", "React"],
     title: "Modern JavaScript Patterns Every Developer Should Know",
     date: "2026-07-02",
+    children: [
+      {
+        id: "2-1",
+        title: "Understanding Closures",
+        description:
+          "A beginner-friendly explanation of closures and practical use cases.",
+      },
+      {
+        id: "2-2",
+        title: "Advanced TypeScript Utility Types",
+        description:
+          "Learn how utility types can simplify complex TypeScript projects.",
+      },
+    ],
   },
   {
     id: "3",
@@ -225,54 +357,21 @@ export const blogs: BlogRowProps[] = [
     tags: ["Next.js", "SSR", "Performance"],
     title: "Building High-Performance Web Applications with Next.js",
     date: "2026-07-03",
+    children: [
+      {
+        id: "3-1",
+        title: "Optimizing Server Components",
+        description:
+          "Techniques for improving performance with React Server Components.",
+      },
+      {
+        id: "3-2",
+        title: "Image Optimization in Next.js",
+        description:
+          "Reduce load times using the built-in Image component effectively.",
+      },
+    ],
   },
-  {
-    id: "4",
-    category: "Cyber Security",
-    tags: ["Security", "Authentication", "Web"],
-    title: "Top Web Security Mistakes Developers Still Make",
-    date: "2026-07-04",
-  },
-  {
-    id: "5",
-    category: "Education",
-    tags: ["Learning", "Career", "Programming"],
-    title: "A Practical Roadmap to Becoming a Full-Stack Developer",
-    date: "2026-07-05",
-  },
-  {
-    id: "6",
-    category: "Database",
-    tags: ["MongoDB", "PostgreSQL", "Backend"],
-    title: "Choosing the Right Database for Your Next Project",
-    date: "2026-07-06",
-  },
-  {
-    id: "7",
-    category: "DevOps",
-    tags: ["Docker", "CI/CD", "Automation"],
-    title: "Docker and CI/CD: Streamlining Your Deployment Workflow",
-    date: "2026-07-07",
-  },
-  {
-    id: "8",
-    category: "Cloud Computing",
-    tags: ["AWS", "Cloud", "Deployment"],
-    title: "Cloud Computing Trends That Will Shape the Future",
-    date: "2026-07-08",
-  },
-  {
-    id: "9",
-    category: "Backend Development",
-    tags: ["Node.js", "Express", "API"],
-    title: "Building Secure and Scalable REST APIs with Node.js",
-    date: "2026-07-09",
-  },
-  {
-    id: "10",
-    category: "UI/UX",
-    tags: ["Figma", "Design", "Accessibility"],
-    title: "Designing Interfaces That Users Love to Use",
-    date: "2026-07-10",
-  },
+
+  // ...
 ];

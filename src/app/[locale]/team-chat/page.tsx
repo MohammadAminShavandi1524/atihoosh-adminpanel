@@ -1,6 +1,7 @@
 "use client";
 
 import LanguageSwitcher from "@/components/LanguageSwitcher";
+import HeaderLayout from "@/components/layout/HeaderLayout";
 import TeamChat from "@/components/teamChat/TeamChat";
 import { ChatMessageType } from "@/components/teamChat/types";
 import { ThemeButton } from "@/components/theme/ThemeButton";
@@ -90,22 +91,10 @@ const page = ({}: pageProps) => {
       {/* body */}
       <div className="flex flex-1 flex-col">
         {/* header */}
-        <div className="border-b-border-secondary h-fit w-full border-b px-8 py-6">
-          <div className="flex items-center justify-between">
-            <div>
-              <div className="mb-2 text-2xl">{t("title")}</div>
 
-              <div className="text-muted-foreground text-xl">
-                {t("description")}
-              </div>
-            </div>
+        <HeaderLayout title={t("title")} descrption={t("description")} />
 
-            <div className="flex items-center gap-x-2 pe-10">
-              <LanguageSwitcher defaultLocale={locale} />
-              <ThemeButton />
-            </div>
-          </div>
-        </div>
+       
 
         {/* body */}
         <div className="flex flex-1">
@@ -129,8 +118,6 @@ const page = ({}: pageProps) => {
           </div>
         </div>
       </div>
-
-      
     </div>
   );
 };

@@ -141,15 +141,22 @@
       },
 
       "buttons": {
-        "changeEmail": "تغییر ایمیل",
+        "saveBtn": "ذخیره",
         "remove": "حذف",
-        "addAdmin": "افزودن مدیر"
+        "addMember": "افزودن عضو"
       },
 
       "placeholders": {
         "email": "ایمیل مدیر جدید...",
         "selectRole": "انتخاب نقش..."
       }
+    }
+  },
+
+  "blogs": {
+    "header": {
+      "title": "بلاگ‌ها",
+      "description": "مدیریت مقالات، دسته‌بندی‌ها و محتوای وبلاگ در یک بخش."
     }
   },
 
@@ -224,6 +231,7 @@
       "passwordPlaceholder": "رمز عبور خود را وارد کنید"
     },
     "forgotPassword": "رمز عبور را فراموش کرده‌اید؟",
+    "invalidCredentials": "ایمیل یا رمز عبور اشتباه است.",
     "submit": "ورود به پنل مدیریت",
     "footer": {
       "security": "رمزنگاری TLS 256 بیتی",

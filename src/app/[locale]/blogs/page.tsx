@@ -12,10 +12,14 @@ import { ArrowDownUp, Search, SearchX } from "lucide-react";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import DeleteModal from "@/components/blogs/DeleteModal";
+import { useTranslations } from "next-intl";
+import HeaderLayout from "@/components/layout/HeaderLayout";
 
 interface pageProps {}
 
 const page = ({}: pageProps) => {
+  const t = useTranslations("blogs");
+
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
 
   const [selectedItem, setSelectedItem] = useState<{
@@ -27,15 +31,13 @@ const page = ({}: pageProps) => {
   const handleDelete = () => {
     if (!selectedItem) return;
 
-    console.log(selectedItem);
-
     // اینجا بعداً API حذف رو صدا می‌زنی
 
     setIsDeleteModalOpen(false);
     setSelectedItem(null);
   };
 
-  const [current, setCurrent] = useState<BlogsTab>("categories");
+  const [current, setCurrent] = useState<BlogsTab>("Blogs");
 
   const tabOrder: Record<BlogsTab, number> = {
     categories: 0,
@@ -158,18 +160,19 @@ const page = ({}: pageProps) => {
 
             <div className="border-border-secondary m-7 mt-7 h-full overflow-hidden rounded-xl border">
               {/* header */}
-              <div className="border-b-border-secondary bg-tertiary border-b px-5">
-                <div className="text-muted-foreground grid h-14 grid-cols-[70px_2fr_1fr_1.5fr_140px_180px] items-center text-xs font-semibold tracking-wider uppercase">
+              <div className="border-b-border-secondary bg-tertiary border-b px-7.5">
+                <div className="text-muted-foreground grid h-14 grid-cols-[70px_2fr_1fr_1.5fr_140px_300px] items-center text-xs font-semibold tracking-wider uppercase">
                   <div>ID</div>
                   <div>title</div>
                   <div>Category</div>
                   <div>tags</div>
                   <div>Date</div>
+
                   <div className="">Actions</div>
                 </div>
               </div>
               {/* content */}
-              <div className="flex h-full w-full flex-col overflow-y-auto pb-18">
+              <div className="flex h-full w-full flex-col overflow-y-auto px-2.5 pt-2.5 pb-18">
                 <ScrollArea className="h-full w-full">
                   <AnimatePresence mode="wait">
                     {filteredBlogs.length > 0 ? (
@@ -196,7 +199,6 @@ const page = ({}: pageProps) => {
                                 name: blog.title,
                                 type: "blog",
                               });
-
                               setIsDeleteModalOpen(true);
                             }}
                             {...blog}
@@ -235,7 +237,10 @@ const page = ({}: pageProps) => {
 
   return (
     <div className="flex flex-1 flex-col">
-      <Header current={current} />
+      <HeaderLayout
+        title={t("header.title")}
+        descrption={t("header.description")}
+      />
 
       {/* content */}
       <div className="flex flex-1 flex-col px-10 pb-10">

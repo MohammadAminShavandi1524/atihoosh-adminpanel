@@ -140,15 +140,22 @@
       },
 
       "buttons": {
-        "changeEmail": "Change email",
+        "saveBtn": "Save",
         "remove": "Remove",
-        "addAdmin": "Add admin"
+        "addMember": "Add member"
       },
 
       "placeholders": {
         "email": "New admin email address...",
         "selectRole": "Select role..."
       }
+    }
+  },
+
+  "blogs": {
+    "header": {
+      "title": "Blogs",
+      "description": "Manage your blog posts, categories, and content in one place."
     }
   },
 
@@ -223,6 +230,7 @@
       "passwordPlaceholder": "Enter your password"
     },
     "forgotPassword": "Forgot password?",
+    "invalidCredentials": "Invalid email or password.",
     "submit": "Sign In to Dashboard",
     "footer": {
       "security": "256-bit TLS",

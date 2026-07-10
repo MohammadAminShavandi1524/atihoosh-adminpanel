@@ -2,11 +2,11 @@
 
 import AnimatedForm from "@/components/addBlog/AnimatedForm";
 import { CategorySelect } from "@/components/addBlog/CategorySelect";
-import Header from "@/components/addBlog/Header";
 import SubmitButton from "@/components/addBlog/SubmitButton";
 import { Tab } from "@/components/addBlog/Tab";
 import { TagOption, TagSelector } from "@/components/addBlog/TagSelector";
 import { FormField } from "@/components/FormField";
+import HeaderLayout from "@/components/layout/HeaderLayout";
 import { tags } from "@/data/admins";
 import { BlogTab } from "@/types/objectTypes";
 import { useTranslations } from "next-intl";
@@ -14,10 +14,9 @@ import { useState } from "react";
 
 interface PageProps {}
 
-
-
 const Page = ({}: PageProps) => {
   const t = useTranslations("addBlog");
+  const t_header = useTranslations("addBlog.header");
 
   const [current, setCurrent] = useState<BlogTab>("parentBlog");
   const [selectedTags, setSelectedTags] = useState<TagOption[]>([]);
@@ -117,7 +116,10 @@ const Page = ({}: PageProps) => {
 
   return (
     <div className="flex flex-1 flex-col">
-      <Header current={current} />
+      <HeaderLayout
+        title={t_header(`${current}.title`)}
+        descrption={t_header(`${current}.description`)}
+      />
 
       {/* content */}
       <div className="flex flex-1 flex-col px-10 pb-10">

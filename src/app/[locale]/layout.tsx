@@ -16,7 +16,7 @@ import { cn } from "@/lib/utils";
 import { Metadata } from "next";
 import { ThemeProvider } from "@/components/theme/Providers";
 
-import Header from "@/components/layout/Header";
+import Header from "@/components/layout/HeaderLayout";
 import Sidebar from "@/components/layout/Sidebar";
 
 const inter = Inter({

@@ -1,6 +1,7 @@
 "use client";
 
 import LanguageSwitcher from "@/components/LanguageSwitcher";
+import HeaderLayout from "@/components/layout/HeaderLayout";
 import AccessOverviewItem from "@/components/settings/AccessOverviewItem";
 import AdminTable from "@/components/settings/AdminTable";
 import { ThemeButton } from "@/components/theme/ThemeButton";
@@ -46,42 +47,27 @@ const Page = ({}: PageProps) => {
   return (
     <div className="flex">
       {/* body */}
-      <div className="flex flex-1 flex-col">
+      <div className="flex h-screen flex-1 flex-col">
         {/* header */}
-        <div className="border-b-border-secondary h-fit w-full border-b px-8 py-6">
-          <div className="flex items-center justify-between">
-            <div>
-              <div className="mb-2 text-2xl">{t("title")}</div>
-
-              <div className="text-muted-foreground text-xl">
-                {t("description")}
-              </div>
-            </div>
-
-            <div className="flex items-center gap-x-2 pe-10">
-              <LanguageSwitcher defaultLocale={locale} />
-              <ThemeButton />
-            </div>
-          </div>
-        </div>
+        <HeaderLayout title={t("title")} descrption={t("description")} />
 
         {/* content */}
-        <div className="flex flex-1 flex-col px-10">
+        <div className="flex flex-1 flex-col px-10 pb-16">
           {/* tabs */}
-          <div className="border-b-border-secondary mt-10 mb-6 border-b pb-3 text-sm">
-            <span className="text-primary border-b-primary cursor-pointer border-b-2 px-6 py-2.5">
+          <div className="mt-10 mb-6 pb-3 text-sm">
+            <span className="text-primary border-b-primary cursor-pointer border-b-2 px-6 py-2.5 text-lg">
               {t("tabs.users")}
             </span>
 
-            <span className="cursor-pointer px-6 py-1.5">{t("tabs.blog")}</span>
+            {/* <span className="cursor-pointer px-6 py-1.5">{t("tabs.blog")}</span> */}
           </div>
 
           {/* admin table */}
           <AdminTable />
         </div>
 
-        {/* footer */}
-        <div className="bg-tertiary flex w-full items-center justify-between px-10 py-6">
+        {/* footer === hidden */}
+        {/* <div className="hidden bg-tertiary flex w-full items-center justify-between px-10 py-6">
           <div className="text-muted-foreground text-sm">
             {t("footer.description")}
           </div>
@@ -89,11 +75,11 @@ const Page = ({}: PageProps) => {
           <button className="bg-secondary text-primary border-primary rounded-lg border px-6 py-2">
             {t("footer.save")}
           </button>
-        </div>
+        </div> */}
       </div>
 
-      {/* right side */}
-      <div className="border-s-border-secondary h-screen w-75 border-s">
+      {/* right side === hidden */}
+      <div className="border-s-border-secondary hidden h-screen w-75 border-s">
         <div className="border-b-border-secondary border-b px-4 py-4">
           <div className="text-center text-2xl">{t("overview.title")}</div>
         </div>
