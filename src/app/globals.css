@@ -59,7 +59,6 @@
 
   --color-destructive: var(--destructive);
 
-  --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
 
@@ -82,10 +81,15 @@
   --color-card-tertiary-foreground: var(--card-tertiary-foreground);
 
   /* borders */
+  --color-border: var(--border);
   --color-border-secondary: var(--border-secondary);
 
   /* links */
   --color-footer-link-hover: var(--footer-link-hover);
+
+  /* Scrollbar */
+  --color-scrollbar: var(--scrollbar);
+  --color-scrollbar-hover: var(--scrollbar-hover);
 }
 
 /* =========================
@@ -125,6 +129,12 @@
   /* input / ring */
   --input: #e5e5e5;
   --ring: #94a3b8;
+
+  /* --scrollbar: #c8e6ef;
+  --scrollbar-hover: #002b53; */
+
+  --scrollbar: #b8c7d9;
+  --scrollbar-hover: #6f8fb5;
 
   /* ui extras */
   --accent: #f3f4f6;
@@ -171,6 +181,12 @@
 
   --input: #2a2a2a;
   --ring: #555555;
+
+  /* --scrollbar: #2a4b57;
+  --scrollbar-hover: #1e9dbd; */
+
+  --scrollbar: #36546a;
+  --scrollbar-hover: #1e9dbd;
 
   /* ui extras */
   --accent: #1a1a1a;
@@ -235,7 +251,7 @@
     margin: 0 auto;
     padding: 0 24px;
   }
-  
+
   @keyframes aurora {
     0%,
     100% {

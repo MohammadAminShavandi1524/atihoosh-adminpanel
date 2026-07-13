@@ -10,7 +10,7 @@ const OverViewBoxes = ({}: OverViewBoxesProps) => {
   const t = useTranslations("Dashboard.overviewBoxes");
 
   return (
-    <div className="mb-8 grid grid-cols-4 gap-x-4 gap-y-4">
+    <div className="mb-8 grid grid-cols-4 gap-x-4 gap-y-4 ">
       <OverViewBox
         title={t("clientRequests.title")}
         label={t("clientRequests.label")}

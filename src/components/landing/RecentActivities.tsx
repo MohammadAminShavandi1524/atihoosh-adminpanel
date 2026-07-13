@@ -56,7 +56,7 @@ const RecentActivities = ({}: RecentActivitiesProps) => {
   const t = useTranslations("Dashboard.recentActivities");
 
   return (
-    <div className="bg-secondary-bg border-border-secondary flex min-h-125 w-full flex-col rounded-xl border">
+    <div className=" bg-secondary-bg border-border-secondary flex min-h-125 w-full flex-col rounded-xl border">
       <div className="border-b-border-secondary flex items-center justify-between border-b p-5">
         <div>
           <div className="text-lg">{t("title")}</div>
@@ -66,9 +66,10 @@ const RecentActivities = ({}: RecentActivitiesProps) => {
           </div>
         </div>
 
-        <button className="border-primary bg-secondary text-primary cursor-pointer rounded-md border px-4 py-1.5 text-sm">
+        {/* <button className="border-primary bg-secondary text-primary cursor-pointer rounded-md border px-4 py-1.5 text-sm">
           {t("refresh")}
-        </button>
+        </button> */}
+
       </div>
 
       <div className="flex flex-col gap-y-2.5 px-5 pt-2.5 pb-4">

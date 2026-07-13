@@ -44,7 +44,8 @@ const Page = ({}: PageProps) => {
     setError("");
     try {
       await login(form);
-      router.push(`/${locale}`);
+      // router.push(`/${locale}`);
+      window.location.href = `/${locale}`;
     } catch {
       setError(t("invalidCredentials"));
     }

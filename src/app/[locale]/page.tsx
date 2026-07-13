@@ -16,14 +16,19 @@ export default function IndexPage({ params }: PageProps<"/[locale]">) {
   const t = useTranslations("Dashboard");
 
   return (
-    <div className="flex flex-col px-12 pt-8">
+    <div className="flex flex-col pt-8">
       {/* header */}
 
-      <HeaderLayout title={t("greeting")} descrption={t("subtitle")} className="border-b-0" />
+      <HeaderLayout
+        title={t("greeting")}
+        descrption={t("subtitle")}
+        className="border-b-0 ps-13"
+      />
+      <div className="px-12">
+        <OverViewBoxes />
 
-      <OverViewBoxes />
-
-      <RecentActivities />
+        <RecentActivities />
+      </div>
     </div>
   );
 }

@@ -55,28 +55,23 @@ const ActivityItem = ({
         </div>
       </div>
 
-      <div
+      {/* status */}
+      {/* <div
         className={cn(
           "rounded-full border px-2.5 py-1 text-xs font-medium",
 
           (status === "New" || status === "جدید") &&
-            (isDark
-              ? "border-[#63461f] bg-[#292014] text-[#e8a13a]"
-              : "border-[#f6d28b] bg-[#fff8ea] text-[#b66b00]"),
+            "border-[#f6d28b] bg-[#fff8ea] text-[#b66b00] dark:border-[#63461f] dark:bg-[#292014] dark:text-[#e8a13a]",
 
           (status === "In Progress" || status === "در حال بررسی") &&
-            (isDark
-              ? "border-[#32275b] bg-[#1c182c] text-[#b8a8ff]"
-              : "border-[#cfc5ff] bg-[#f5f3ff] text-[#6d4aff]"),
+            "border-[#cfc5ff] bg-[#f5f3ff] text-[#6d4aff] dark:border-[#32275b] dark:bg-[#1c182c] dark:text-[#b8a8ff]",
 
           (status === "Done" || status === "انجام شده") &&
-            (isDark
-              ? "border-[#1a4831] bg-[#13241c] text-[#33c379]"
-              : "border-[#b8ebcf] bg-[#edfdf3] text-[#15803d]"),
+            "border-[#b8ebcf] bg-[#edfdf3] text-[#15803d] dark:border-[#1a4831] dark:bg-[#13241c] dark:text-[#33c379]",
         )}
       >
         {status}
-      </div>
+      </div> */}
     </div>
   );
 };

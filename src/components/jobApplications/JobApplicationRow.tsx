@@ -1,0 +1,91 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { FileText, Trash } from "lucide-react";
+
+interface JobApplicationRowProps {
+  id: number;
+  fullName: string;
+  phoneNumber: string;
+  email: string;
+  pdf?: string;
+  onDelete: () => void;
+}
+
+export default function JobApplicationRow({
+  id,
+  fullName,
+  phoneNumber,
+  email,
+  pdf,
+  onDelete,
+}: JobApplicationRowProps) {
+  return (
+    <motion.div
+      layout="position"
+      initial={{ opacity: 0, y: 16, scale: 0.98 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      exit={{ opacity: 0, y: -16, scale: 0.98 }}
+      transition={{
+        layout: {
+          type: "spring",
+          stiffness: 380,
+          damping: 32,
+        },
+        opacity: {
+          duration: 0.2,
+        },
+        y: {
+          duration: 0.2,
+        },
+        scale: {
+          duration: 0.2,
+        },
+      }}
+      className="mb-3 last:mb-0"
+    >
+      <div className="group border-border-secondary bg-secondary-bg hover:border-primary/20 hover:bg-secondary relative grid min-h-16 grid-cols-[90px_1.5fr_1.4fr_2fr_150px_120px] items-center rounded-xl border px-5 py-3 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md">
+        {/* ID */}
+        <div className="text-muted-foreground font-mono text-sm">#{id}</div>
+
+        {/* Full Name */}
+        <div className="pr-4">
+          <p className="text-foreground truncate font-medium">{fullName}</p>
+        </div>
+
+        {/* Phone */}
+        <div className="text-muted-foreground text-sm">{phoneNumber}</div>
+
+        {/* Email */}
+        <div className="text-muted-foreground truncate text-sm">{email}</div>
+
+        {/* Resume */}
+        <div className="flex justify-center pe-3">
+          <a
+            href={pdf}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group/pdf bg-tertiary border-border-secondary hover:border-primary hover:bg-primary/10 inline-flex h-10 cursor-pointer items-center justify-center gap-2 rounded-xl border px-4 text-sm font-medium transition-all duration-300 hover:-translate-y-0.5"
+          >
+            <FileText className="text-primary size-4 transition-transform duration-300 group-hover/pdf:scale-110 group-hover/pdf:rotate-6" />
+            <span>View PDF</span>
+          </a>
+        </div>
+
+        {/* Delete */}
+        <div className="flex justify-center">
+          <button
+            onClick={onDelete}
+            className="group/delete flex cursor-pointer items-center gap-1 rounded-lg border border-red-400 bg-red-500/10 px-3 py-2 text-sm font-medium text-red-500 transition-all duration-200 hover:bg-red-500/20 active:scale-95"
+          >
+            <Trash className="size-4 transition-transform duration-200 group-hover/delete:scale-110 group-hover/delete:-rotate-6" />
+            Delete
+          </button>
+        </div>
+
+        {/* Left Indicator */}
+        <div className="bg-primary absolute top-2 bottom-2 w-1 rounded-r-full opacity-0 transition-opacity duration-200 group-hover:opacity-100 ltr:left-0 rtl:right-0" />
+      </div>
+    </motion.div>
+  );
+}

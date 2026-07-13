@@ -6,6 +6,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { clientRequests, services } from "@/data/admins";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowDownUp, Filter, Search } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
 import { useMemo, useState } from "react";
 
 interface pageProps {}
@@ -41,11 +42,14 @@ const page = ({}: pageProps) => {
       );
   }, [search, service, sort]);
 
+  const t = useTranslations("clientRequests");
+  const locale = useLocale();
+
   return (
     <div className="flex flex-1 flex-col">
       <HeaderLayout
-        title="Client Requests"
-        descrption="Review and manage service requests submitted by clients."
+        title={t("header.title")}
+        descrption={t("header.description")}
       />
 
       <div className="flex flex-1 flex-col px-10 pt-10 pb-10">
@@ -59,7 +63,7 @@ const page = ({}: pageProps) => {
               <input
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                placeholder="Search by name or phone..."
+                placeholder={t("filters.searchPlaceholder")}
                 className="bg-tertiary border-border-secondary focus:border-primary focus:ring-primary/15 h-12 w-full rounded-xl border pr-5 pl-12 text-sm transition-all outline-none focus:ring-4"
               />
             </div>
@@ -74,7 +78,7 @@ const page = ({}: pageProps) => {
                   onChange={(e) => setService(e.target.value)}
                   className="bg-tertiary border-border-secondary focus:border-primary focus:ring-primary/15 h-12 min-w-[260px] cursor-pointer appearance-none rounded-xl border pr-9 pl-11 text-sm transition-all outline-none focus:ring-4"
                 >
-                  <option value="all">All Services</option>
+                  <option value="all">{t("filters.allServices")}</option>
 
                   {services.map((item) => (
                     <option key={item} value={item}>
@@ -95,43 +99,59 @@ const page = ({}: pageProps) => {
                   }
                   className="bg-tertiary border-border-secondary focus:border-primary focus:ring-primary/15 h-12 min-w-[170px] cursor-pointer appearance-none rounded-xl border pr-9 pl-11 text-sm transition-all outline-none focus:ring-4"
                 >
-                  <option value="newest">Newest First</option>
-                  <option value="oldest">Oldest First</option>
+                  <option value="newest">{t("filters.newestFirst")}</option>
+
+                  <option value="oldest">{t("filters.oldestFirst")}</option>
                 </select>
               </div>
             </div>
           </div>
-          {/* *********** */}
+
           <div className="border-border-secondary m-7 mt-7 h-full overflow-hidden rounded-xl border">
             {/* header */}
             <div className="border-b-border-secondary bg-tertiary border-b px-11">
-              <div className="text-muted-foreground grid h-14 grid-cols-[90px_1.5fr_1.5fr_2fr_140px_120px] items-center text-xs font-semibold tracking-wider uppercase">
-                <div className="ps-0.5">ID</div>
-                <div>Full name</div>
-                <div>Phone number</div>
-                <div>Services</div>
-                <div>Date</div>
-                <div className="text-center">Actions</div>
+              <div className="text-muted-foreground grid h-14 grid-cols-[90px_1.5fr_1.5fr_2fr_1.75fr_140px_120px] items-center text-xs font-semibold tracking-wider uppercase">
+                <div className="ps-1">{t("table.id")}</div>
+                <div className="ps-0.5">{t("table.fullName")}</div>
+                <div className="ps-1">{t("table.phoneNumber")}</div>
+                <div className="ps-1.5">{t("table.services")}</div>
+                <div className="pe-4 text-center">{t("table.description")}</div>
+                <div className="text-center">{t("table.date")}</div>
+                <div className="text-center">{t("table.actions")}</div>
               </div>
             </div>
+
             {/* Rows */}
-            <div className="flex w-full flex-col items-center gap-y-2.5 overflow-y-auto px-6 pt-2.5 pb-7">
-              <ScrollArea className="h-[500px] w-full">
+            <div className="flex w-full flex-col items-center gap-y-2.5 overflow-y-auto ps-6 pe-1 pt-2.5 pb-7">
+              <ScrollArea
+                dir={locale === "en" ? "ltr" : "rtl"}
+                className="h-[500px] w-full"
+              >
                 <AnimatePresence mode="popLayout">
                   {filteredClients.length > 0 ? (
-                    filteredClients.map(
-                      ({ date, fullName, id, phoneNumber, services }) => (
-                        <ClientRow
-                          key={id}
-                          id={id}
-                          fullName={fullName}
-                          phoneNumber={phoneNumber}
-                          date={date}
-                          services={services}
-                          onDelete={() => console.log("Delete:", id)}
-                        />
-                      ),
-                    )
+                    <div className="pe-4">
+                      {filteredClients.map(
+                        ({
+                          date,
+                          fullName,
+                          id,
+                          phoneNumber,
+                          services,
+                          description,
+                        }) => (
+                          <ClientRow
+                            key={id}
+                            id={id}
+                            fullName={fullName}
+                            phoneNumber={phoneNumber}
+                            description={description}
+                            date={date}
+                            services={services}
+                            onDelete={() => console.log("Delete:", id)}
+                          />
+                        ),
+                      )}
+                    </div>
                   ) : (
                     <motion.div
                       key="empty"
@@ -144,11 +164,11 @@ const page = ({}: pageProps) => {
                       <Search className="text-muted-foreground mb-4 size-14 opacity-40" />
 
                       <h3 className="text-foreground text-lg font-semibold">
-                        No requests found
+                        {t("empty.title")}
                       </h3>
 
                       <p className="text-muted-foreground mt-2 text-sm">
-                        Try changing your search, service filter, or sorting.
+                        {t("empty.description")}
                       </p>
                     </motion.div>
                   )}

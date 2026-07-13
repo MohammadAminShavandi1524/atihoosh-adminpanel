@@ -1,3 +1,4 @@
+import { useLocale } from "next-intl";
 import { ScrollArea } from "../ui/scroll-area";
 import { ChatMessage } from "./ChatMessage";
 import { DateDivider } from "./DateDivider";
@@ -9,8 +10,12 @@ interface ChatMessagesProps {
 }
 
 const ChatMessages = ({ messages }: ChatMessagesProps) => {
+  const locale = useLocale();
   return (
-    <ScrollArea className="h-[675px] px-8 py-6">
+    <ScrollArea
+      dir={locale === "en" ? "ltr" : "rtl"}
+      className="h-[675px] px-8 py-6"
+    >
       <div dir="ltr">
         <DateDivider text="Today — Jun 21, 2025" />
 

@@ -12,13 +12,14 @@ import { ArrowDownUp, Search, SearchX } from "lucide-react";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import DeleteModal from "@/components/blogs/DeleteModal";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import HeaderLayout from "@/components/layout/HeaderLayout";
 
 interface pageProps {}
 
 const page = ({}: pageProps) => {
   const t = useTranslations("blogs");
+  const locale = useLocale();
 
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
 
@@ -78,7 +79,10 @@ const page = ({}: pageProps) => {
             </div>
             {/* Rows */}
             <div className="flex w-full flex-col items-center gap-y-2.5 overflow-y-auto px-6 pt-2.5 pb-7">
-              <ScrollArea className="h-full w-full">
+              <ScrollArea
+                dir={locale === "en" ? "ltr" : "rtl"}
+                className="h-full w-full"
+              >
                 {categories.map(({ date, id, label }, index) => {
                   return (
                     <CategoryRow
@@ -230,7 +234,6 @@ const page = ({}: pageProps) => {
                 </ScrollArea>
               </div>
             </div>
-            
           </section>
         );
     }

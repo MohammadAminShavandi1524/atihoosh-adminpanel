@@ -5,6 +5,11 @@ export async function POST(req: Request) {
   try {
     const body = await req.json();
 
+    console.log("========== LOGIN ==========");
+    console.log("NODE_ENV:", process.env.NODE_ENV);
+    console.log("API_URL:", process.env.NEXT_PUBLIC_API_URL);
+    console.log("REQUEST BODY:", body);
+
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/accounts/login/`,
       {
@@ -13,16 +18,37 @@ export async function POST(req: Request) {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(body),
-      }
+      },
     );
 
-    const data = await response.json();
+    console.log("STATUS:", response.status);
+    console.log("STATUS TEXT:", response.statusText);
+
+    const text = await response.text();
+
+    console.log("RAW RESPONSE:", text);
+
+    let data;
+
+    try {
+      data = JSON.parse(text);
+    } catch {
+      console.log("Response is not JSON");
+      data = { detail: text };
+    }
+
+    console.log("PARSED RESPONSE:", data);
 
     if (!response.ok) {
+      console.log("LOGIN FAILED");
+
       return NextResponse.json(data, {
         status: response.status,
       });
     }
+
+    console.log("LOGIN SUCCESS");
+    console.log("TOKEN:", data.token);
 
     const cookieStore = await cookies();
 
@@ -34,18 +60,22 @@ export async function POST(req: Request) {
       maxAge: 60 * 60,
     });
 
+    console.log("COOKIE SAVED");
+
     return NextResponse.json({
       detail: data.detail,
       first_login: data.first_login,
     });
-  } catch {
+  } catch (error) {
+    console.error("LOGIN ERROR:", error);
+
     return NextResponse.json(
       {
         detail: "Internal Server Error",
       },
       {
         status: 500,
-      }
+      },
     );
   }
 }

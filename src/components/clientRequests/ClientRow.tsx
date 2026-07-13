@@ -9,6 +9,7 @@ interface ClientRowProps {
   fullName: string;
   phoneNumber: string;
   services: string[];
+  description: string;
   date: string;
   onDelete: () => void;
 }
@@ -19,6 +20,7 @@ const ClientRow = ({
   phoneNumber,
   services,
   date,
+  description,
   onDelete,
 }: ClientRowProps) => {
   return (
@@ -45,17 +47,17 @@ const ClientRow = ({
       }}
       className="mb-3 last:mb-0"
     >
-      <div className="group border-border-secondary bg-secondary-bg hover:border-primary/20 hover:bg-secondary relative grid min-h-16 grid-cols-[90px_1.5fr_1.5fr_2fr_140px_120px] items-center rounded-xl border px-5 py-3 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md">
+      <div className="group border-border-secondary bg-secondary-bg hover:border-primary/20 hover:bg-secondary relative grid min-h-16 grid-cols-[90px_1.5fr_1.5fr_2fr_1.75fr_140px_120px] items-center rounded-xl border px-5 py-3 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md">
         {/* ID */}
-        <div className="text-muted-foreground font-mono text-sm">#{id}</div>
+        <div className="text-muted-foreground font-mono text-sm ">#{id}</div>
 
         {/* Full Name */}
-        <div className="pr-4">
-          <p className="text-foreground font-medium">{fullName}</p>
+        <div className="">
+          <p className="text-foreground font-medium ">{fullName}</p>
         </div>
 
         {/* Phone */}
-        <div className="text-muted-foreground text-sm">{phoneNumber}</div>
+        <div className="text-muted-foreground text-sm ">{phoneNumber}</div>
 
         {/* Services */}
         <div className="flex flex-wrap gap-1.5">
@@ -69,11 +71,18 @@ const ClientRow = ({
           ))}
         </div>
 
+        {/* description */}
+        <div className="text-muted-foreground pe-4 text-justify text-sm">
+          {description}
+        </div>
+
         {/* Date */}
-        <div className="text-muted-foreground text-sm">{formatDate(date)}</div>
+        <div className="text-muted-foreground text-center text-sm">
+          {formatDate(date)}
+        </div>
 
         {/* Actions */}
-        <div className="flex justify-end">
+        <div className="flex justify-center">
           <button
             onClick={onDelete}
             className="group/delete flex cursor-pointer items-center gap-1 rounded-lg border border-red-400 bg-red-500/10 px-3 py-2 text-sm font-medium text-red-500 transition-all hover:bg-red-500/20"
@@ -84,7 +93,8 @@ const ClientRow = ({
         </div>
 
         {/* Left Indicator */}
-        <div className="bg-primary absolute top-2 bottom-2 left-0 w-1 rounded-r-full opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
+        <div className="bg-primary absolute top-2 bottom-2 ltr:left-0 rtl:right-0 w-1 rounded-r-full opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
+
       </div>
     </motion.div>
   );

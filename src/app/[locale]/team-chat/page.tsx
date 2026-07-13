@@ -94,8 +94,6 @@ const page = ({}: pageProps) => {
 
         <HeaderLayout title={t("title")} descrption={t("description")} />
 
-       
-
         {/* body */}
         <div className="flex flex-1">
           <TeamChat messages={messages} />

@@ -38,7 +38,7 @@ const HeaderLayout = ({ title, descrption, className }: HeaderLayoutProps) => {
         <p className="text-muted-foreground text-lg">{descrption}</p>
       </div>
 
-      <div className="flex items-center gap-x-2 pe-10">
+      <div className="flex items-center gap-x-2 pe-4">
         <LanguageSwitcher defaultLocale={locale} />
         <ThemeButton />
         <button

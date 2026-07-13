@@ -23,7 +23,7 @@ export const ChatMessage = ({ message }: ChatMessageProps) => {
         >
           <span>{user.name}</span>
 
-          <UserBadge role={user.role} />
+          {/* <UserBadge role={user.role} /> */}
 
           <span className="text-muted-foreground">{message.time}</span>
         </div>

@@ -47,7 +47,7 @@
       },
       "publishedArticles": {
         "title": "مقالات منتشرشده",
-        "label": "۱ پیش‌نویس"
+        "label": "۱ بلاگ"
       }
     },
     "recentActivities": {
@@ -65,6 +65,56 @@
         "inProgress": "در حال بررسی",
         "done": "انجام شده"
       }
+    }
+  },
+
+  "clientRequests": {
+    "header": {
+      "title": "درخواست‌های مشتریان",
+      "description": "درخواست‌های ارسال‌شده توسط مشتریان را بررسی و مدیریت کنید."
+    },
+    "filters": {
+      "searchPlaceholder": "جستجو بر اساس نام یا شماره تلفن...",
+      "allServices": "همه سرویس‌ها",
+      "newestFirst": "جدیدترین",
+      "oldestFirst": "قدیمی‌ترین"
+    },
+    "table": {
+      "id": "شناسه",
+      "fullName": "نام و نام خانوادگی",
+      "phoneNumber": "شماره تلفن",
+      "services": "سرویس‌ها",
+      "description": "توضیحات",
+      "date": "تاریخ",
+      "actions": "عملیات"
+    },
+    "empty": {
+      "title": "درخواستی یافت نشد",
+      "description": "جستجو، فیلتر سرویس یا ترتیب نمایش را تغییر دهید."
+    }
+  },
+
+  "jobApplications": {
+    "header": {
+      "title": "درخواست‌های همکاری",
+      "description": "درخواست‌های استخدام ارسال‌شده توسط متقاضیان را بررسی و مدیریت کنید."
+    },
+    "filters": {
+      "searchPlaceholder": "جستجو بر اساس نام یا شماره تلفن...",
+      "newestFirst": "جدیدترین",
+      "oldestFirst": "قدیمی‌ترین"
+    },
+    "table": {
+      "id": "شناسه",
+      "fullName": "نام و نام خانوادگی",
+      "phoneNumber": "شماره تلفن",
+      "email": "ایمیل",
+      "resume": "رزومه",
+      "actions": "عملیات"
+    },
+    "empty": {
+      "title": "درخواستی یافت نشد",
+      "description": "جستجوی خود را تغییر دهید."
     }
   },
 
@@ -126,8 +176,8 @@
     "AdminTable": {
       "headers": {
         "admin": "مدیر",
-        "sales": "فروش",
-        "team": "تیم",
+        "request": "درخواست‌ها",
+        "resume": "رزومه‌ها",
         "chat": "چت",
         "blog": "وبلاگ",
         "actions": "عملیات حساب"
@@ -142,12 +192,14 @@
 
       "buttons": {
         "saveBtn": "ذخیره",
+        "changePassword": "تغییر رمز عبور",
         "remove": "حذف",
         "addMember": "افزودن عضو"
       },
 
       "placeholders": {
         "email": "ایمیل مدیر جدید...",
+        "username": "نام کاربری را وارد کنید...",
         "selectRole": "انتخاب نقش..."
       }
     }

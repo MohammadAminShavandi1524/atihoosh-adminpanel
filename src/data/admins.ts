@@ -376,9 +376,6 @@ export const blogs: BlogRowProps[] = [
   // ...
 ];
 
-
-
-
 export const services = [
   "Website design and development",
   "Logo and motion design",
@@ -388,13 +385,14 @@ export const services = [
   "Network Support",
 ];
 
-
 export const clientRequests = [
   {
     id: "CR-1001",
     fullName: "Ali Ahmadi",
     phoneNumber: "+98 912 345 6789",
     services: ["Website design and development"],
+    description:
+      "I need a modern company website with a responsive design and an admin panel for managing content.",
     date: "2026-07-10",
   },
   {
@@ -402,6 +400,8 @@ export const clientRequests = [
     fullName: "Sara Mohammadi",
     phoneNumber: "+98 935 421 8765",
     services: ["UI/UX Design", "Branding"],
+    description:
+      "Looking for a complete redesign of our product interface along with a refreshed brand identity.",
     date: "2026-07-09",
   },
   {
@@ -413,6 +413,8 @@ export const clientRequests = [
       "Website design and development",
       "Branding",
     ],
+    description:
+      "We want to launch a new website and improve our online visibility through SEO.",
     date: "2026-07-08",
   },
   {
@@ -420,6 +422,8 @@ export const clientRequests = [
     fullName: "Fatemeh Hosseini",
     phoneNumber: "+98 991 654 7823",
     services: ["Logo and motion design"],
+    description:
+      "Need a professional logo and a short animated version for social media and presentations.",
     date: "2026-07-07",
   },
   {
@@ -432,6 +436,8 @@ export const clientRequests = [
       "SEO and digital marketing",
       "UI/UX Design",
     ],
+    description:
+      "Our company requires a new website, UI improvements, and ongoing technical support.",
     date: "2026-07-06",
   },
   {
@@ -439,6 +445,8 @@ export const clientRequests = [
     fullName: "Narges Ebrahimi",
     phoneNumber: "+98 915 778 9911",
     services: ["Branding", "Logo and motion design"],
+    description:
+      "We are creating a new brand and need visual assets that match a modern identity.",
     date: "2026-07-05",
   },
   {
@@ -452,6 +460,8 @@ export const clientRequests = [
       "SEO and digital marketing",
       "Logo and motion design",
     ],
+    description:
+      "Looking for a complete digital solution including branding, website, and marketing support.",
     date: "2026-07-04",
   },
   {
@@ -459,6 +469,8 @@ export const clientRequests = [
     fullName: "Maryam Norouzi",
     phoneNumber: "+98 901 556 2244",
     services: ["Network Support", "SEO and digital marketing"],
+    description:
+      "Need help improving website performance and increasing search engine rankings.",
     date: "2026-07-03",
   },
   {
@@ -473,6 +485,8 @@ export const clientRequests = [
       "SEO and digital marketing",
       "Network Support",
     ],
+    description:
+      "We need a long-term technology partner for design, development, and digital growth.",
     date: "2026-07-02",
   },
   {
@@ -480,6 +494,67 @@ export const clientRequests = [
     fullName: "Zahra Kazemi",
     phoneNumber: "+98 914 632 5577",
     services: ["UI/UX Design"],
+    description:
+      "Need a clean and user-friendly interface for our web application before development starts.",
     date: "2026-07-01",
+  },
+];
+
+export const jobApplications = [
+  {
+    id: 1,
+    date: "2026-07-13",
+    fullName: "Ali Ahmadi",
+    phoneNumber: "+989121234567",
+    email: "ali.ahmadi@example.com",
+  },
+  {
+    id: 2,
+    date: "2026-07-12",
+    fullName: "Sara Mohammadi",
+    phoneNumber: "+989351112233",
+    email: "sara.mohammadi@example.com",
+  },
+  {
+    id: 3,
+    date: "2026-07-11",
+    fullName: "Reza Karimi",
+    phoneNumber: "+989902223344",
+    email: "reza.karimi@example.com",
+  },
+  {
+    id: 4,
+    date: "2026-07-10",
+    fullName: "Negin Hosseini",
+    phoneNumber: "+989331234567",
+    email: "negin.hosseini@example.com",
+  },
+  {
+    id: 5,
+    date: "2026-07-09",
+    fullName: "Amir Ebrahimi",
+    phoneNumber: "+989151234567",
+    email: "amir.ebrahimi@example.com",
+  },
+  {
+    id: 6,
+    date: "2026-07-08",
+    fullName: "Parisa Jafari",
+    phoneNumber: "+989127654321",
+    email: "parisa.jafari@example.com",
+  },
+  {
+    id: 7,
+    date: "2026-07-07",
+    fullName: "Hossein Moradi",
+    phoneNumber: "+989381112233",
+    email: "hossein.moradi@example.com",
+  },
+  {
+    id: 8,
+    date: "2026-07-06",
+    fullName: "Maryam Norouzi",
+    phoneNumber: "+989121119988",
+    email: "maryam.norouzi@example.com",
   },
 ];

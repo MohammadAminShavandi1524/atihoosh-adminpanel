@@ -3,7 +3,7 @@
 import { AdminRole } from "@/data/admins";
 import { cn } from "@/lib/utils";
 import { MoreHorizontal } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 interface AdminRowProps {
   id: number;
@@ -23,10 +23,12 @@ const AdminRow = ({
   blog,
 }: AdminRowProps) => {
   const t = useTranslations("Settings.AdminTable");
+  const locale = useLocale();
 
-  
   return (
-    <div className="border-border hover:bg-muted/30 grid grid-cols-[3fr_0.8fr_0.8fr_0.8fr_0.8fr_2fr] items-center border-b transition-colors">
+    <div
+      className="border-border hover:bg-muted/30 grid grid-cols-[3fr_0.8fr_0.8fr_0.8fr_0.8fr_2fr] items-center border-b transition-colors"
+    >
       {/* Admin */}
       <div className="px-6 py-5">
         <div className="flex items-center gap-4">
@@ -35,8 +37,8 @@ const AdminRow = ({
           </div>
 
           <div>
-            <h4 className="font-medium">Admin #{id}</h4>
-
+            {/* <h4 className="font-medium">Admin #{id}</h4> */}
+            <h4 className="font-medium">user name</h4>
             <p className="text-muted-foreground mt-1 text-sm">{email}</p>
           </div>
         </div>
@@ -80,15 +82,15 @@ const AdminRow = ({
             {t("buttons.saveBtn")}
           </button>
 
-          <button className="cursor-pointer rounded-lg border border-red-400 bg-red-500/10 px-3 py-2 text-sm text-red-400 transition hover:bg-red-500/20">
-            {t("buttons.remove")}
+          <button className="inline-flex cursor-pointer items-center justify-center rounded-lg border border-blue-400 bg-blue-500/10 px-4 py-2 text-sm font-medium text-blue-500 transition-all duration-200 hover:border-blue-500 hover:bg-blue-500/20 active:scale-[0.98]">
+            {t("buttons.changePassword")}
           </button>
 
-          {/* <button className="text-muted-foreground hover:bg-secondary-bg cursor-pointer rounded-lg p-2 transition-colors">
-            <MoreHorizontal size={24} />
-          </button> */}
+          <button className="cursor-pointer rounded-lg border border-red-400 bg-red-500/10 px-3 py-2 text-sm text-red-400 transition hover:bg-red-500/20 active:scale-[0.98]">
+            {t("buttons.remove")}
+          </button>
         </div>
-      </div>{" "}
+      </div>
     </div>
   );
 };
