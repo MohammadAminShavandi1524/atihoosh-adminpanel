@@ -122,14 +122,14 @@ const page = ({}: pageProps) => {
             </div>
 
             {/* Rows */}
-            <div className="flex w-full flex-col items-center gap-y-2.5 overflow-y-auto ps-6 pe-1 pt-2.5 pb-7">
+            <div className="flex w-full flex-col items-center gap-y-2.5 overflow-y-auto ps-6 pe-1.5 pt-2.5 pb-7">
               <ScrollArea
                 dir={locale === "en" ? "ltr" : "rtl"}
                 className="h-[500px] w-full"
               >
                 <AnimatePresence mode="popLayout">
                   {filteredClients.length > 0 ? (
-                    <div className="pe-4">
+                    <div className="pe-4.5">
                       {filteredClients.map(
                         ({
                           date,

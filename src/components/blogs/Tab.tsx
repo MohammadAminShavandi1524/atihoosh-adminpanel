@@ -6,7 +6,6 @@ import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
 import { BlogsTab } from "@/types/objectTypes";
 
-
 interface TabProps {
   label: BlogsTab;
   current: BlogsTab;
@@ -14,8 +13,7 @@ interface TabProps {
 }
 
 export const Tab = ({ label, current, setCurrent }: TabProps) => {
-  const t = useTranslations("addBlog.tabs");
-
+  const t = useTranslations("blogs.tabs");
   const active = label === current;
 
   return (
@@ -32,7 +30,7 @@ export const Tab = ({ label, current, setCurrent }: TabProps) => {
             : "text-muted-foreground hover:text-foreground",
         )}
       >
-        {label}
+        {label === "Blogs" ? t("blogs") : t("categories")}
       </span>
 
       {active && (

@@ -207,7 +207,46 @@
   "blogs": {
     "header": {
       "title": "Blogs",
-      "description": "Manage your blog posts, categories, and content in one place."
+      "description": "Manage blog posts and categories from one place."
+    },
+    "tabs": {
+      "categories": "Categories",
+      "blogs": "Blogs"
+    },
+    "categories": {
+      "table": {
+        "id": "ID",
+        "name": "Name",
+        "date": "Date",
+        "actions": "Actions"
+      }
+    },
+    "blogsTable": {
+      "searchPlaceholder": "Search blog title...",
+      "newestFirst": "Newest First",
+      "oldestFirst": "Oldest First",
+      "table": {
+        "id": "ID",
+        "title": "Title",
+        "category": "Category",
+        "tags": "Tags",
+        "date": "Date",
+        "actions": "Actions"
+      },
+      "empty": {
+        "title": "No blogs found",
+        "description": "Try another search keyword."
+      }
+    },
+    "deleteModal": {
+      "deleteBlog": "Delete Blog",
+      "deleteCategory": "Delete Category",
+      "description": "Are you sure you want to delete \"{name}\"?"
+    },
+    "actions": {
+      "edit": "Edit",
+      "delete": "Delete",
+      "more": "More"
     }
   },
 

@@ -68,43 +68,46 @@ const page = ({}: pageProps) => {
       case "categories":
         return (
           <section className="bg-secondary-bg relative flex h-full flex-col overflow-hidden rounded-xl">
-            {/* header */}
-            <div className="border-b-border-secondary bg-tertiary border-b px-11">
-              <div className="text-muted-foreground grid h-14 grid-cols-4 items-center text-xs font-semibold tracking-wider uppercase">
-                <div>ID</div>
-                <div>Name</div>
-                <div>Date</div>
-                <div className="">Actions</div>
+            <div className="border-b-border-secondary bg-tertiary border-b px-10">
+              {/* header */}
+              <div className="text-muted-foreground grid h-14 grid-cols-4 items-center text-sm font-semibold tracking-wider uppercase">
+                <div className="ltr:ps-0.5">{t("categories.table.id")}</div>
+                <div>{t("categories.table.name")}</div>
+                <div className="">{t("categories.table.date")}</div>
+                <div className="">{t("categories.table.actions")}</div>
               </div>
             </div>
+
             {/* Rows */}
-            <div className="flex w-full flex-col items-center gap-y-2.5 overflow-y-auto px-6 pt-2.5 pb-7">
+            <div className="flex w-full flex-col items-center gap-y-2.5 overflow-y-auto ps-6 pe-1.5 pt-2.5 pb-7">
               <ScrollArea
                 dir={locale === "en" ? "ltr" : "rtl"}
                 className="h-full w-full"
               >
-                {categories.map(({ date, id, label }, index) => {
-                  return (
-                    <CategoryRow
-                      key={index}
-                      id={id}
-                      label={label}
-                      date={date}
+                <div className="pe-4.5">
+                  {categories.map(({ date, id, label }, index) => {
+                    return (
+                      <CategoryRow
+                        key={index}
+                        id={id}
+                        label={label}
+                        date={date}
 
-                      onDelete={() => {
-                        console.log("clicked");
+                        onDelete={() => {
+                          console.log("clicked");
 
-                        setSelectedItem({
-                          id,
-                          name: label,
-                          type: "category",
-                        });
+                          setSelectedItem({
+                            id,
+                            name: label,
+                            type: "category",
+                          });
 
-                        setIsDeleteModalOpen(true);
-                      }}
-                    />
-                  );
-                })}
+                          setIsDeleteModalOpen(true);
+                        }}
+                      />
+                    );
+                  })}
+                </div>
               </ScrollArea>
             </div>
           </section>
@@ -134,7 +137,7 @@ const page = ({}: pageProps) => {
                 <input
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
-                  placeholder="Search blog title..."
+                  placeholder={t("blogsTable.searchPlaceholder")}
                   className="bg-tertiary border-border-secondary focus:border-primary focus:ring-primary/15 h-12 w-full rounded-xl border pr-5 pl-12 text-sm transition-all duration-300 outline-none focus:ring-4"
                 />
               </motion.div>
@@ -154,8 +157,9 @@ const page = ({}: pageProps) => {
                   }
                   className="bg-tertiary border-border-secondary focus:border-primary focus:ring-primary/15 hover:border-primary/30 h-12 min-w-[180px] cursor-pointer appearance-none rounded-xl border pr-9 pl-11 text-sm transition-all duration-300 outline-none focus:ring-4"
                 >
-                  <option value="newest">Newest First</option>
-                  <option value="oldest">Oldest First</option>
+                  <option value="newest">{t("blogsTable.newestFirst")}</option>
+
+                  <option value="oldest">{t("blogsTable.oldestFirst")}</option>
                 </select>
               </motion.div>
             </motion.div>
@@ -165,50 +169,54 @@ const page = ({}: pageProps) => {
             <div className="border-border-secondary m-7 mt-7 h-full overflow-hidden rounded-xl border">
               {/* header */}
               <div className="border-b-border-secondary bg-tertiary border-b px-7.5">
-                <div className="text-muted-foreground grid h-14 grid-cols-[70px_2fr_1fr_1.5fr_140px_300px] items-center text-xs font-semibold tracking-wider uppercase">
-                  <div>ID</div>
-                  <div>title</div>
-                  <div>Category</div>
-                  <div>tags</div>
-                  <div>Date</div>
-
-                  <div className="">Actions</div>
+                <div className="text-muted-foreground grid h-14 grid-cols-[70px_2fr_1fr_1.5fr_140px_300px] items-center text-sm font-semibold tracking-wider uppercase">
+                  <div>{t("blogsTable.table.id")}</div>
+                  <div>{t("blogsTable.table.title")}</div>
+                  <div>{t("blogsTable.table.category")}</div>
+                  <div>{t("blogsTable.table.tags")}</div>
+                  <div>{t("blogsTable.table.date")}</div>
+                  <div>{t("blogsTable.table.actions")}</div>
                 </div>
               </div>
               {/* content */}
-              <div className="flex h-full w-full flex-col overflow-y-auto px-2.5 pt-2.5 pb-18">
-                <ScrollArea className="h-full w-full">
+              <div className="flex h-full w-full flex-col overflow-y-auto ps-2.5 pe-1 pt-2.5 pb-18">
+                <ScrollArea
+                  dir={locale === "en" ? "ltr" : "rtl"}
+                  className="h-full w-full"
+                >
                   <AnimatePresence mode="wait">
                     {filteredBlogs.length > 0 ? (
-                      filteredBlogs.map((blog) => (
-                        <motion.div
-                          key={blog.id}
-                          layout
-                          initial={{ opacity: 0, y: 12, scale: 0.98 }}
-                          animate={{ opacity: 1, y: 0, scale: 1 }}
-                          exit={{ opacity: 0, y: -12, scale: 0.98 }}
-                          transition={{
-                            layout: {
-                              type: "spring",
-                              stiffness: 450,
-                              damping: 35,
-                            },
-                            duration: 0.2,
-                          }}
-                        >
-                          <BlogRow
-                            onDelete={() => {
-                              setSelectedItem({
-                                id: blog.id,
-                                name: blog.title,
-                                type: "blog",
-                              });
-                              setIsDeleteModalOpen(true);
+                      <div className="pe-4 space-y-3">
+                        {filteredBlogs.map((blog) => (
+                          <motion.div
+                            key={blog.id}
+                            layout
+                            initial={{ opacity: 0, y: 12, scale: 0.98 }}
+                            animate={{ opacity: 1, y: 0, scale: 1 }}
+                            exit={{ opacity: 0, y: -12, scale: 0.98 }}
+                            transition={{
+                              layout: {
+                                type: "spring",
+                                stiffness: 450,
+                                damping: 35,
+                              },
+                              duration: 0.2,
                             }}
-                            {...blog}
-                          />
-                        </motion.div>
-                      ))
+                          >
+                            <BlogRow
+                              onDelete={() => {
+                                setSelectedItem({
+                                  id: blog.id,
+                                  name: blog.title,
+                                  type: "blog",
+                                });
+                                setIsDeleteModalOpen(true);
+                              }}
+                              {...blog}
+                            />
+                          </motion.div>
+                        ))}
+                      </div>
                     ) : (
                       <motion.div
                         key="empty"
@@ -222,11 +230,11 @@ const page = ({}: pageProps) => {
                         </div>
 
                         <h3 className="text-lg font-semibold">
-                          No blogs found
+                          {t("blogsTable.empty.title")}
                         </h3>
 
                         <p className="text-muted-foreground text-sm">
-                          Try another search keyword.
+                          {t("blogsTable.empty.description")}
                         </p>
                       </motion.div>
                     )}
@@ -277,9 +285,13 @@ const page = ({}: pageProps) => {
         open={isDeleteModalOpen}
         onOpenChange={setIsDeleteModalOpen}
         title={
-          selectedItem?.type === "blog" ? "Delete Blog" : "Delete Category"
+          selectedItem?.type === "blog"
+            ? t("deleteModal.deleteBlog")
+            : t("deleteModal.deleteCategory")
         }
-        description={`Are you sure you want to delete "${selectedItem?.name}"?`}
+        description={t("deleteModal.description", {
+          name: selectedItem?.name ?? "",
+        })}
         onConfirm={handleDelete}
       />
     </div>

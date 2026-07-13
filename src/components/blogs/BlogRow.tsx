@@ -1,10 +1,11 @@
 "use client";
 
-import { Edit, Tag, Trash } from "lucide-react";
-import { useLocale } from "next-intl";
+import { useState } from "react";
+import { Edit, Tag, Trash, ChevronDown } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
 import { formatDate } from "./CategoryRow";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { ChildBlog } from "@/data/admins";
 import ChildBlogRow from "./ChildBlogRow";
 
@@ -28,6 +29,9 @@ const BlogRow = ({
   children,
 }: BlogRowProps) => {
   const locale = useLocale();
+  const t = useTranslations("blogs.actions");
+
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <motion.div
@@ -51,7 +55,7 @@ const BlogRow = ({
         <div className="text-muted-foreground font-mono text-sm">#{id}</div>
 
         {/* Title */}
-        <div className="pr-4">
+        <div className="pe-4">
           <p className="text-foreground line-clamp-2 font-medium">{title}</p>
         </div>
 
@@ -67,10 +71,10 @@ const BlogRow = ({
           {tags.slice(0, 3).map((tag) => (
             <span
               key={tag}
-              className="bg-muted text-muted-foreground inline-flex items-center gap-1 rounded-md px-2 py-1 text-xs"
+              className="bg-primary/10 text-primary hover:bg-primary inline-flex items-center gap-1 rounded-md px-2 py-1 text-xs font-medium transition-colors hover:text-white"
             >
-              <Tag className="size-3" />
-              {tag}
+              <Tag className="size-3 shrink-0" />
+              <span className="truncate">{tag}</span>
             </span>
           ))}
         </div>
@@ -85,7 +89,7 @@ const BlogRow = ({
             className="flex items-center gap-1 rounded-lg border border-blue-200 bg-blue-50 px-3 py-2 text-sm font-medium text-blue-700 transition-all hover:bg-blue-100 dark:border-blue-900/60 dark:bg-blue-950/40 dark:text-blue-300"
           >
             <Edit className="size-4" />
-            Edit
+            {t("edit")}
           </Link>
 
           <button
@@ -93,30 +97,50 @@ const BlogRow = ({
             className="group/delete flex cursor-pointer items-center gap-1 rounded-lg border border-red-400 bg-red-500/10 px-3 py-2 text-sm font-medium text-red-500 transition-all hover:bg-red-500/20"
           >
             <Trash className="size-4 transition-transform group-hover/delete:scale-110 group-hover/delete:-rotate-6" />
-            Delete
+            {t("delete")}
           </button>
 
-          <button className="rounded-lg border border-blue-200 bg-blue-50 px-3 py-2 text-sm font-medium text-blue-700 transition-all hover:bg-blue-100 dark:border-blue-900/60 dark:bg-blue-950/40 dark:text-blue-300">
-            More
-          </button>
+          {children.length > 0 && (
+            <button
+              onClick={() => setIsOpen((prev) => !prev)}
+              className="flex cursor-pointer items-center gap-1 rounded-lg border border-blue-200 bg-blue-50 px-3 py-2 text-sm font-medium text-blue-700 transition-all hover:bg-blue-100 dark:border-blue-900/60 dark:bg-blue-950/40 dark:text-blue-300"
+            >
+              {t("more")}
+
+              <ChevronDown
+                className={`size-4 transition-transform duration-300 ${
+                  isOpen ? "rotate-180" : ""
+                }`}
+              />
+            </button>
+          )}
         </div>
 
         <div className="bg-primary absolute top-2 bottom-2 left-0 w-1 rounded-r-full opacity-0 transition-opacity group-hover:opacity-100" />
       </div>
 
-      {/* Children */}
-      {children.length > 0 && (
-        <div className="relative mt-3 ml-8">
-          {/* Line */}
-          <div className="bg-border absolute top-0 bottom-0 left-2 w-px" />
+      <AnimatePresence>
+        {isOpen && children.length > 0 && (
+          <motion.div
+            layout
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.25 }}
+            className="overflow-hidden"
+          >
+            <div className="relative mt-3 ml-8">
+              <div className="bg-border absolute top-0 bottom-0 left-2 w-px" />
 
-          <div className="space-y-2">
-            {children.map((child) => (
-              <ChildBlogRow key={child.id} {...child} parentId={id} />
-            ))}
-          </div>
-        </div>
-      )}
+              <div className="space-y-2">
+                {children.map((child) => (
+                  <ChildBlogRow key={child.id} {...child} parentId={id} />
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.div>
   );
 };

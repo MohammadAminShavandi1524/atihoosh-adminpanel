@@ -208,7 +208,46 @@
   "blogs": {
     "header": {
       "title": "بلاگ‌ها",
-      "description": "مدیریت مقالات، دسته‌بندی‌ها و محتوای وبلاگ در یک بخش."
+      "description": "مدیریت مقالات و دسته‌بندی‌های وبلاگ در یک بخش."
+    },
+    "tabs": {
+      "categories": "دسته‌بندی‌ها",
+      "blogs": "بلاگ‌ها"
+    },
+    "categories": {
+      "table": {
+        "id": "شناسه",
+        "name": "نام",
+        "date": "تاریخ",
+        "actions": "عملیات"
+      }
+    },
+    "blogsTable": {
+      "searchPlaceholder": "جستجو بر اساس عنوان مقاله...",
+      "newestFirst": "جدیدترین",
+      "oldestFirst": "قدیمی‌ترین",
+      "table": {
+        "id": "شناسه",
+        "title": "عنوان",
+        "category": "دسته‌بندی",
+        "tags": "برچسب‌ها",
+        "date": "تاریخ",
+        "actions": "عملیات"
+      },
+      "empty": {
+        "title": "مقاله‌ای یافت نشد",
+        "description": "عبارت جستجوی دیگری را امتحان کنید."
+      }
+    },
+    "deleteModal": {
+      "deleteBlog": "حذف بلاگ",
+      "deleteCategory": "حذف دسته‌بندی",
+      "description": "آیا از حذف «{name}» اطمینان دارید؟"
+    },
+    "actions": {
+      "edit": "ویرایش",
+      "delete": "حذف",
+      "more": "بیشتر"
     }
   },
 
