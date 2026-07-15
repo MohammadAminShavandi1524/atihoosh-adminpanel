@@ -4,15 +4,19 @@ import { useEffect } from "react";
 
 export default function TestPage() {
   useEffect(() => {
-    const getUsers = async () => {
-      const response = await fetch("/api/users");
+    const fetchResumes = async () => {
+      try {
+        const response = await fetch("/api/resumes");
 
-      const data = await response.json();
+        const data = await response.json();
 
-      console.log(data);
+        console.log(data);
+      } catch (error) {
+        console.error(error);
+      }
     };
 
-    getUsers();
+    fetchResumes();
   }, []);
 
   return <div>Test</div>;

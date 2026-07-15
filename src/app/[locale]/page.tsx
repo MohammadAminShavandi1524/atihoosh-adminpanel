@@ -15,6 +15,9 @@ export default function IndexPage({ params }: PageProps<"/[locale]">) {
 
   const t = useTranslations("Dashboard");
 
+
+  
+
   return (
     <div className="flex flex-col pt-8">
       {/* header */}

@@ -109,6 +109,7 @@
       "fullName": "Full Name",
       "phoneNumber": "Phone Number",
       "email": "Email",
+      "date": "Date",
       "resume": "Resume",
       "actions": "Actions"
     },

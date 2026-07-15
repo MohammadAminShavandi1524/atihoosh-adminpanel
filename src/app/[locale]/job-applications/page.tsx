@@ -3,11 +3,20 @@
 import JobApplicationRow from "@/components/jobApplications/JobApplicationRow";
 import HeaderLayout from "@/components/layout/HeaderLayout";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { jobApplications } from "@/data/admins";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowDownUp, Search } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+
+interface Resume {
+  id: number;
+  full_name: string;
+  email: string;
+  phone: string;
+  file: string;
+  checked: boolean;
+  created: string;
+}
 
 interface PageProps {}
 
@@ -17,17 +26,42 @@ const Page = ({}: PageProps) => {
   const [search, setSearch] = useState("");
   const [sort, setSort] = useState<"newest" | "oldest">("newest");
 
+  const [jobApplications, setJobApplications] = useState<Resume[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchResumes = async () => {
+      try {
+        const response = await fetch("/api/resumes");
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch resumes");
+        }
+
+        const data = await response.json();
+
+        setJobApplications(data);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchResumes();
+  }, []);
+
   const filteredJobs = useMemo(() => {
     const normalizedSearch = search.trim().toLowerCase();
     const normalizedPhoneSearch = search.replace(/\s+/g, "");
 
     return [...jobApplications]
       .filter((job) => {
-        const matchesName = job.fullName
+        const matchesName = job.full_name
           .toLowerCase()
           .includes(normalizedSearch);
 
-        const matchesPhone = job.phoneNumber
+        const matchesPhone = job.phone
           .replace(/\s+/g, "")
           .includes(normalizedPhoneSearch);
 
@@ -35,10 +69,10 @@ const Page = ({}: PageProps) => {
       })
       .sort((a, b) =>
         sort === "newest"
-          ? new Date(b.date).getTime() - new Date(a.date).getTime()
-          : new Date(a.date).getTime() - new Date(b.date).getTime(),
+          ? new Date(b.created).getTime() - new Date(a.created).getTime()
+          : new Date(a.created).getTime() - new Date(b.created).getTime(),
       );
-  }, [search, sort]);
+  }, [jobApplications, search, sort]);
 
   return (
     <div className="flex flex-1 flex-col">
@@ -82,11 +116,12 @@ const Page = ({}: PageProps) => {
           <div className="border-border-secondary m-7 mt-7 h-full overflow-hidden rounded-xl border">
             {/* Header */}
             <div className="bg-tertiary border-border-secondary border-b px-11">
-              <div className="text-muted-foreground grid h-14 grid-cols-[90px_1.5fr_1.4fr_2fr_150px_120px] items-center text-xs font-semibold tracking-wider uppercase">
+              <div className="text-muted-foreground grid h-14 grid-cols-[90px_1.5fr_1.4fr_2fr_2fr_150px_120px] items-center text-xs font-semibold tracking-wider uppercase">
                 <div className="ps-1">{t("table.id")}</div>
                 <div className="ps-1">{t("table.fullName")}</div>
                 <div className="ps-1">{t("table.phoneNumber")}</div>
                 <div className="ps-1">{t("table.email")}</div>
+                <div className="ps-1">{t("table.date")}</div>
                 <div className="pe-3 text-center">{t("table.resume")}</div>
                 <div className="text-center">{t("table.actions")}</div>
               </div>
@@ -105,9 +140,7 @@ const Page = ({}: PageProps) => {
                         <JobApplicationRow
                           key={application.id}
                           {...application}
-                          onDelete={() =>
-                            console.log("Delete:", application.id)
-                          }
+                          onDelete={() => console.log(application.id)}
                         />
                       ))}
                     </div>

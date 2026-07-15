@@ -1,25 +1,32 @@
 "use client";
 
+import { cn, formatDate, formatPhoneNumber } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { FileText, Trash } from "lucide-react";
+import { useLocale } from "next-intl";
 
 interface JobApplicationRowProps {
   id: number;
-  fullName: string;
-  phoneNumber: string;
+  full_name: string;
+  phone: string;
   email: string;
-  pdf?: string;
+  file: string;
+  checked: boolean;
+  created: string;
   onDelete: () => void;
 }
 
 export default function JobApplicationRow({
   id,
-  fullName,
-  phoneNumber,
+  full_name,
+  phone,
   email,
-  pdf,
+  file,
+  created,
   onDelete,
 }: JobApplicationRowProps) {
+  const locale = useLocale();
+
   return (
     <motion.div
       layout="position"
@@ -44,28 +51,40 @@ export default function JobApplicationRow({
       }}
       className="mb-3 last:mb-0"
     >
-      <div className="group border-border-secondary bg-secondary-bg hover:border-primary/20 hover:bg-secondary relative grid min-h-16 grid-cols-[90px_1.5fr_1.4fr_2fr_150px_120px] items-center rounded-xl border px-5 py-3 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md">
+      <div className="group border-border-secondary bg-secondary-bg hover:border-primary/20 hover:bg-secondary relative grid min-h-16 grid-cols-[90px_1.5fr_1.4fr_2fr_2fr_150px_120px] items-center rounded-xl border px-5 py-3 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md">
         {/* ID */}
         <div className="text-muted-foreground font-mono text-sm">#{id}</div>
 
         {/* Full Name */}
         <div className="pr-4">
-          <p className="text-foreground truncate font-medium">{fullName}</p>
+          <p className="text-foreground truncate font-medium">{full_name}</p>
         </div>
 
         {/* Phone */}
-        <div className="text-muted-foreground text-sm">{phoneNumber}</div>
+        <div
+          className={cn(
+            "text-muted-foreground ",
+            locale === "en" ? "text-sm" : "text-base",
+          )}
+        >
+          {formatPhoneNumber(phone, locale)}
+        </div>
 
         {/* Email */}
         <div className="text-muted-foreground truncate text-sm">{email}</div>
 
+        {/* Date */}
+        <div className="text-muted-foreground text-sm">
+          {formatDate(created, locale)}
+        </div>
+
         {/* Resume */}
         <div className="flex justify-center pe-3">
           <a
-            href={pdf}
+            href={file}
             target="_blank"
             rel="noopener noreferrer"
-            className="group/pdf bg-tertiary border-border-secondary hover:border-primary hover:bg-primary/10 inline-flex h-10 cursor-pointer items-center justify-center gap-2 rounded-xl border px-4 text-sm font-medium transition-all duration-300 hover:-translate-y-0.5"
+            className="group/pdf bg-tertiary border-border-secondary hover:border-primary hover:bg-primary/10 inline-flex h-10 items-center justify-center gap-2 rounded-xl border px-4 text-sm font-medium transition-all duration-300 hover:-translate-y-0.5"
           >
             <FileText className="text-primary size-4 transition-transform duration-300 group-hover/pdf:scale-110 group-hover/pdf:rotate-6" />
             <span>View PDF</span>
@@ -83,7 +102,6 @@ export default function JobApplicationRow({
           </button>
         </div>
 
-        {/* Left Indicator */}
         <div className="bg-primary absolute top-2 bottom-2 w-1 rounded-r-full opacity-0 transition-opacity duration-200 group-hover:opacity-100 ltr:left-0 rtl:right-0" />
       </div>
     </motion.div>

@@ -186,7 +186,7 @@ const page = ({}: pageProps) => {
                 >
                   <AnimatePresence mode="wait">
                     {filteredBlogs.length > 0 ? (
-                      <div className="pe-4 space-y-3">
+                      <div className="space-y-3 pe-4">
                         {filteredBlogs.map((blog) => (
                           <motion.div
                             key={blog.id}
