@@ -12,13 +12,14 @@ import {
 } from "@/components/ui/alert-dialog";
 
 import { Trash2 } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 interface DeleteModalProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   title: string;
   description: string;
-  onConfirm: () => void;
+  onConfirm: () => void | Promise<void>;
   loading?: boolean;
 }
 
@@ -30,6 +31,8 @@ const DeleteModal = ({
   onConfirm,
   loading = false,
 }: DeleteModalProps) => {
+  const t = useTranslations("common.deleteModal");
+
   return (
     <AlertDialog open={open} onOpenChange={onOpenChange}>
       <AlertDialogContent className="bg-secondary-bg border-border-secondary max-w-[440px] overflow-hidden rounded-2xl border p-0 shadow-2xl">
@@ -50,14 +53,14 @@ const DeleteModal = ({
 
           <div className="mt-5 w-full rounded-xl border border-red-500/20 bg-red-500/5 px-4 py-3">
             <p className="text-center text-sm font-medium text-red-500">
-              This action cannot be undone.
+              {t("warning")}
             </p>
           </div>
         </div>
 
         <AlertDialogFooter className="bg-tertiary border-border-secondary mt-8 border-t p-5">
           <AlertDialogCancel className="border-border-secondary bg-secondary hover:bg-muted h-11 flex-1 rounded-xl border transition-all">
-            Cancel
+            {t("cancel")}
           </AlertDialogCancel>
 
           <AlertDialogAction
@@ -65,7 +68,7 @@ const DeleteModal = ({
             disabled={loading}
             className="h-11 flex-1 rounded-xl bg-red-600 text-white transition-all hover:scale-[1.02] hover:bg-red-700 active:scale-[0.98]"
           >
-            {loading ? "Deleting..." : "Delete"}
+            {loading ? t("deleting") : t("delete")}
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>

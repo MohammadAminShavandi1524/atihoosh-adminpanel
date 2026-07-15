@@ -39,6 +39,7 @@ const Page = ({}: PageProps) => {
         }
 
         const data = await response.json();
+        console.log("🚀 ~ fetchResumes ~ data:", data);
 
         setJobApplications(data);
       } catch (error) {
@@ -73,6 +74,13 @@ const Page = ({}: PageProps) => {
           : new Date(a.created).getTime() - new Date(b.created).getTime(),
       );
   }, [jobApplications, search, sort]);
+
+  async function deleteResume(id: number) {
+    console.log("Deleting resume:", id);
+
+    // شبیه‌سازی درخواست API
+    await new Promise((resolve) => setTimeout(resolve, 500));
+  }
 
   return (
     <div className="flex flex-1 flex-col">
@@ -116,14 +124,14 @@ const Page = ({}: PageProps) => {
           <div className="border-border-secondary m-7 mt-7 h-full overflow-hidden rounded-xl border">
             {/* Header */}
             <div className="bg-tertiary border-border-secondary border-b px-11">
-              <div className="text-muted-foreground grid h-14 grid-cols-[90px_1.5fr_1.4fr_2fr_2fr_150px_120px] items-center text-xs font-semibold tracking-wider uppercase">
+              <div className="text-muted-foreground grid h-14 grid-cols-[90px_1.5fr_1.4fr_2fr_2fr_1.5fr] items-center text-xs font-semibold tracking-wider uppercase">
                 <div className="ps-1">{t("table.id")}</div>
                 <div className="ps-1">{t("table.fullName")}</div>
                 <div className="ps-1">{t("table.phoneNumber")}</div>
                 <div className="ps-1">{t("table.email")}</div>
                 <div className="ps-1">{t("table.date")}</div>
                 <div className="pe-3 text-center">{t("table.resume")}</div>
-                <div className="text-center">{t("table.actions")}</div>
+                {/* <div className="text-center">{t("table.actions")}</div> */}
               </div>
             </div>
 
@@ -140,7 +148,9 @@ const Page = ({}: PageProps) => {
                         <JobApplicationRow
                           key={application.id}
                           {...application}
-                          onDelete={() => console.log(application.id)}
+                          onDelete={async () => {
+                            await deleteResume(application.id);
+                          }}
                         />
                       ))}
                     </div>
