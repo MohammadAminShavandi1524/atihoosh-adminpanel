@@ -1,12 +1,11 @@
 "use client";
 
-import { AdminRole } from "@/data/admins";
 import { cn } from "@/lib/utils";
-import { MoreHorizontal } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 
 interface AdminRowProps {
   id: number;
+  userName: string;
   email: string;
   request: boolean;
   resume: boolean;
@@ -21,24 +20,47 @@ const AdminRow = ({
   resume,
   chat,
   blog,
+  userName,
 }: AdminRowProps) => {
   const t = useTranslations("Settings.AdminTable");
   const locale = useLocale();
 
+  const avatarColors = [
+    "bg-emerald-600",
+    "bg-blue-600",
+    "bg-violet-600",
+    "bg-rose-600",
+    "bg-amber-500",
+    "bg-cyan-600",
+    "bg-indigo-600",
+    "bg-fuchsia-600",
+    "bg-orange-600",
+    "bg-teal-600",
+  ];
+
+  const color =
+    avatarColors[
+      userName.split("").reduce((sum, char) => sum + char.charCodeAt(0), 0) %
+        avatarColors.length
+    ];
+
   return (
-    <div
-      className="border-border hover:bg-muted/30 grid grid-cols-[3fr_0.8fr_0.8fr_0.8fr_0.8fr_2fr] items-center border-b transition-colors"
-    >
+    <div className="border-border hover:bg-muted/30 grid grid-cols-[3fr_0.8fr_0.8fr_0.8fr_0.8fr_2fr] items-center border-b transition-colors">
       {/* Admin */}
       <div className="px-6 py-5">
         <div className="flex items-center gap-4">
-          <div className="flex h-11 w-11 items-center justify-center rounded-full bg-emerald-600 font-semibold text-white">
-            {email.charAt(0).toUpperCase()}
+          <div
+            className={cn(
+              "flex h-11 w-11 items-center justify-center rounded-full font-semibold text-white",
+              color,
+            )}
+          >
+            {userName.charAt(0).toUpperCase()}
           </div>
 
           <div>
             {/* <h4 className="font-medium">Admin #{id}</h4> */}
-            <h4 className="font-medium">user name</h4>
+            <h4 className="font-medium">{userName}</h4>
             <p className="text-muted-foreground mt-1 text-sm">{email}</p>
           </div>
         </div>

@@ -18,6 +18,7 @@ import { ThemeProvider } from "@/components/theme/Providers";
 
 import Header from "@/components/layout/HeaderLayout";
 import Sidebar from "@/components/layout/Sidebar";
+import AppToaster from "@/components/AppToaster";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -95,6 +96,7 @@ export default async function LocaleLayout({
       >
         <NextIntlClientProvider>
           <ThemeProvider>
+            <AppToaster />
             <div className="bg-background text-foreground flex h-screen overflow-hidden">
               <Sidebar />
 

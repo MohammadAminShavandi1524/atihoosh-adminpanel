@@ -11,12 +11,6 @@ export async function serverApi(endpoint: string, options: RequestInit = {}) {
     ...options.headers,
   };
 
-  console.log("TOKEN:", token);
-  console.log("HEADERS:", headers);
-
-  console.log("URL:", `${BASE_URL}${endpoint}`);
-console.log("METHOD:", options.method ?? "GET");
-
   const response = await fetch(`${BASE_URL}${endpoint}`, {
     ...options,
     headers,
@@ -25,8 +19,7 @@ console.log("METHOD:", options.method ?? "GET");
   const text = await response.text();
 
   console.log("STATUS:", response.status);
-  console.log("RESPONSE:", text);
-
+  console.log("BODY:", text);
   if (!response.ok) {
     throw {
       status: response.status,
