@@ -20,6 +20,7 @@ export async function serverApi(endpoint: string, options: RequestInit = {}) {
 
   console.log("STATUS:", response.status);
   console.log("BODY:", text);
+
   if (!response.ok) {
     throw {
       status: response.status,
@@ -27,5 +28,16 @@ export async function serverApi(endpoint: string, options: RequestInit = {}) {
     };
   }
 
-  return JSON.parse(text);
+  // اگر پاسخ خالی بود (مثل 204 No Content)
+  if (!text.trim()) {
+    return null;
+  }
+
+  // اگر JSON بود، Parse کن
+  try {
+    return JSON.parse(text);
+  } catch {
+    // اگر JSON نبود، همان متن را برگردان
+    return text;
+  }
 }

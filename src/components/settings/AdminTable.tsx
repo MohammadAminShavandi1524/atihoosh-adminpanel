@@ -16,7 +16,7 @@ import { createUser } from "@/lib/actions/create-user";
 import { toast } from "sonner";
 
 interface User {
-  id: number;
+  id: string;
   email: string;
   user_name: string;
   request: boolean;
@@ -64,11 +64,11 @@ export default function AdminTable() {
     try {
       await createUser(data);
 
-      toast.success("User created successfully.");
+      toast.success(t("Toast.createSuccess"));
 
       reset();
     } catch (error: any) {
-      toast.error(error?.body || "Failed to create user.");
+      toast.error(t("Toast.createFailed"));
 
       console.error(error);
     }

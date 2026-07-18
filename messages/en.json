@@ -207,6 +207,15 @@
         "email": "New admin email address...",
         "username": "Enter username...",
         "selectRole": "Select role..."
+      },
+
+      "Toast": {
+        "createSuccess": "User created successfully.",
+        "createFailed": "Failed to create user.",
+        "passwordSent": "A new password has been sent to the user's email.",
+        "passwordSentFailed": "Failed to send a new password.",
+        "deleteSuccess": "User deleted successfully.",
+        "deleteFailed": "Failed to delete user."
       }
     }
   },

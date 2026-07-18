@@ -1,23 +1,33 @@
 "use client";
 
-import { useEffect } from "react";
+import { toast } from "sonner";
 
 export default function TestPage() {
-  useEffect(() => {
-    const fetchResumes = async () => {
-      try {
-        const response = await fetch("/api/resumes");
+  return (
+    <div className="flex min-h-screen items-center justify-center gap-4">
+      <button
+        onClick={() =>
+          toast.success("User created successfully.", {
+            description: "This is a success toast.",
+            duration: Infinity,
+          })
+        }
+        className="rounded-lg bg-green-600 px-4 py-2 font-medium text-white"
+      >
+        Success Toast
+      </button>
 
-        const data = await response.json();
-
-        console.log(data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    fetchResumes();
-  }, []);
-
-  return <div>Test</div>;
+      <button
+        onClick={() =>
+          toast.error("Something went wrong.", {
+            description: "This is an error toast.",
+            duration: Infinity,
+          })
+        }
+        className="rounded-lg bg-red-600 px-4 py-2 font-medium text-white"
+      >
+        Error Toast
+      </button>
+    </div>
+  );
 }

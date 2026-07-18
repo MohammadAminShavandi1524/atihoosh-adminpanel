@@ -13,20 +13,27 @@ export default function AppToaster() {
       expand
       toastOptions={{
         classNames: {
-          toast: "bg-background text-foreground border border-border shadow-lg",
-          title: "text-foreground font-semibold",
+          toast:
+            "!bg-background !text-foreground !border !border-border !shadow-xl !rounded-xl",
+
+          title: "font-semibold text-foreground",
+
           description: "text-muted-foreground",
-          actionButton: "bg-primary text-primary-foreground",
-          cancelButton: "bg-secondary text-secondary-foreground",
+
+          actionButton: "!bg-primary !text-primary-foreground",
+
+          cancelButton: "!bg-secondary !text-secondary-foreground",
+
           closeButton:
-            "border-border bg-background text-muted-foreground hover:text-foreground",
-          success:
-            "!bg-green-500/10 !border-green-500/30 !text-green-600 dark:!text-green-400",
-          error:
-            "!bg-red-500/10 !border-red-500/30 !text-red-600 dark:!text-red-400",
-          warning:
-            "!bg-yellow-500/10 !border-yellow-500/30 !text-yellow-600 dark:!text-yellow-400",
-          info: "!bg-blue-500/10 !border-blue-500/30 !text-blue-600 dark:!text-blue-400",
+            "!bg-background !border !border-border !text-muted-foreground hover:!text-foreground",
+
+          success: "!border-l-4 !border-l-emerald-500",
+
+          error: "!border-l-4 !border-l-red-500",
+
+          warning: "!border-l-4 !border-l-amber-500",
+
+          info: "!border-l-4 !border-l-sky-500",
         },
       }}
     />

@@ -1,10 +1,13 @@
 "use client";
 
+import { deleteUser } from "@/lib/actions/delete-user";
+import { superuserResetPassword } from "@/lib/actions/superuser-reset-password";
 import { cn } from "@/lib/utils";
 import { useLocale, useTranslations } from "next-intl";
+import { toast } from "sonner";
 
 interface AdminRowProps {
-  id: number;
+  id: string;
   userName: string;
   email: string;
   request: boolean;
@@ -43,6 +46,31 @@ const AdminRow = ({
       userName.split("").reduce((sum, char) => sum + char.charCodeAt(0), 0) %
         avatarColors.length
     ];
+
+  // ? reset password
+
+  const handleResetPassword = async () => {
+    try {
+      await superuserResetPassword(id);
+
+      toast.success(t("Toast.passwordSent"));
+    } catch (error) {
+      console.error(error);
+
+      toast.error(t("Toast.passwordSentFailed"));
+    }
+  };
+
+  // ? delete user
+
+  const handleDeleteUser = async () => {
+    try {
+      await deleteUser(id);
+      toast.success(t("Toast.deleteSuccess"));
+    } catch (error) {
+      toast.error(t("Toast.deleteFailed"));
+    }
+  };
 
   return (
     <div className="border-border hover:bg-muted/30 grid grid-cols-[3fr_0.8fr_0.8fr_0.8fr_0.8fr_2fr] items-center border-b transition-colors">
@@ -100,15 +128,24 @@ const AdminRow = ({
       {/* Actions */}
       <div className="px-6">
         <div className="flex justify-center gap-2">
+          {/* save btn */}
           <button className="inline-flex cursor-pointer items-center justify-center rounded-lg bg-teal-600 px-4 py-2 text-sm font-medium text-white shadow-sm transition-all duration-200 hover:bg-teal-700 hover:shadow-md focus-visible:ring-2 focus-visible:ring-teal-500/40 focus-visible:outline-none active:scale-[0.98] disabled:pointer-events-none disabled:opacity-50">
             {t("buttons.saveBtn")}
           </button>
 
-          <button className="inline-flex cursor-pointer items-center justify-center rounded-lg border border-blue-400 bg-blue-500/10 px-4 py-2 text-sm font-medium text-blue-500 transition-all duration-200 hover:border-blue-500 hover:bg-blue-500/20 active:scale-[0.98]">
+          {/* change password */}
+          <button
+            onClick={handleResetPassword}
+            className="inline-flex cursor-pointer items-center justify-center rounded-lg border border-blue-400 bg-blue-500/10 px-4 py-2 text-sm font-medium text-blue-500 transition-all duration-200 hover:border-blue-500 hover:bg-blue-500/20 active:scale-[0.98]"
+          >
             {t("buttons.changePassword")}
           </button>
 
-          <button className="cursor-pointer rounded-lg border border-red-400 bg-red-500/10 px-3 py-2 text-sm text-red-400 transition hover:bg-red-500/20 active:scale-[0.98]">
+          {/* remove btn */}
+          <button
+            onClick={handleDeleteUser}
+            className="cursor-pointer rounded-lg border border-red-400 bg-red-500/10 px-3 py-2 text-sm text-red-400 transition hover:bg-red-500/20 active:scale-[0.98]"
+          >
             {t("buttons.remove")}
           </button>
         </div>
