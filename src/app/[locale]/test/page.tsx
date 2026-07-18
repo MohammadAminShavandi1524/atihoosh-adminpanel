@@ -4,19 +4,29 @@ import HeaderLayout from "@/components/layout/HeaderLayout";
 import { CustomButton, CustomHoldButton } from "@/components/ui/custom-button";
 
 import { Trash, Save, Check, ArrowRight } from "lucide-react";
+import { useEffect, useState } from "react";
 
 import { toast } from "sonner";
 
 export default function TestPage() {
-  const handleClick = (name: string) => {
-    toast.success(`${name} clicked`);
-  };
+  const [user, setUser] = useState(null);
+  console.log("🚀 ~ TestPage ~ user:", user)
 
+  useEffect(() => {
+    async function getUser() {
+      const res = await fetch("/api/me");
+      const data = await res.json();
+
+      setUser(data);
+    }
+
+    getUser();
+  }, []);
   return (
     <div className="flex min-h-screen flex-col gap-8 p-10">
       <HeaderLayout title="test page" descrption="" />
 
-      <CustomHoldButton
+      {/* <CustomHoldButton
         intent="destructive"
         variant="soft"
         duration={1500}
@@ -62,7 +72,7 @@ export default function TestPage() {
         className="w-fit"
       >
         Warning
-      </CustomHoldButton>
+      </CustomHoldButton> */}
     </div>
   );
 }

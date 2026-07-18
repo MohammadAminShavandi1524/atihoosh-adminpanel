@@ -212,6 +212,8 @@
       "Toast": {
         "createSuccess": "User created successfully.",
         "createFailed": "Failed to create user.",
+        "accessUpdated": "User permissions updated successfully.",
+        "accessUpdateFailed": "Failed to update user permissions.",
         "passwordSent": "A new password has been sent to the user's email.",
         "passwordSentFailed": "Failed to send a new password.",
         "deleteSuccess": "User deleted successfully.",

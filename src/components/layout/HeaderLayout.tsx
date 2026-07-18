@@ -7,6 +7,7 @@ import { useLocale } from "next-intl";
 import { useRouter } from "next/navigation";
 import { logout } from "@/services/auth";
 import { cn } from "@/lib/utils";
+import { CustomButton } from "../ui/custom-button";
 
 interface HeaderLayoutProps {
   title: string;
@@ -41,14 +42,27 @@ const HeaderLayout = ({ title, descrption, className }: HeaderLayoutProps) => {
       <div className="flex items-center gap-x-2 pe-4">
         <LanguageSwitcher defaultLocale={locale} />
         <ThemeButton />
-        <button
+
+        {/* <button
           onClick={handleLogout}
           className="group border-transparent bg-primary text-white hover:border-destructive/40 hover:bg-destructive/5 hover:text-destructive flex h-11 cursor-pointer items-center gap-3 rounded-xl border px-4 text-sm font-medium shadow-sm transition-all duration-300 hover:shadow-md active:scale-95"
         >
           <LogOut className="h-5 w-5 transition-transform duration-300 group-hover:-translate-x-1 rtl:group-hover:translate-x-1" />
 
           <span>{locale === "en" ? "Log out" : "خروج"}</span>
-        </button>
+        </button> */}
+
+        <CustomButton
+          intent="primary"
+          variant="solid"
+          leftSection={
+            <LogOut className="h-5 w-5 transition-transform duration-300 group-hover:-translate-x-1 rtl:group-hover:translate-x-1" />
+          }
+          onClick={handleLogout}
+          className="group h-11 rounded-xl px-4 text-sm font-medium shadow-sm transition-all duration-300 hover:shadow-md active:scale-95"
+        >
+          {locale === "en" ? "Log out" : "خروج"}
+        </CustomButton>
       </div>
     </div>
   );

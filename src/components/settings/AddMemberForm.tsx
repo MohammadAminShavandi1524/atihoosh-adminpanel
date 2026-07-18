@@ -3,6 +3,7 @@
 import { UseFormRegister, FieldErrors } from "react-hook-form";
 import { useTranslations } from "next-intl";
 import { FormField } from "../FormField";
+import { CustomButton } from "../ui/custom-button";
 
 export interface AddMemberFormValues {
   email: string;
@@ -19,7 +20,7 @@ export const AddMemberForm = ({ register, errors }: AddMemberFormProps) => {
 
   return (
     <div className="border-t-border flex items-center justify-between border-t">
-      <div className="flex  gap-x-6 px-6 py-6">
+      <div className="flex gap-x-6 px-6 py-6">
         <div className="w-150">
           <FormField
             label=""
@@ -43,13 +44,10 @@ export const AddMemberForm = ({ register, errors }: AddMemberFormProps) => {
         </div>
       </div>
 
-      <div className="px-6 pe-6 ">
-        <button
-          type="submit"
-          className="border-primary bg-secondary text-primary cursor-pointer rounded-xl border px-5 py-3 text-sm font-medium transition"
-        >
+      <div className="px-6 pe-6">
+        <CustomButton type="submit" intent="primary" size="lg" variant="outline">
           {t("buttons.addMember")}
-        </button>
+        </CustomButton>
       </div>
     </div>
   );

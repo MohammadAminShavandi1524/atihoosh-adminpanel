@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import {
   LayoutDashboard,
   ClipboardList,
@@ -15,29 +16,61 @@ import Logo from "../Logo";
 import SideBarItemHeader from "./SideBarItemHeader";
 import { useLocale, useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
+import { getAvatarColor } from "@/lib/avatar-color";
+
+interface CurrentUser {
+  id: number;
+  email: string;
+  user_name: string;
+  request: boolean;
+  resume: boolean;
+  chat: boolean;
+  blog: boolean;
+}
 
 const Sidebar = () => {
   const t = useTranslations("Sidebar");
   const locale = useLocale();
   const pathname = usePathname();
 
-  const userName = "Sohrab Ahmadi";
+  const [user, setUser] = useState<CurrentUser | null>(null);
 
-  const profileWords = userName
-    .split(" ")
-    .slice(0, 2)
-    .map((word) => word[0])
-    .join("");
+  useEffect(() => {
+    const fetchCurrentUser = async () => {
+      try {
+        const response = await fetch("/api/me");
 
-  if (pathname === `/${locale}/login`) return <></>;
+        if (!response.ok) return;
+
+        const data = await response.json();
+
+        setUser(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchCurrentUser();
+  }, []);
+
+  if (pathname === `/${locale}/login`) return null;
+
+  const profileWords =
+    user?.user_name
+      ?.split(" ")
+      .slice(0, 2)
+      .map((word) => word[0])
+      .join("")
+      .toUpperCase() ?? "";
+
+  const avatarColor = getAvatarColor(user?.user_name ?? "");
+
   return (
     <aside className="border-e-border-secondary flex h-screen w-75 flex-col border-e">
-      {/* header */}
+      {/* Header */}
       <div className="mb-6 px-6">
         <div className="border-b-border-secondary flex w-full items-center gap-x-3 border-b ps-1 pt-6 pb-6">
-          <div>
-            <Logo />
-          </div>
+          <Logo />
 
           <div className="flex flex-col pt-0.5">
             <div className="text-lg">{t("logoTitle")}</div>
@@ -46,9 +79,8 @@ const Sidebar = () => {
         </div>
       </div>
 
-      {/* body */}
+      {/* Navigation */}
       <nav className="flex flex-1 flex-col gap-y-4 px-6">
-        {/* Overview */}
         <div>
           <SideBarItemHeader label={t("overview")} />
 
@@ -60,7 +92,6 @@ const Sidebar = () => {
           />
         </div>
 
-        {/* Requests */}
         <div>
           <SideBarItemHeader label={t("requests")} />
 
@@ -79,7 +110,6 @@ const Sidebar = () => {
           />
         </div>
 
-        {/* Team Collaboration */}
         <div>
           <SideBarItemHeader label={t("teamCollaboration")} />
 
@@ -105,7 +135,6 @@ const Sidebar = () => {
           />
         </div>
 
-        {/* System */}
         <div>
           <SideBarItemHeader label={t("system")} />
 
@@ -118,18 +147,21 @@ const Sidebar = () => {
         </div>
       </nav>
 
-      {/* footer */}
+      {/* Footer */}
       <div dir="ltr" className="px-6">
         <div className="border-t-border-secondary border-t">
           <div className="bg-tertiary mt-5 mb-5 flex w-full items-center gap-x-2.5 rounded-lg px-4 py-2.5">
-            <div className="bg-secondary text-primary border-primary flex size-10 items-center justify-center rounded-full border pt-0.5 text-base">
+            <div
+              className={`${avatarColor} flex size-10 items-center justify-center rounded-full text-base font-semibold text-white`}
+            >
               {profileWords}
             </div>
 
-            <div>
-              <div className="text-sm">{userName}</div>
-              <div className="text-muted-foreground text-[13px]">
-                super.admin@atihoosh.com
+            <div className="min-w-0 flex-1">
+              <div className="truncate text-sm">{user?.user_name ?? "..."}</div>
+
+              <div className="text-muted-foreground truncate text-[13px]">
+                {user?.email ?? "..."}
               </div>
             </div>
           </div>

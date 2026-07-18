@@ -1,10 +1,15 @@
 "use client";
 
+import { useState } from "react";
 import { deleteUser } from "@/lib/actions/delete-user";
 import { superuserResetPassword } from "@/lib/actions/superuser-reset-password";
+
 import { cn } from "@/lib/utils";
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import { toast } from "sonner";
+import { CustomButton, CustomHoldButton } from "../ui/custom-button";
+import { getAvatarColor } from "@/lib/avatar-color";
+import { updateUserAccess } from "@/lib/actions/update-user-access";
 
 interface AdminRowProps {
   id: string;
@@ -26,28 +31,51 @@ const AdminRow = ({
   userName,
 }: AdminRowProps) => {
   const t = useTranslations("Settings.AdminTable");
-  const locale = useLocale();
 
-  const avatarColors = [
-    "bg-emerald-600",
-    "bg-blue-600",
-    "bg-violet-600",
-    "bg-rose-600",
-    "bg-amber-500",
-    "bg-cyan-600",
-    "bg-indigo-600",
-    "bg-fuchsia-600",
-    "bg-orange-600",
-    "bg-teal-600",
-  ];
+  const color = getAvatarColor(userName);
 
-  const color =
-    avatarColors[
-      userName.split("").reduce((sum, char) => sum + char.charCodeAt(0), 0) %
-        avatarColors.length
-    ];
+  const [permissions, setPermissions] = useState({
+    request,
+    resume,
+    chat,
+    blog,
+  });
 
-  // ? reset password
+  const [isSaving, setIsSaving] = useState(false);
+
+  const togglePermission = (
+    key: keyof typeof permissions,
+    checked: boolean,
+  ) => {
+    setPermissions((prev) => ({
+      ...prev,
+      [key]: checked,
+    }));
+  };
+
+  // =========================
+  // Save Access
+  // =========================
+
+  const handleSave = async () => {
+    try {
+      setIsSaving(true);
+
+      await updateUserAccess(id, permissions);
+
+      toast.success(t("Toast.accessUpdated"));
+    } catch (error) {
+      console.error(error);
+
+      toast.error(t("Toast.accessUpdateFailed"));
+    } finally {
+      setIsSaving(false);
+    }
+  };
+
+  // =========================
+  // Reset Password
+  // =========================
 
   const handleResetPassword = async () => {
     try {
@@ -61,13 +89,18 @@ const AdminRow = ({
     }
   };
 
-  // ? delete user
+  // =========================
+  // Delete User
+  // =========================
 
   const handleDeleteUser = async () => {
     try {
       await deleteUser(id);
+
       toast.success(t("Toast.deleteSuccess"));
     } catch (error) {
+      console.error(error);
+
       toast.error(t("Toast.deleteFailed"));
     }
   };
@@ -87,67 +120,81 @@ const AdminRow = ({
           </div>
 
           <div>
-            {/* <h4 className="font-medium">Admin #{id}</h4> */}
             <h4 className="font-medium">{userName}</h4>
+
             <p className="text-muted-foreground mt-1 text-sm">{email}</p>
           </div>
         </div>
       </div>
-      {/* request */}
+
+      {/* Request */}
       <div className="flex justify-center">
         <input
           type="checkbox"
-          defaultChecked={request}
+          checked={permissions.request}
+          onChange={(e) => togglePermission("request", e.target.checked)}
           className="h-4 w-4 cursor-pointer accent-emerald-500"
         />
       </div>
-      {/* resume */}
+
+      {/* Resume */}
       <div className="flex justify-center">
         <input
           type="checkbox"
-          defaultChecked={resume}
+          checked={permissions.resume}
+          onChange={(e) => togglePermission("resume", e.target.checked)}
           className="h-4 w-4 cursor-pointer accent-emerald-500"
         />
       </div>
+
       {/* Chat */}
       <div className="flex justify-center">
         <input
           type="checkbox"
-          defaultChecked={chat}
+          checked={permissions.chat}
+          onChange={(e) => togglePermission("chat", e.target.checked)}
           className="h-4 w-4 cursor-pointer accent-emerald-500"
         />
       </div>
+
       {/* Blog */}
       <div className="flex justify-center">
         <input
           type="checkbox"
-          defaultChecked={blog}
+          checked={permissions.blog}
+          onChange={(e) => togglePermission("blog", e.target.checked)}
           className="h-4 w-4 cursor-pointer accent-emerald-500"
         />
       </div>
+
       {/* Actions */}
       <div className="px-6">
         <div className="flex justify-center gap-2">
-          {/* save btn */}
-          <button className="inline-flex cursor-pointer items-center justify-center rounded-lg bg-teal-600 px-4 py-2 text-sm font-medium text-white shadow-sm transition-all duration-200 hover:bg-teal-700 hover:shadow-md focus-visible:ring-2 focus-visible:ring-teal-500/40 focus-visible:outline-none active:scale-[0.98] disabled:pointer-events-none disabled:opacity-50">
+          <CustomButton
+            intent="success"
+            variant="solid"
+            onClick={handleSave}
+            disabled={isSaving}
+          >
             {t("buttons.saveBtn")}
-          </button>
+          </CustomButton>
 
-          {/* change password */}
-          <button
+          <CustomButton
+            intent="info"
+            variant="soft"
             onClick={handleResetPassword}
-            className="inline-flex cursor-pointer items-center justify-center rounded-lg border border-blue-400 bg-blue-500/10 px-4 py-2 text-sm font-medium text-blue-500 transition-all duration-200 hover:border-blue-500 hover:bg-blue-500/20 active:scale-[0.98]"
           >
             {t("buttons.changePassword")}
-          </button>
+          </CustomButton>
 
-          {/* remove btn */}
-          <button
-            onClick={handleDeleteUser}
-            className="cursor-pointer rounded-lg border border-red-400 bg-red-500/10 px-3 py-2 text-sm text-red-400 transition hover:bg-red-500/20 active:scale-[0.98]"
+          <CustomHoldButton
+            intent="destructive"
+            variant="soft"
+            duration={800}
+            onComplete={handleDeleteUser}
           >
             {t("buttons.remove")}
-          </button>
+          </CustomHoldButton>
         </div>
       </div>
     </div>

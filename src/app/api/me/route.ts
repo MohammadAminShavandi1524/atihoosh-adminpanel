@@ -1,10 +1,8 @@
-import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
+import { getCurrentUser } from "@/lib/get-current-user";
 
 export async function GET() {
-  const token = (await cookies()).get("token");
+  const user = await getCurrentUser();
 
-  return NextResponse.json({
-    token,
-  });
+  return NextResponse.json(user);
 }
