@@ -27,6 +27,16 @@ export interface CustomButtonProps
   rightSectionClassName?: string;
 
   overlayClassName?: string;
+
+  /**
+   * Hold progress (0 - 100)
+   */
+  holdProgress?: number;
+
+  /**
+   * Hold fill color
+   */
+  holdColor?: string;
 }
 
 export interface CustomHoldButtonProps extends Omit<
@@ -48,8 +58,6 @@ export interface CustomHoldButtonProps extends Omit<
   onCancel?: () => void;
 
   onComplete?: () => void | Promise<void>;
-
-  successContent?: ReactNode;
 }
 
 export interface HoldState {

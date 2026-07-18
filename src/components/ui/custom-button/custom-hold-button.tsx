@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import { CustomButton } from "./custom-button";
 
 import type { CustomHoldButtonProps } from "./custom-button.types";
+
 import { useHold } from "./use-hold-button";
 
 const CustomHoldButton = React.forwardRef<
@@ -25,8 +26,6 @@ const CustomHoldButton = React.forwardRef<
 
       onCancel,
 
-      successContent,
-
       autoReset = true,
 
       resetOnLeave = true,
@@ -34,6 +33,8 @@ const CustomHoldButton = React.forwardRef<
       overlayClassName,
 
       className,
+
+      intent,
 
       ...props
     },
@@ -43,15 +44,9 @@ const CustomHoldButton = React.forwardRef<
     const {
       progress,
 
-      loading,
-
-      completed,
-
       start,
 
       stop,
-
-      reset,
     } = useHold({
       duration,
 
@@ -66,59 +61,48 @@ const CustomHoldButton = React.forwardRef<
       autoReset,
     });
 
-    const handlePointerDown = (event: React.PointerEvent) => {
+    const holdColor = cn(
+      {
+        destructive: "bg-red-500/30",
+        success: "bg-green-500/30",
+        warning: "bg-yellow-500/30",
+        info: "bg-sky-500/30",
+        primary: "bg-primary/30",
+        secondary: "bg-secondary/40",
+      }[intent ?? "primary"],
+    );
+
+    const handlePointerDown = (
+      event: React.PointerEvent<HTMLButtonElement>,
+    ) => {
       event.currentTarget.setPointerCapture(event.pointerId);
 
       start();
-    };
-
-    const handlePointerUp = () => {
-      stop();
-    };
-
-    const handlePointerLeave = () => {
-      if (resetOnLeave) {
-        stop();
-      }
     };
 
     return (
       <CustomButton
         ref={ref}
 
-        className={cn("relative", className)}
+        holdProgress={progress}
 
-        loading={loading}
+        holdColor={cn(holdColor, overlayClassName)}
+
+        className={cn(className)}
+
+        intent={intent}
 
         {...props}
 
         onPointerDown={handlePointerDown}
 
-        onPointerUp={handlePointerUp}
+        onPointerUp={stop}
 
         onPointerCancel={stop}
 
-        onPointerLeave={resetOnLeave ? handlePointerLeave : undefined}
+        onPointerLeave={resetOnLeave ? stop : undefined}
       >
-        {/* Fill Overlay */}
-
-        <span
-          aria-hidden
-
-          className={cn(
-            `pointer-events-none absolute inset-y-0 start-0 origin-left bg-current opacity-20 transition-[transform] duration-75 rtl:origin-right`,
-
-            overlayClassName,
-          )}
-
-          style={{
-            transform: `scaleX(${progress / 100})`,
-          }}
-        />
-
-        <span className="relative z-10">
-          {completed && successContent ? successContent : children}
-        </span>
+        {children}
       </CustomButton>
     );
   },

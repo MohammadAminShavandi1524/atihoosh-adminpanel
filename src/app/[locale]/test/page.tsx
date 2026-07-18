@@ -1,33 +1,68 @@
 "use client";
 
+import HeaderLayout from "@/components/layout/HeaderLayout";
+import { CustomButton, CustomHoldButton } from "@/components/ui/custom-button";
+
+import { Trash, Save, Check, ArrowRight } from "lucide-react";
+
 import { toast } from "sonner";
 
 export default function TestPage() {
-  return (
-    <div className="flex min-h-screen items-center justify-center gap-4">
-      <button
-        onClick={() =>
-          toast.success("User created successfully.", {
-            description: "This is a success toast.",
-            duration: Infinity,
-          })
-        }
-        className="rounded-lg bg-green-600 px-4 py-2 font-medium text-white"
-      >
-        Success Toast
-      </button>
+  const handleClick = (name: string) => {
+    toast.success(`${name} clicked`);
+  };
 
-      <button
-        onClick={() =>
-          toast.error("Something went wrong.", {
-            description: "This is an error toast.",
-            duration: Infinity,
-          })
-        }
-        className="rounded-lg bg-red-600 px-4 py-2 font-medium text-white"
+  return (
+    <div className="flex min-h-screen flex-col gap-8 p-10">
+      <HeaderLayout title="test page" descrption="" />
+
+      <CustomHoldButton
+        intent="destructive"
+        variant="soft"
+        duration={1500}
+        onComplete={() => {
+          toast.error("Deleted");
+        }}
+        className="w-fit"
       >
-        Error Toast
-      </button>
+        Delete User
+      </CustomHoldButton>
+
+      <CustomHoldButton
+        intent="primary"
+        variant="solid"
+        duration={1500}
+        onComplete={() => {
+          toast.success("Saved");
+        }}
+        className="w-fit"
+      >
+        Save
+      </CustomHoldButton>
+
+      <CustomHoldButton
+        intent="success"
+        variant="soft"
+        duration={1500}
+        onComplete={() => {
+          toast.success("Confirmed");
+        }}
+        className="w-fit"
+      >
+        Confirm
+      </CustomHoldButton>
+
+      <CustomHoldButton
+        intent="warning"
+        variant="soft"
+        duration={1500}
+        onComplete={() => {
+          toast.info("Warning");
+        }}
+        className="w-fit"
+      >
+        Warning
+      </CustomHoldButton>
     </div>
   );
 }
