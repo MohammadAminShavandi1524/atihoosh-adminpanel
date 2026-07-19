@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Trash } from "lucide-react";
 import { formatDate } from "../blogs/CategoryRow";
+import { CustomHoldButton } from "../ui/custom-button";
 
 interface ClientRowProps {
   id: string;
@@ -47,17 +48,17 @@ const ClientRow = ({
       }}
       className="mb-3 last:mb-0"
     >
-      <div className="group border-border-secondary bg-secondary-bg hover:border-primary/20 hover:bg-secondary relative grid min-h-16 grid-cols-[90px_1.5fr_1.5fr_2fr_1.75fr_140px_120px] items-center rounded-xl border px-5 py-3 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md">
+      <div className="group border-border-secondary bg-secondary-bg hover:border-primary/20 group hover:bg-secondary/30 relative grid min-h-16 grid-cols-[90px_1.5fr_1.5fr_2fr_1.75fr_140px_120px] items-center rounded-xl border px-5 py-3 shadow-sm transition-all duration-200 hover:shadow-md">
         {/* ID */}
-        <div className="text-muted-foreground font-mono text-sm ">#{id}</div>
+        <div className="text-muted-foreground font-mono text-sm">#{id}</div>
 
         {/* Full Name */}
         <div className="">
-          <p className="text-foreground font-medium ">{fullName}</p>
+          <p className="text-foreground font-medium">{fullName}</p>
         </div>
 
         {/* Phone */}
-        <div className="text-muted-foreground text-sm ">{phoneNumber}</div>
+        <div className="text-muted-foreground text-sm">{phoneNumber}</div>
 
         {/* Services */}
         <div className="flex flex-wrap gap-1.5">
@@ -83,18 +84,20 @@ const ClientRow = ({
 
         {/* Actions */}
         <div className="flex justify-center">
-          <button
-            onClick={onDelete}
-            className="group/delete flex cursor-pointer items-center gap-1 rounded-lg border border-red-400 bg-red-500/10 px-3 py-2 text-sm font-medium text-red-500 transition-all hover:bg-red-500/20"
+          <CustomHoldButton
+            intent="destructive"
+            variant="soft"
+            duration={800}
+            onComplete={onDelete}
+            leftSection={<Trash className="size-4" />}
+            className="group border-destructive/30 text-destructive hover:border-destructive/50 hover:bg-destructive/10"
           >
-            <Trash className="size-4 transition-transform duration-200 group-hover/delete:scale-110 group-hover/delete:-rotate-6" />
             Delete
-          </button>
+          </CustomHoldButton>
         </div>
 
         {/* Left Indicator */}
-        <div className="bg-primary absolute top-2 bottom-2 ltr:left-0 rtl:right-0 w-1 rounded-r-full opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
-
+        <div className="bg-primary absolute top-2 bottom-2 w-1 rounded-r-full opacity-0 transition-opacity duration-200 group-hover:opacity-100 ltr:left-0 rtl:right-0" />
       </div>
     </motion.div>
   );

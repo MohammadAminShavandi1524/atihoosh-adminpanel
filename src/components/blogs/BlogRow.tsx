@@ -8,6 +8,9 @@ import { formatDate } from "./CategoryRow";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChildBlog } from "@/data/admins";
 import ChildBlogRow from "./ChildBlogRow";
+import { CustomButton, CustomHoldButton } from "../ui/custom-button";
+import { customButtonVariants } from "../ui/custom-button/custom-button-variants";
+import { cn } from "@/lib/utils";
 
 interface BlogRowProps {
   id: string;
@@ -50,7 +53,7 @@ const BlogRow = ({
       className="mb-3 last:mb-0"
     >
       {/* Parent */}
-      <div className="group border-border-secondary bg-secondary-bg hover:border-primary/20 hover:bg-secondary relative grid min-h-16 grid-cols-[70px_2fr_1fr_1.5fr_140px_300px] items-center rounded-xl border px-5 py-3 shadow-sm transition-all duration-200 hover:shadow-md">
+      <div className="group border-border-secondary bg-secondary-bg hover:border-primary/20 hover:bg-secondary/30 relative grid min-h-16 grid-cols-[70px_2fr_1fr_1.5fr_140px_300px] items-center rounded-xl border px-5 py-3 shadow-sm transition-all duration-200 hover:shadow-md">
         {/* ID */}
         <div className="text-muted-foreground font-mono text-sm">#{id}</div>
 
@@ -86,33 +89,46 @@ const BlogRow = ({
         <div className="flex gap-2">
           <Link
             href={`/${locale}/blogs/edit/${id}`}
-            className="flex items-center gap-1 rounded-lg border border-blue-200 bg-blue-50 px-3 py-2 text-sm font-medium text-blue-700 transition-all hover:bg-blue-100 dark:border-blue-900/60 dark:bg-blue-950/40 dark:text-blue-300"
+            className={cn(
+              customButtonVariants({
+                intent: "info",
+                variant: "soft",
+                size: "md",
+              }),
+              "gap-2",
+            )}
           >
             <Edit className="size-4" />
             {t("edit")}
           </Link>
 
-          <button
-            onClick={onDelete}
-            className="group/delete flex cursor-pointer items-center gap-1 rounded-lg border border-red-400 bg-red-500/10 px-3 py-2 text-sm font-medium text-red-500 transition-all hover:bg-red-500/20"
+          <CustomHoldButton
+            intent="destructive"
+            variant="soft"
+            duration={1200}
+            onComplete={onDelete}
+            className="group"
+            leftSection={<Trash className="size-4" />}
           >
-            <Trash className="size-4 transition-transform group-hover/delete:scale-110 group-hover/delete:-rotate-6" />
             {t("delete")}
-          </button>
+          </CustomHoldButton>
 
           {children.length > 0 && (
-            <button
+            <CustomButton
+              intent="info"
+              variant="soft"
               onClick={() => setIsOpen((prev) => !prev)}
-              className="flex cursor-pointer items-center gap-1 rounded-lg border border-blue-200 bg-blue-50 px-3 py-2 text-sm font-medium text-blue-700 transition-all hover:bg-blue-100 dark:border-blue-900/60 dark:bg-blue-950/40 dark:text-blue-300"
+              rightSection={
+                <ChevronDown
+                  className={cn(
+                    "size-4 transition-transform duration-300",
+                    isOpen && "rotate-180",
+                  )}
+                />
+              }
             >
               {t("more")}
-
-              <ChevronDown
-                className={`size-4 transition-transform duration-300 ${
-                  isOpen ? "rotate-180" : ""
-                }`}
-              />
-            </button>
+            </CustomButton>
           )}
         </div>
 

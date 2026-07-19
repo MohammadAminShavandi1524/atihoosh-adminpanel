@@ -4,6 +4,9 @@ import { Edit, Trash } from "lucide-react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { useLocale, useTranslations } from "next-intl";
+import { customButtonVariants } from "../ui/custom-button/custom-button-variants";
+import { cn } from "@/lib/utils";
+import { CustomHoldButton } from "../ui/custom-button";
 
 interface ChildBlogRowProps {
   id: string;
@@ -37,9 +40,9 @@ const ChildBlogRow = ({
           damping: 35,
         },
       }}
-      className="relative pl-6 "
+      className="relative pl-6"
     >
-      <div className="bg-secondary/40 hover:bg-secondary border-border flex items-center justify-between rounded-xl border p-4 transition-all duration-200 hover:shadow-sm">
+      <div className="bg-secondary/40 hover:bg-secondary/30 border-border flex items-center justify-between rounded-xl border p-4 transition-all duration-200 hover:shadow-sm">
         <div className="space-y-2">
           <div className="flex items-center gap-2">
             <span className="bg-primary/10 text-primary rounded-md px-2 py-1 text-xs font-semibold">
@@ -57,19 +60,28 @@ const ChildBlogRow = ({
         <div className="ml-6 flex shrink-0 gap-2">
           <Link
             href={`/${locale}/blogs/edit/${parentId}/${id}`}
-            className="flex items-center gap-1 rounded-lg border border-blue-200 bg-blue-50 px-3 py-2 text-sm font-medium text-blue-700 transition-all hover:bg-blue-100 dark:border-blue-900 dark:bg-blue-950/40 dark:text-blue-300"
+            className={cn(
+              customButtonVariants({
+                intent: "info",
+                variant: "soft",
+              }),
+              "gap-1",
+            )}
           >
             <Edit className="size-4" />
             {t("edit")}
           </Link>
 
-          <button
-            onClick={onDelete}
-            className="group/delete flex cursor-pointer items-center gap-1 rounded-lg border border-red-400 bg-red-500/10 px-3 py-2 text-sm font-medium text-red-500 transition-all hover:bg-red-500/20"
+          <CustomHoldButton
+            intent="destructive"
+            variant="soft"
+            duration={1200}
+            onComplete={onDelete}
+            leftSection={<Trash className="size-4" />}
+            className="group"
           >
-            <Trash className="size-4 transition-transform group-hover/delete:scale-110 group-hover/delete:-rotate-6" />
             {t("delete")}
-          </button>
+          </CustomHoldButton>
         </div>
       </div>
     </motion.div>

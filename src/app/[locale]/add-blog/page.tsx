@@ -18,13 +18,14 @@ const Page = ({}: PageProps) => {
   const t = useTranslations("addBlog");
   const t_header = useTranslations("addBlog.header");
 
-  const [current, setCurrent] = useState<BlogTab>("parentBlog");
+  const [current, setCurrent] = useState<BlogTab>("category");
   const [selectedTags, setSelectedTags] = useState<TagOption[]>([]);
 
   const tabOrder: Record<BlogTab, number> = {
     category: 0,
-    parentBlog: 1,
-    blog: 2,
+    rootBlog: 1,
+    parentBlog: 2,
+    blog: 3,
   };
 
   const [previous, setPrevious] = useState(current);
@@ -39,6 +40,20 @@ const Page = ({}: PageProps) => {
               varient="default"
               label={t("forms.category.label")}
               placeholder={t("forms.category.placeholder")}
+              as="input"
+            />
+
+            <SubmitButton current={current} />
+          </form>
+        );
+
+      case "rootBlog":
+        return (
+          <form className="bg-secondary-bg relative flex h-full flex-col gap-y-6 rounded-xl p-7">
+            <FormField
+              varient="default"
+              label={t("forms.rootBlog.title")}
+              placeholder={t("forms.rootBlog.titlePlaceholder")}
               as="input"
             />
 
@@ -127,6 +142,14 @@ const Page = ({}: PageProps) => {
         <div className="border-b-border-secondary mt-10 mb-6 flex border-b text-sm">
           <Tab
             label="category"
+            current={current}
+            setCurrent={(value) => {
+              setPrevious(current);
+              setCurrent(value);
+            }}
+          />
+          <Tab
+            label="rootBlog"
             current={current}
             setCurrent={(value) => {
               setPrevious(current);

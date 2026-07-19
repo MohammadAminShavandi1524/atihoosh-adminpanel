@@ -1,2 +1,2 @@
-export type BlogTab = "category" | "parentBlog" | "blog";
+export type BlogTab = "category" | "rootBlog" | "parentBlog" | "blog";
 export type BlogsTab = "categories" | "Blogs";
