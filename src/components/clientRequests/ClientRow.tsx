@@ -6,12 +6,12 @@ import { formatDate } from "../blogs/CategoryRow";
 import { CustomHoldButton } from "../ui/custom-button";
 
 interface ClientRowProps {
-  id: string;
+  id: number;
   fullName: string;
   phoneNumber: string;
   services: string[];
   description: string;
-  date: string;
+  // date: string;
   onDelete: () => void;
 }
 
@@ -20,7 +20,7 @@ const ClientRow = ({
   fullName,
   phoneNumber,
   services,
-  date,
+  // date,
   description,
   onDelete,
 }: ClientRowProps) => {
@@ -78,9 +78,9 @@ const ClientRow = ({
         </div>
 
         {/* Date */}
-        <div className="text-muted-foreground text-center text-sm">
+        {/* <div className="text-muted-foreground text-center text-sm">
           {formatDate(date)}
-        </div>
+        </div> */}
 
         {/* Actions */}
         <div className="flex justify-center">

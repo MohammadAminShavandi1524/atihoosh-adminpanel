@@ -10,7 +10,7 @@ import { toast } from "sonner";
 
 export default function TestPage() {
   const [user, setUser] = useState(null);
-  console.log("🚀 ~ TestPage ~ user:", user)
+  // console.log("🚀 ~ TestPage ~ user:", user)
 
   useEffect(() => {
     async function getUser() {

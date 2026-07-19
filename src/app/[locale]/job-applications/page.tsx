@@ -39,7 +39,7 @@ const Page = ({}: PageProps) => {
         }
 
         const data = await response.json();
-        console.log("🚀 ~ fetchResumes ~ data:", data);
+        // console.log("🚀 ~ fetchResumes ~ data:", data);
 
         setJobApplications(data);
       } catch (error) {
@@ -76,7 +76,7 @@ const Page = ({}: PageProps) => {
   }, [jobApplications, search, sort]);
 
   async function deleteResume(id: number) {
-    console.log("Deleting resume:", id);
+    // console.log("Deleting resume:", id);
 
     // شبیه‌سازی درخواست API
     await new Promise((resolve) => setTimeout(resolve, 500));

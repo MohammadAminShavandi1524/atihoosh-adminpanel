@@ -4,10 +4,15 @@ import ClientRow from "@/components/clientRequests/ClientRow";
 import HeaderLayout from "@/components/layout/HeaderLayout";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { clientRequests, services } from "@/data/admins";
+import {
+  ApiRequest,
+  ApiService,
+  normalizeServices,
+} from "@/lib/normalize-services";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowDownUp, Filter, Search } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 interface pageProps {}
 
@@ -16,11 +21,50 @@ const page = ({}: pageProps) => {
   const [sort, setSort] = useState<"newest" | "oldest">("newest");
   const [service, setService] = useState("all");
 
+  const t = useTranslations("clientRequests");
+  const locale = useLocale();
+
+  // ? requwsts
+
+  const [requests, setRequests] = useState<ApiRequest[]>([]);
+
+  useEffect(() => {
+    const fetchRequests = async () => {
+      try {
+        const res = await fetch("/api/requests", {
+          cache: "no-store",
+        });
+
+        if (!res.ok) {
+          throw new Error("Failed to fetch requests");
+        }
+
+        const data: ApiRequest[] = await res.json();
+
+        // console.log(data);
+
+        setRequests(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchRequests();
+  }, []);
+
   const filteredClients = useMemo(() => {
     const normalizedSearch = search.trim().toLowerCase();
     const normalizedPhoneSearch = search.replace(/\s+/g, "");
 
-    return [...clientRequests]
+    return requests
+      .map((request) => ({
+        id: request.id,
+        fullName: request.full_name,
+        phoneNumber: request.phone,
+        description: request.description ?? "",
+        date: "",
+        services: normalizeServices(request.services, locale),
+      }))
       .filter((client) => {
         const matchesName = client.fullName
           .toLowerCase()
@@ -31,19 +75,12 @@ const page = ({}: pageProps) => {
           .includes(normalizedPhoneSearch);
 
         const matchesService =
-          service === "all" || client.services.includes(service);
+          service === "all" ||
+          client.services.some((item) => item.name === service);
 
         return (matchesName || matchesPhone) && matchesService;
-      })
-      .sort((a, b) =>
-        sort === "newest"
-          ? new Date(b.date).getTime() - new Date(a.date).getTime()
-          : new Date(a.date).getTime() - new Date(b.date).getTime(),
-      );
-  }, [search, service, sort]);
-
-  const t = useTranslations("clientRequests");
-  const locale = useLocale();
+      });
+  }, [requests, search, service, locale]);
 
   return (
     <div className="flex flex-1 flex-col">
@@ -115,8 +152,8 @@ const page = ({}: pageProps) => {
                 <div className="ps-0.5">{t("table.fullName")}</div>
                 <div className="ps-1">{t("table.phoneNumber")}</div>
                 <div className="ps-1.5">{t("table.services")}</div>
-                <div className="pe-4 text-center">{t("table.description")}</div>
-                <div className="text-center">{t("table.date")}</div>
+                <div className="pe-4">{t("table.description")}</div>
+                {/* <div className="text-center">{t("table.date")}</div> */}
                 <div className="text-center">{t("table.actions")}</div>
               </div>
             </div>
@@ -145,8 +182,8 @@ const page = ({}: pageProps) => {
                             fullName={fullName}
                             phoneNumber={phoneNumber}
                             description={description}
-                            date={date}
-                            services={services}
+                            // date={date}
+                            services={services.map((item) => item.name)}
                             onDelete={() => console.log("Delete:", id)}
                           />
                         ),

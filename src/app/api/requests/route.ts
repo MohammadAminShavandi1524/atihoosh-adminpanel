@@ -1,5 +1,6 @@
-import { NextResponse } from "next/server";
 import { serverApi } from "@/lib/server-api";
+import { NextResponse } from "next/server";
+
 
 export async function GET() {
   try {
@@ -7,12 +8,10 @@ export async function GET() {
 
     return NextResponse.json(data);
   } catch (error: any) {
-    console.error(error);
-
     return NextResponse.json(
       {
-        error,
-        message: error.body ?? error.message ?? "Internal Server Error",
+        message: "Failed to fetch requests",
+        error: error.body,
       },
       {
         status: error.status ?? 500,

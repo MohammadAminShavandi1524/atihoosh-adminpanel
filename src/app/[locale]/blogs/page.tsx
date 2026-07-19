@@ -94,7 +94,7 @@ const page = ({}: pageProps) => {
                         date={date}
 
                         onDelete={() => {
-                          console.log("clicked");
+                          // console.log("clicked");
 
                           setSelectedItem({
                             id,
