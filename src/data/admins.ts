@@ -161,28 +161,53 @@ export const admins: Admin[] = [
   },
 ];
 
-export const tags = [
-  {
-    id: "1",
-    label: "هوش مصنوعی",
-  },
-  {
-    id: "2",
-    label: "برنامه‌نویسی",
-  },
-  {
-    id: "3",
-    label: "طراحی وب",
-  },
-  {
-    id: "4",
-    label: "امنیت",
-  },
-  {
-    id: "5",
-    label: "آموزش",
-  },
-];
+export const tags = {
+  fa: [
+    {
+      id: "1",
+      label: "هوش مصنوعی",
+    },
+    {
+      id: "2",
+      label: "برنامه‌نویسی",
+    },
+    {
+      id: "3",
+      label: "طراحی وب",
+    },
+    {
+      id: "4",
+      label: "امنیت",
+    },
+    {
+      id: "5",
+      label: "آموزش",
+    },
+  ],
+
+  en: [
+    {
+      id: "1",
+      label: "Artificial Intelligence",
+    },
+    {
+      id: "2",
+      label: "Programming",
+    },
+    {
+      id: "3",
+      label: "Web Design",
+    },
+    {
+      id: "4",
+      label: "Security",
+    },
+    {
+      id: "5",
+      label: "Tutorial",
+    },
+  ],
+};
 
 export const categories = [
   {

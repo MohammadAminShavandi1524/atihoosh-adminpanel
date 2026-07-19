@@ -294,15 +294,30 @@
       "parentBlog": "بلاگ والد",
       "blog": "بلاگ"
     },
+    "submitButton": {
+      "category": "ذخیره دسته‌بندی",
+      "rootBlog": "ذخیره بلاگ اصلی",
+      "parentBlog": "ذخیره بلاگ والد",
+      "blog": "ذخیره بلاگ"
+    },
     "forms": {
       "category": {
+        "validation": {
+          "required": "عنوان دسته‌بندی الزامی است.",
+          "max": "عنوان دسته‌بندی نمی‌تواند بیشتر از ۳۰ کاراکتر باشد.",
+          "language": "لطفا زبان را انتخاب کنید."
+        },
         "label": "دسته‌بندی",
         "placeholder": "مثلاً تکنولوژی",
         "selectCategory": "انتخاب دسته‌بندی"
       },
       "rootBlog": {
         "title": "عنوان",
-        "titlePlaceholder": "عنوان بلاگ اصلی را وارد کنید"
+        "titlePlaceholder": "عنوان بلاگ اصلی را وارد کنید",
+        "validation": {
+          "required": "عنوان الزامی است.",
+          "max": "عنوان نباید بیشتر از ۲۵۵ کاراکتر باشد."
+        }
       },
       "parentBlog": {
         "category": "دسته‌بندی",
@@ -317,7 +332,12 @@
         "featuredImage": "آدرس تصویر شاخص",
         "featuredImagePlaceholder": "https://example.com/image.jpg",
         "description": "توضیحات",
-        "descriptionPlaceholder": "توضیح کوتاهی برای بلاگ والد بنویسید"
+        "descriptionPlaceholder": "توضیح کوتاهی برای بلاگ والد بنویسید",
+        "language": "زبان",
+        "languagePlaceholder": "زبان را انتخاب کنید",
+        "rootBlog": "بلاگ اصلی",
+        "rootBlogPlaceholder": "بلاگ اصلی را انتخاب کنید",
+        "loadingRootBlogs": "در حال بارگذاری..."
       },
       "blog": {
         "title": "عنوان",
@@ -328,11 +348,23 @@
         "descriptionPlaceholder": "توضیح کوتاهی برای بلاگ بنویسید"
       }
     },
-    "submitButton": {
-      "category": "ذخیره دسته‌بندی",
-      "rootBlog": "ذخیره بلاگ اصلی",
-      "parentBlog": "ذخیره بلاگ والد",
-      "blog": "ذخیره بلاگ"
+    "toast": {
+      "category": {
+        "success": "دسته‌بندی با موفقیت ایجاد شد.",
+        "error": "خطا در ایجاد دسته‌بندی."
+      },
+      "rootBlog": {
+        "success": "بلاگ اصلی با موفقیت ایجاد شد.",
+        "error": "خطا در ایجاد بلاگ اصلی."
+      },
+      "parentBlog": {
+        "success": "بلاگ با موفقیت ایجاد شد.",
+        "error": "خطا در ایجاد بلاگ."
+      }
+    },
+    "languages": {
+      "fa": "فارسی",
+      "en": "English"
     }
   },
 

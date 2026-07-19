@@ -20,9 +20,11 @@ interface TagSelectorProps {
 
   onChange: (tags: TagOption[]) => void;
 
-  placeholder?: string;
+  placeholder: string;
 
   className?: string;
+
+  lang?: "fa" | "en";
 }
 
 export const TagSelector = ({
@@ -30,8 +32,9 @@ export const TagSelector = ({
   options,
   value,
   onChange,
-  placeholder = "Select tags",
+  placeholder,
   className,
+  lang = "fa",
 }: TagSelectorProps) => {
   const [open, setOpen] = useState(false);
   const [availableTags, setAvailableTags] = useState<TagOption[]>(options);
@@ -40,6 +43,10 @@ export const TagSelector = ({
   const wrapperRef = useRef<HTMLDivElement>(null);
   const locale = useLocale();
   const t = useTranslations("addBlog");
+
+  useEffect(() => {
+    setAvailableTags(options);
+  }, [options]);
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
@@ -201,7 +208,7 @@ export const TagSelector = ({
               <div className="flex flex-col gap-y-1.5 overflow-y-auto p-2 pb-3">
                 <ScrollArea
                   dir={locale === "fa" ? "rtl" : "ltr"}
-                  className="h-50 font-IRANYekanX"
+                  className="font-IRANYekanX h-50"
                 >
                   {availableTags.map((tag) => {
                     const selected = isSelected(tag);
@@ -303,7 +310,7 @@ export const TagSelector = ({
                         }}
                         className="border-foreground/10 hover:bg-foreground/5 cursor-pointer rounded-lg border px-4 py-2 text-sm transition-colors"
                       >
-                      {t("forms.parentBlog.cancel")}
+                        {t("forms.parentBlog.cancel")}
                       </button>
 
                       <button
@@ -317,7 +324,7 @@ export const TagSelector = ({
                             : "cursor-pointer hover:opacity-90",
                         )}
                       >
-                          {t("forms.parentBlog.save")}
+                        {t("forms.parentBlog.save")}
                       </button>
                     </div>
                   </motion.div>

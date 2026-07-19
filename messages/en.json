@@ -293,15 +293,30 @@
       "parentBlog": "Parent Blog",
       "blog": "Blog"
     },
+    "submitButton": {
+      "category": "Save Category",
+      "rootBlog": "Save Root Blog",
+      "parentBlog": "Save Parent Blog",
+      "blog": "Save Blog"
+    },
     "forms": {
       "category": {
+        "validation": {
+          "required": "Category title is required.",
+          "max": "Category title cannot exceed 30 characters.",
+          "language": "Please select a language."
+        },
         "label": "Category",
         "placeholder": "e.g. Technology",
         "selectCategory": "Select category"
       },
       "rootBlog": {
         "title": "Title",
-        "titlePlaceholder": "Enter the root blog title"
+        "titlePlaceholder": "Enter the root blog title",
+        "validation": {
+          "required": "Title is required.",
+          "max": "Title must be at most 255 characters."
+        }
       },
       "parentBlog": {
         "category": "Category",
@@ -316,7 +331,12 @@
         "featuredImage": "Featured Image URL",
         "featuredImagePlaceholder": "https://example.com/image.jpg",
         "description": "Description",
-        "descriptionPlaceholder": "Write a short description for this parent blog"
+        "descriptionPlaceholder": "Write a short description for this parent blog",
+        "language": "Language",
+        "languagePlaceholder": "Select language",
+        "rootBlog": "Root Blog",
+        "rootBlogPlaceholder": "Select root blog",
+        "loadingRootBlogs": "Loading..."
       },
       "blog": {
         "title": "Title",
@@ -327,11 +347,23 @@
         "descriptionPlaceholder": "Write a short description for this blog"
       }
     },
-    "submitButton": {
-      "category": "Save Category",
-      "rootBlog": "Save Root Blog",
-      "parentBlog": "Save Parent Blog",
-      "blog": "Save Blog"
+    "toast": {
+      "category": {
+        "success": "Category created successfully.",
+        "error": "Failed to create category."
+      },
+      "rootBlog": {
+        "success": "Root blog created successfully.",
+        "error": "Failed to create root blog."
+      },
+      "parentBlog": {
+        "success": "Parent blog created successfully.",
+        "error": "Failed to create parent blog."
+      }
+    },
+    "languages": {
+      "fa": "Persian",
+      "en": "English"
     }
   },
 

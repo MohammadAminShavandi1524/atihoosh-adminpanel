@@ -41,23 +41,25 @@ export const FormField = (props: FormFieldProps) => {
   } = props;
 
   return (
-    <div className={cn("relative flex flex-col gap-3", containerClassName)}>
-      {label?.trim() && (
-        <label
-          className={cn(
-            "text-foreground ps-1.5 text-sm font-semibold",
-            labelClassName,
-          )}
-        >
-          {label}
-        </label>
-      )}
+    <div className={cn("relative flex flex-col gap-2.5", containerClassName)}>
+      <div className="relative flex items-center justify-between px-1">
+        {label?.trim() && (
+          <label
+            className={cn(
+              "text-foreground ps-1.5 text-sm font-semibold",
+              labelClassName,
+            )}
+          >
+            {label}
+          </label>
+        )}
 
-      {error && (
-        <p className={cn("text-xs text-red-400", errorClassName)}>
-          {error.message}
-        </p>
-      )}
+        {error && (
+          <p className={cn("text-xs text-red-400", errorClassName)}>
+            {error.message}
+          </p>
+        )}
+      </div>
 
       {as === "textarea" ? (
         <textarea

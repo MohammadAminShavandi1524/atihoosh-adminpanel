@@ -2,6 +2,10 @@
 
 import AnimatedForm from "@/components/addBlog/AnimatedForm";
 import { CategorySelect } from "@/components/addBlog/CategorySelect";
+import BlogForm from "@/components/addBlog/forms/BlogForm";
+import CategoryForm from "@/components/addBlog/forms/CategoryForm";
+import ParentBlogForm from "@/components/addBlog/forms/ParentBlogForm";
+import RootBlogForm from "@/components/addBlog/forms/RootBlogForm";
 import SubmitButton from "@/components/addBlog/SubmitButton";
 import { Tab } from "@/components/addBlog/Tab";
 import { TagOption, TagSelector } from "@/components/addBlog/TagSelector";
@@ -18,7 +22,8 @@ const Page = ({}: PageProps) => {
   const t = useTranslations("addBlog");
   const t_header = useTranslations("addBlog.header");
 
-  const [current, setCurrent] = useState<BlogTab>("category");
+  const [current, setCurrent] = useState<BlogTab>("parentBlog");
+
   const [selectedTags, setSelectedTags] = useState<TagOption[]>([]);
 
   const tabOrder: Record<BlogTab, number> = {
@@ -34,98 +39,24 @@ const Page = ({}: PageProps) => {
   const renderForm = () => {
     switch (current) {
       case "category":
-        return (
-          <form className="bg-secondary-bg relative flex h-full flex-col gap-y-6 rounded-xl p-7">
-            <FormField
-              varient="default"
-              label={t("forms.category.label")}
-              placeholder={t("forms.category.placeholder")}
-              as="input"
-            />
-
-            <SubmitButton current={current} />
-          </form>
-        );
+        return <CategoryForm />;
 
       case "rootBlog":
-        return (
-          <form className="bg-secondary-bg relative flex h-full flex-col gap-y-6 rounded-xl p-7">
-            <FormField
-              varient="default"
-              label={t("forms.rootBlog.title")}
-              placeholder={t("forms.rootBlog.titlePlaceholder")}
-              as="input"
-            />
-
-            <SubmitButton current={current} />
-          </form>
-        );
+        return <RootBlogForm />;
 
       case "parentBlog":
         return (
-          <form className="bg-secondary-bg relative flex h-full flex-col gap-y-6 rounded-xl p-7">
-            <CategorySelect label={t("forms.parentBlog.category")} />
-
-            <TagSelector
-              label={t("forms.parentBlog.tags")}
-              options={tags}
-              value={selectedTags}
-              onChange={setSelectedTags}
-              placeholder={t("forms.parentBlog.tagsPlaceholder")}
-            />
-
-            <FormField
-              varient="default"
-              label={t("forms.parentBlog.title")}
-              placeholder={t("forms.parentBlog.titlePlaceholder")}
-              as="input"
-            />
-
-            <FormField
-              varient="default"
-              label={t("forms.parentBlog.featuredImage")}
-              placeholder={t("forms.parentBlog.featuredImagePlaceholder")}
-              as="input"
-            />
-
-            <FormField
-              varient="default"
-              label={t("forms.parentBlog.description")}
-              placeholder={t("forms.parentBlog.descriptionPlaceholder")}
-              as="input"
-            />
-
-            <SubmitButton current={current} />
-          </form>
+          <ParentBlogForm
+            selectedTags={selectedTags}
+            setSelectedTags={setSelectedTags}
+          />
         );
 
       case "blog":
-        return (
-          <form className="bg-secondary-bg relative flex h-full flex-col gap-y-6 rounded-xl p-7">
-            <FormField
-              varient="default"
-              label={t("forms.blog.title")}
-              placeholder={t("forms.blog.titlePlaceholder")}
-              as="input"
-            />
+        return <BlogForm />;
 
-            <FormField
-              varient="default"
-              label={t("forms.blog.featuredImage")}
-              placeholder={t("forms.blog.featuredImagePlaceholder")}
-              as="input"
-            />
-
-            <FormField
-              varient="default"
-              label={t("forms.blog.description")}
-              placeholder={t("forms.blog.descriptionPlaceholder")}
-              as="input"
-            />
-
-            <SubmitButton current={current} />
-          </form>
-        );
+      default:
+        return null;
     }
   };
 
