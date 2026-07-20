@@ -4,10 +4,10 @@ import { motion } from "framer-motion";
 import { Check } from "lucide-react";
 
 import { cn } from "@/lib/utils";
-import { SelectOption } from "./types";
+import { CustomSelectOption } from "./types";
 
 interface CustomSelectItemProps {
-  option: SelectOption;
+  option: CustomSelectOption;
   selected: boolean;
   onSelect: (value: string) => void;
 }

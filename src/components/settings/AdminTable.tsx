@@ -27,7 +27,7 @@ interface User {
 
 export default function AdminTable() {
   const [users, setUsers] = useState<User[]>([]);
-  console.log("🚀 ~ Page ~ users:", users);
+  // console.log("🚀 ~ Page ~ users:", users);
   const locale = useLocale();
 
   useEffect(() => {

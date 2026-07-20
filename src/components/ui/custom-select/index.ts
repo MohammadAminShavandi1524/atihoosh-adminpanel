@@ -1,5 +1,5 @@
 export { default as CustomSelect } from "./CustomSelect";
 export type {
   CustomSelectProps,
-  SelectOption,
+  CustomSelectOption,
 } from "./types";

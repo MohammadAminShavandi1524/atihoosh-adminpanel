@@ -39,7 +39,7 @@ const Page = ({}: PageProps) => {
         }
 
         const data = await response.json();
-        // console.log("🚀 ~ fetchResumes ~ data:", data);
+        console.log("🚀 ~ fetchResumes ~ data:", data);
 
         setJobApplications(data);
       } catch (error) {

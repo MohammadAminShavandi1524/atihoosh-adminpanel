@@ -56,7 +56,7 @@ const RootBlogSelect = ({ value, onChange }: RootBlogSelectProps) => {
       onChange={onChange}
       options={rootBlogs.map((item) => ({
         label: item.title,
-        value: item.title,
+        value: String(item.id),
       }))}
       disabled={loading}
     />

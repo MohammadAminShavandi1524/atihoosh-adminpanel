@@ -48,7 +48,7 @@ const ClientRow = ({
       }}
       className="mb-3 last:mb-0"
     >
-      <div className="group border-border-secondary bg-secondary-bg hover:border-primary/20 group hover:bg-secondary/30 relative grid min-h-16 grid-cols-[90px_1.5fr_1.5fr_2fr_1.75fr_140px_120px] items-center rounded-xl border px-5 py-3 shadow-sm transition-all duration-200 hover:shadow-md">
+      <div className="border-border-secondary bg-secondary-bg hover:border-primary/20 group hover:bg-secondary/30 relative grid min-h-16 grid-cols-[90px_1.5fr_1.5fr_2fr_1.75fr_140px_120px] items-center rounded-xl border px-5 py-3 shadow-sm transition-all duration-200 hover:shadow-md">
         {/* ID */}
         <div className="text-muted-foreground font-mono text-sm">#{id}</div>
 

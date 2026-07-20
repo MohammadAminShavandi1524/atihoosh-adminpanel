@@ -41,7 +41,7 @@ const page = ({}: pageProps) => {
 
         const data: ApiRequest[] = await res.json();
 
-        // console.log(data);
+        console.log(data);
 
         setRequests(data);
       } catch (error) {
