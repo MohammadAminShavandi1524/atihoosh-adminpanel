@@ -1,9 +1,9 @@
 import "../globals.css";
 import "../../Webfonts/fontiran.css";
 
-import { notFound } from "next/navigation";
 import { Locale, hasLocale, NextIntlClientProvider } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import { notFound } from "next/navigation";
 
 import {
   Inter,
@@ -11,12 +11,12 @@ import {
   Space_Grotesk,
   Noto_Serif,
 } from "next/font/google";
+
 import { routing } from "@/i18n/routing";
 import { cn } from "@/lib/utils";
 import { Metadata } from "next";
 import { ThemeProvider } from "@/components/theme/Providers";
 
-import Header from "@/components/layout/HeaderLayout";
 import Sidebar from "@/components/layout/Sidebar";
 import AppToaster from "@/components/AppToaster";
 
@@ -64,6 +64,28 @@ export async function generateMetadata(
 
   return {
     title: t("title"),
+
+    icons: {
+      icon: [
+        {
+          url: "/favicon.ico",
+          type: "image/x-icon",
+        },
+        {
+          url: "/favicon-32x32.png",
+          type: "image/png",
+          sizes: "32x32",
+        },
+        {
+          url: "/favicon-16x16.png",
+          type: "image/png",
+          sizes: "16x16",
+        },
+      ],
+      apple: "/apple-touch-icon.png",
+    },
+
+    manifest: "/manifest.json",
   };
 }
 
@@ -72,6 +94,7 @@ export default async function LocaleLayout({
   params,
 }: LayoutProps<"/[locale]">) {
   const { locale } = await params;
+
   if (!hasLocale(routing.locales, locale)) {
     notFound();
   }
@@ -90,13 +113,13 @@ export default async function LocaleLayout({
           playfair.variable,
           space.variable,
           notoSerif.variable,
-
           locale === "fa" ? "font-IRANYekanX" : inter.className,
         )}
       >
         <NextIntlClientProvider>
           <ThemeProvider>
             <AppToaster />
+
             <div className="bg-background text-foreground flex h-screen overflow-hidden">
               <Sidebar />
 
