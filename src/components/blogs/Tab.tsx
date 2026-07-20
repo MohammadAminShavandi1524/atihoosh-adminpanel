@@ -1,0 +1,49 @@
+"use client";
+
+import { Dispatch, SetStateAction } from "react";
+import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
+import { cn } from "@/lib/utils";
+import { BlogsTab } from "@/types/objectTypes";
+
+interface TabProps {
+  label: BlogsTab;
+  current: BlogsTab;
+  setCurrent: Dispatch<SetStateAction<BlogsTab>>;
+}
+
+export const Tab = ({ label, current, setCurrent }: TabProps) => {
+  const t = useTranslations("blogs.tabs");
+  const active = label === current;
+
+  return (
+    <button
+      type="button"
+      onClick={() => setCurrent(label)}
+      className="relative cursor-pointer px-6 py-2.5"
+    >
+      <span
+        className={cn(
+          "transition-colors duration-300",
+          active
+            ? "text-primary"
+            : "text-muted-foreground hover:text-foreground",
+        )}
+      >
+        {label === "Blogs" ? t("blogs") : t("categories")}
+      </span>
+
+      {active && (
+        <motion.div
+          layoutId="tab-indicator"
+          className="bg-primary absolute right-0 bottom-0 left-0 h-0.5 rounded-full"
+          transition={{
+            type: "spring",
+            stiffness: 500,
+            damping: 35,
+          }}
+        />
+      )}
+    </button>
+  );
+};

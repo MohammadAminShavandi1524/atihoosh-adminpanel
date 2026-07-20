@@ -1,0 +1,407 @@
+{
+   "Manifest": {
+    "name": "آتی هوش",
+    "shortName": "آتی هوش",
+    "description": "طراحی و توسعه وب‌سایت و راهکارهای هوشمند دیجیتال"
+  },
+
+  "Error": {
+    "description": "<p>متأسفانه با یک خطا مواجه شدیم.</p><p>می‌توانید <retry>صفحه‌ای که بازدید می‌کردید را دوباره بارگذاری کنید</retry>.</p>",
+    "title": "مشکلی پیش آمد!"
+  },
+
+  "LocaleLayout": {
+    "title": "پنل مدیریت آتی‌هوش"
+  },
+
+  "Sidebar": {
+    "logoTitle": "آتی هوش",
+    "logoSubtitle": "پنل مدیریت",
+
+    "overview": "نمای کلی",
+    "dashboard": "داشبورد",
+
+    "requests": "درخواست‌ها",
+    "clientRequests": "درخواست‌های مشتریان",
+    "jobApplications": "درخواست‌های همکاری",
+
+    "teamCollaboration": "همکاری تیمی",
+    "teamChat": "گفتگوی تیم",
+    "blogs": "وبلاگ ها",
+    "addBlog": "اضافه کردن وبلاگ",
+
+    "system": "سیستم",
+    "settings": "تنظیمات و دسترسی‌ها"
+  },
+
+  "Dashboard": {
+    "greeting": "سلام، سهراب 👋",
+    "subtitle": "خلاصه‌ای از اتفاقات و فعالیت‌های امروز آتی‌هوش",
+
+    "overviewBoxes": {
+      "clientRequests": {
+        "title": "درخواست‌های مشتریان",
+        "label": "۱ مورد جدید"
+      },
+      "jobApplications": {
+        "title": "درخواست‌های همکاری",
+        "label": "۱ مورد جدید"
+      },
+      "teamChat": {
+        "title": "گفتگوی تیم",
+        "label": "۱ پیام جدید"
+      },
+      "publishedArticles": {
+        "title": "مقالات منتشرشده",
+        "label": "۱ بلاگ"
+      }
+    },
+    "recentActivities": {
+      "title": "فعالیت‌های اخیر",
+      "description": "آخرین درخواست‌ها و به‌روزرسانی‌ها",
+      "refresh": "بروزرسانی",
+
+      "requestTypes": {
+        "client": "درخواست مشتری",
+        "job": "درخواست همکاری"
+      },
+
+      "status": {
+        "new": "جدید",
+        "inProgress": "در حال بررسی",
+        "done": "انجام شده"
+      }
+    }
+  },
+
+  "clientRequests": {
+    "header": {
+      "title": "درخواست‌های مشتریان",
+      "description": "درخواست‌های ارسال‌شده توسط مشتریان را بررسی و مدیریت کنید."
+    },
+    "filters": {
+      "searchPlaceholder": "جستجو بر اساس نام یا شماره تلفن...",
+      "allServices": "همه سرویس‌ها",
+      "newestFirst": "جدیدترین",
+      "oldestFirst": "قدیمی‌ترین"
+    },
+    "table": {
+      "id": "شناسه",
+      "fullName": "نام و نام خانوادگی",
+      "phoneNumber": "شماره تلفن",
+      "services": "سرویس‌ها",
+      "description": "توضیحات",
+      "date": "تاریخ",
+      "actions": "عملیات"
+    },
+    "empty": {
+      "title": "درخواستی یافت نشد",
+      "description": "جستجو، فیلتر سرویس یا ترتیب نمایش را تغییر دهید."
+    }
+  },
+
+  "jobApplications": {
+    "header": {
+      "title": "درخواست‌های همکاری",
+      "description": "درخواست‌های استخدام ارسال‌شده توسط متقاضیان را بررسی و مدیریت کنید."
+    },
+    "filters": {
+      "searchPlaceholder": "جستجو بر اساس نام یا شماره تلفن...",
+      "newestFirst": "جدیدترین",
+      "oldestFirst": "قدیمی‌ترین"
+    },
+    "table": {
+      "id": "شناسه",
+      "fullName": "نام و نام خانوادگی",
+      "phoneNumber": "شماره تلفن",
+      "email": "ایمیل",
+      "date": "تاریخ",
+      "resume": "رزومه",
+      "actions": "عملیات",
+      "viewPdf": "مشاهده رزومه",
+      "delete": "حذف"
+    },
+    "empty": {
+      "title": "درخواستی یافت نشد",
+      "description": "جستجوی خود را تغییر دهید."
+    },
+    "delete": {
+      "title": "حذف رزومه",
+      "description": "آیا از حذف این رزومه اطمینان دارید؟"
+    }
+  },
+
+  "TeamChat": {
+    "title": "گفتگوی تیم",
+    "description": "هماهنگی داخلی تیم مدیریت",
+
+    "adminsTitle": "مدیران سیستم",
+
+    "newMessages": "پیام جدید در این گفتگو",
+
+    "roles": {
+      "salesAdmin": "مدیر فروش",
+      "superAdmin": "مدیر ارشد",
+      "hrAdmin": "مدیر منابع انسانی"
+    },
+
+    "inputPlaceholder": "پیام خود را اینجا بنویسید...",
+    "send": "ارسال",
+    "inputHint": "برای ارسال Enter و برای رفتن به خط بعد Shift+Enter را فشار دهید",
+    "connectionStatus": "اتصال برقرار است"
+  },
+
+  "Settings": {
+    "title": "تنظیمات و سطح دسترسی",
+    "description": "مدیریت ایمیل مدیران، سطح دسترسی بخش‌های مختلف سیستم و مقالات وبلاگ",
+
+    "tabs": {
+      "users": "مدیریت کاربران و دسترسی‌ها",
+      "blog": "مدیریت مقالات وبلاگ"
+    },
+
+    "footer": {
+      "description": "تغییرات سطح دسترسی به‌صورت لحظه‌ای اعمال می‌شوند و ایمیل‌ها فقط اعلان‌های مجاز را دریافت خواهند کرد.",
+      "save": "ذخیره دسترسی‌ها"
+    },
+
+    "overview": {
+      "title": "نمای کلی دسترسی‌ها",
+      "totalAdmins": "کل مدیران",
+      "onlineNow": "آنلاین",
+      "activePermissions": "دسترسی‌های فعال",
+      "sections": "بخش‌ها"
+    },
+
+    "permissionSummary": {
+      "title": "خلاصه دسترسی‌ها",
+      "user": "کاربر",
+      "accessLevel": "سطح دسترسی"
+    },
+
+    "accessLevels": {
+      "fullAccess": "دسترسی کامل",
+      "salesChat": "فروش + چت",
+      "hrChat": "منابع انسانی + چت",
+      "blogChat": "وبلاگ + چت"
+    },
+
+    "AdminTable": {
+      "headers": {
+        "admin": "مدیر",
+        "request": "درخواست‌ها",
+        "resume": "رزومه‌ها",
+        "chat": "چت",
+        "blog": "وبلاگ",
+        "actions": "عملیات حساب"
+      },
+
+      "roles": {
+        "superAdmin": "مدیر ارشد",
+        "salesAdmin": "مدیر فروش",
+        "hrAdmin": "مدیر منابع انسانی",
+        "contentWriter": "نویسنده محتوا"
+      },
+
+      "buttons": {
+        "saveBtn": "ذخیره",
+        "changePassword": "تغییر رمز عبور",
+        "remove": "حذف",
+        "addMember": "افزودن عضو"
+      },
+
+      "placeholders": {
+        "email": "ایمیل مدیر جدید...",
+        "username": "نام کاربری را وارد کنید...",
+        "selectRole": "انتخاب نقش..."
+      },
+
+      "Toast": {
+        "createSuccess": "کاربر با موفقیت ایجاد شد.",
+        "createFailed": "ایجاد کاربر با خطا مواجه شد.",
+        "accessUpdated": "دسترسی‌های کاربر با موفقیت بروزرسانی شد.",
+        "accessUpdateFailed": "بروزرسانی دسترسی‌های کاربر انجام نشد.",
+        "passwordSent": "رمز عبور جدید به ایمیل کاربر ارسال شد.",
+        "passwordSentFailed": "ارسال رمز عبور جدید با خطا مواجه شد.",
+        "deleteSuccess": "کاربر با موفقیت حذف شد.",
+        "deleteFailed": "حذف کاربر با خطا مواجه شد."
+      }
+    }
+  },
+
+  "blogs": {
+    "header": {
+      "title": "بلاگ‌ها",
+      "description": "مدیریت مقالات و دسته‌بندی‌های وبلاگ در یک بخش."
+    },
+    "tabs": {
+      "categories": "دسته‌بندی‌ها",
+      "blogs": "بلاگ‌ها"
+    },
+    "categories": {
+      "table": {
+        "id": "شناسه",
+        "name": "نام",
+        "date": "تاریخ",
+        "actions": "عملیات"
+      }
+    },
+    "blogsTable": {
+      "searchPlaceholder": "جستجو بر اساس عنوان مقاله...",
+      "newestFirst": "جدیدترین",
+      "oldestFirst": "قدیمی‌ترین",
+      "table": {
+        "id": "شناسه",
+        "title": "عنوان",
+        "category": "دسته‌بندی",
+        "tags": "برچسب‌ها",
+        "date": "تاریخ",
+        "actions": "عملیات"
+      },
+      "empty": {
+        "title": "مقاله‌ای یافت نشد",
+        "description": "عبارت جستجوی دیگری را امتحان کنید."
+      }
+    },
+    "deleteModal": {
+      "deleteBlog": "حذف بلاگ",
+      "deleteCategory": "حذف دسته‌بندی",
+      "description": "آیا از حذف «{name}» اطمینان دارید؟"
+    },
+    "actions": {
+      "edit": "ویرایش",
+      "delete": "حذف",
+      "more": "بیشتر"
+    }
+  },
+
+  "addBlog": {
+    "header": {
+      "category": {
+        "title": "ایجاد دسته‌بندی",
+        "description": "یک دسته‌بندی جدید برای سازمان‌دهی محتوای وبلاگ ایجاد کنید."
+      },
+      "rootBlog": {
+        "title": "افزودن بلاگ اصلی",
+        "description": "یک بلاگ اصلی ایجاد کنید که به‌عنوان ریشه و بالاترین سطح ساختار بلاگ‌ها استفاده شود."
+      },
+      "parentBlog": {
+        "title": "ایجاد بلاگ والد",
+        "description": "یک بلاگ والد ایجاد کنید تا مقالات مرتبط در زیرمجموعه آن قرار بگیرند."
+      },
+      "blog": {
+        "title": "ایجاد بلاگ",
+        "description": "یک مقاله جدید ایجاد کرده و آن را به یک بلاگ والد اختصاص دهید."
+      }
+    },
+    "tabs": {
+      "category": "دسته‌بندی",
+      "rootBlog": "بلاگ اصلی",
+      "parentBlog": "بلاگ والد",
+      "blog": "بلاگ"
+    },
+    "submitButton": {
+      "category": "ذخیره دسته‌بندی",
+      "rootBlog": "ذخیره بلاگ اصلی",
+      "parentBlog": "ذخیره بلاگ والد",
+      "blog": "ذخیره بلاگ"
+    },
+    "forms": {
+      "category": {
+        "validation": {
+          "required": "عنوان دسته‌بندی الزامی است.",
+          "max": "عنوان دسته‌بندی نمی‌تواند بیشتر از ۳۰ کاراکتر باشد.",
+          "language": "لطفا زبان را انتخاب کنید."
+        },
+        "label": "دسته‌بندی",
+        "placeholder": "مثلاً تکنولوژی",
+        "selectCategory": "انتخاب دسته‌بندی"
+      },
+      "rootBlog": {
+        "title": "عنوان",
+        "titlePlaceholder": "عنوان بلاگ اصلی را وارد کنید",
+        "validation": {
+          "required": "عنوان الزامی است.",
+          "max": "عنوان نباید بیشتر از ۲۵۵ کاراکتر باشد."
+        }
+      },
+      "parentBlog": {
+        "category": "دسته‌بندی",
+        "tags": "برچسب‌ها",
+        "tagsPlaceholder": "برچسب‌ها را انتخاب کنید",
+        "createTag": "ایجاد برچسب جدید",
+        "tagNamePlaceholder": "نام برچسب...",
+        "cancel": "انصراف",
+        "save": "ذخیره",
+        "title": "عنوان",
+        "titlePlaceholder": "عنوان بلاگ والد را وارد کنید",
+        "featuredImage": "آدرس تصویر شاخص",
+        "featuredImagePlaceholder": "https://example.com/image.jpg",
+        "description": "توضیحات",
+        "descriptionPlaceholder": "توضیح کوتاهی برای بلاگ والد بنویسید",
+        "language": "زبان",
+        "languagePlaceholder": "زبان را انتخاب کنید",
+        "rootBlog": "بلاگ اصلی",
+        "rootBlogPlaceholder": "بلاگ اصلی را انتخاب کنید",
+        "loadingRootBlogs": "در حال بارگذاری..."
+      },
+      "blog": {
+        "title": "عنوان",
+        "titlePlaceholder": "عنوان بلاگ را وارد کنید",
+        "featuredImage": "آدرس تصویر شاخص",
+        "featuredImagePlaceholder": "https://example.com/image.jpg",
+        "description": "توضیحات",
+        "descriptionPlaceholder": "توضیح کوتاهی برای بلاگ بنویسید"
+      }
+    },
+    "toast": {
+      "category": {
+        "success": "دسته‌بندی با موفقیت ایجاد شد.",
+        "error": "خطا در ایجاد دسته‌بندی."
+      },
+      "rootBlog": {
+        "success": "بلاگ اصلی با موفقیت ایجاد شد.",
+        "error": "خطا در ایجاد بلاگ اصلی."
+      },
+      "parentBlog": {
+        "success": "بلاگ با موفقیت ایجاد شد.",
+        "error": "خطا در ایجاد بلاگ."
+      }
+    },
+    "languages": {
+      "fa": "فارسی",
+      "en": "English"
+    }
+  },
+
+  "login": {
+    "header": {
+      "title": "آتی هوش",
+      "subtitle": "پنل مدیریت"
+    },
+    "title": "خوش آمدید",
+    "description": "برای دسترسی به پنل مدیریت آتی هوش وارد حساب کاربری خود شوید.",
+    "form": {
+      "email": "آدرس ایمیل",
+      "emailPlaceholder": "admin@atihoosh.com",
+      "password": "رمز عبور",
+      "passwordPlaceholder": "رمز عبور خود را وارد کنید"
+    },
+    "forgotPassword": "رمز عبور را فراموش کرده‌اید؟",
+    "invalidCredentials": "ایمیل یا رمز عبور اشتباه است.",
+    "submit": "ورود به پنل مدیریت",
+    "footer": {
+      "security": "رمزنگاری TLS 256 بیتی",
+      "adminOnly": "فقط دسترسی مدیران"
+    }
+  },
+
+  "common": {
+    "deleteModal": {
+      "warning": "این عملیات قابل بازگشت نیست.",
+      "cancel": "انصراف",
+      "delete": "حذف",
+      "deleting": "در حال حذف..."
+    }
+  }
+}

@@ -1,0 +1,408 @@
+{
+
+   "Manifest": {
+    "name": "AtiHoosh",
+    "shortName": "AtiHoosh",
+    "description": "Website design, development, and smart digital solutions"
+  },
+
+  
+  "Error": {
+    "description": "<p>We've unfortunately encountered an error.</p><p>You can try to <retry>reload the page</retry> you were visiting.</p>",
+    "title": "Something went wrong!"
+  },
+
+  "LocaleLayout": {
+    "title": "AtiHoosh AdminPanel"
+  },
+
+  "Sidebar": {
+    "logoTitle": "Ati Hoosh",
+    "logoSubtitle": "Admin Panel",
+
+    "overview": "Overview",
+    "dashboard": "Dashboard",
+
+    "requests": "Requests",
+    "clientRequests": "Client Requests",
+    "jobApplications": "Job Applications",
+
+    "teamCollaboration": "Team Collaboration",
+    "teamChat": "Team Chat",
+    "blogs": "Blogs",
+    "addBlog": "add blog",
+
+    "system": "System",
+    "settings": "Settings & Permissions"
+  },
+
+  "Dashboard": {
+    "greeting": "Hi, Sohrab 👋",
+    "subtitle": "A quick summary of what's happening at Ati Hoosh today",
+
+    "overviewBoxes": {
+      "clientRequests": {
+        "title": "Client Requests",
+        "label": "1 new"
+      },
+      "jobApplications": {
+        "title": "Job Applications",
+        "label": "1 new"
+      },
+      "teamChat": {
+        "title": "Team Chat",
+        "label": "1 new"
+      },
+      "publishedArticles": {
+        "title": "Published Blogs",
+        "label": "1 blog"
+      }
+    },
+    "recentActivities": {
+      "title": "Recent Activity",
+      "description": "Latest requests and updates",
+      "refresh": "Refresh",
+
+      "requestTypes": {
+        "client": "Client Request",
+        "job": "Job Application"
+      },
+
+      "status": {
+        "new": "New",
+        "inProgress": "In Progress",
+        "done": "Done"
+      }
+    }
+  },
+
+  "clientRequests": {
+    "header": {
+      "title": "Client Requests",
+      "description": "Review and manage service requests submitted by clients."
+    },
+    "filters": {
+      "searchPlaceholder": "Search by name or phone...",
+      "allServices": "All Services",
+      "newestFirst": "Newest First",
+      "oldestFirst": "Oldest First"
+    },
+    "table": {
+      "id": "ID",
+      "fullName": "Full Name",
+      "phoneNumber": "Phone Number",
+      "services": "Services",
+      "description": "Description",
+      "date": "Date",
+      "actions": "Actions"
+    },
+    "empty": {
+      "title": "No requests found",
+      "description": "Try changing your search, service filter, or sorting."
+    }
+  },
+
+  "jobApplications": {
+    "header": {
+      "title": "Job Applications",
+      "description": "Review and manage job applications submitted by talents."
+    },
+    "filters": {
+      "searchPlaceholder": "Search by name or phone...",
+      "newestFirst": "Newest First",
+      "oldestFirst": "Oldest First"
+    },
+    "table": {
+      "id": "ID",
+      "fullName": "Full Name",
+      "phoneNumber": "Phone Number",
+      "email": "Email",
+      "date": "Date",
+      "resume": "Resume",
+      "actions": "Actions",
+      "viewPdf": "View Resume",
+      "delete": "Delete"
+    },
+    "empty": {
+      "title": "No applications found",
+      "description": "Try changing your search."
+    },
+    "delete": {
+      "title": "Delete Resume",
+      "description": "Are you sure you want to delete this resume?"
+    }
+  },
+
+  "TeamChat": {
+    "title": "Team Chat",
+    "description": "Internal admin coordination",
+
+    "adminsTitle": "System Admins",
+
+    "newMessages": "New messages in this room",
+
+    "roles": {
+      "salesAdmin": "Sales Admin",
+      "superAdmin": "Super Admin",
+      "hrAdmin": "HR Admin"
+    },
+
+    "inputPlaceholder": "Type your message here...",
+    "send": "Send",
+    "inputHint": "Press Enter to send · Shift+Enter for new line",
+    "connectionStatus": "WebSocket connected"
+  },
+
+  "Settings": {
+    "title": "Settings & Permissions",
+    "description": "Manage admin emails, access matrix for system sections and blog articles",
+
+    "tabs": {
+      "users": "Manage users and permissions",
+      "blog": "Blog article management"
+    },
+
+    "footer": {
+      "description": "The access matrix is applied in real time — emails will receive limited notifications.",
+      "save": "Save permissions"
+    },
+
+    "overview": {
+      "title": "Access overview",
+      "totalAdmins": "Total admins",
+      "onlineNow": "Online now",
+      "activePermissions": "Active perms",
+      "sections": "Sections"
+    },
+
+    "permissionSummary": {
+      "title": "Permission summary",
+      "user": "User",
+      "accessLevel": "Access level"
+    },
+
+    "accessLevels": {
+      "fullAccess": "Full access",
+      "salesChat": "Sales + chat",
+      "hrChat": "HR + chat",
+      "blogChat": "Blog + chat"
+    },
+    "AdminTable": {
+      "headers": {
+        "admin": "Admin",
+        "request": "Request",
+        "resume": "Resume",
+        "chat": "Chat",
+        "blog": "Blog",
+        "actions": "Account actions"
+      },
+
+      "roles": {
+        "superAdmin": "Super Admin",
+        "salesAdmin": "Sales Admin",
+        "hrAdmin": "HR Admin",
+        "contentWriter": "Content Writer"
+      },
+
+      "buttons": {
+        "saveBtn": "Save",
+        "changePassword": "Change Password",
+        "remove": "Remove",
+        "addMember": "Add member"
+      },
+
+      "placeholders": {
+        "email": "New admin email address...",
+        "username": "Enter username...",
+        "selectRole": "Select role..."
+      },
+
+      "Toast": {
+        "createSuccess": "User created successfully.",
+        "createFailed": "Failed to create user.",
+        "accessUpdated": "User permissions updated successfully.",
+        "accessUpdateFailed": "Failed to update user permissions.",
+        "passwordSent": "A new password has been sent to the user's email.",
+        "passwordSentFailed": "Failed to send a new password.",
+        "deleteSuccess": "User deleted successfully.",
+        "deleteFailed": "Failed to delete user."
+      }
+    }
+  },
+
+  "blogs": {
+    "header": {
+      "title": "Blogs",
+      "description": "Manage blog posts and categories from one place."
+    },
+    "tabs": {
+      "categories": "Categories",
+      "blogs": "Blogs"
+    },
+    "categories": {
+      "table": {
+        "id": "ID",
+        "name": "Name",
+        "date": "Date",
+        "actions": "Actions"
+      }
+    },
+    "blogsTable": {
+      "searchPlaceholder": "Search blog title...",
+      "newestFirst": "Newest First",
+      "oldestFirst": "Oldest First",
+      "table": {
+        "id": "ID",
+        "title": "Title",
+        "category": "Category",
+        "tags": "Tags",
+        "date": "Date",
+        "actions": "Actions"
+      },
+      "empty": {
+        "title": "No blogs found",
+        "description": "Try another search keyword."
+      }
+    },
+    "deleteModal": {
+      "deleteBlog": "Delete Blog",
+      "deleteCategory": "Delete Category",
+      "description": "Are you sure you want to delete \"{name}\"?"
+    },
+    "actions": {
+      "edit": "Edit",
+      "delete": "Delete",
+      "more": "More"
+    }
+  },
+
+  "addBlog": {
+    "header": {
+      "category": {
+        "title": "Add Category",
+        "description": "Create a new category to organize your blog content."
+      },
+      "rootBlog": {
+        "title": "Add Root Blog",
+        "description": "Create a root blog that serves as the top-level container for your blog hierarchy."
+      },
+      "parentBlog": {
+        "title": "Add Parent Blog",
+        "description": "Create a parent blog that acts as the main container for related blog posts."
+      },
+      "blog": {
+        "title": "Add Blog",
+        "description": "Create a new blog post and assign it to an existing parent blog."
+      }
+    },
+    "tabs": {
+      "category": "Category",
+      "rootBlog": "Root Blog",
+      "parentBlog": "Parent Blog",
+      "blog": "Blog"
+    },
+    "submitButton": {
+      "category": "Save Category",
+      "rootBlog": "Save Root Blog",
+      "parentBlog": "Save Parent Blog",
+      "blog": "Save Blog"
+    },
+    "forms": {
+      "category": {
+        "validation": {
+          "required": "Category title is required.",
+          "max": "Category title cannot exceed 30 characters.",
+          "language": "Please select a language."
+        },
+        "label": "Category",
+        "placeholder": "e.g. Technology",
+        "selectCategory": "Select category"
+      },
+      "rootBlog": {
+        "title": "Title",
+        "titlePlaceholder": "Enter the root blog title",
+        "validation": {
+          "required": "Title is required.",
+          "max": "Title must be at most 255 characters."
+        }
+      },
+      "parentBlog": {
+        "category": "Category",
+        "tags": "Tags",
+        "tagsPlaceholder": "Select tags",
+        "createTag": "Create new tag",
+        "tagNamePlaceholder": "Tag name...",
+        "cancel": "Cancel",
+        "save": "Save",
+        "title": "Title",
+        "titlePlaceholder": "Enter the parent blog title",
+        "featuredImage": "Featured Image URL",
+        "featuredImagePlaceholder": "https://example.com/image.jpg",
+        "description": "Description",
+        "descriptionPlaceholder": "Write a short description for this parent blog",
+        "language": "Language",
+        "languagePlaceholder": "Select language",
+        "rootBlog": "Root Blog",
+        "rootBlogPlaceholder": "Select root blog",
+        "loadingRootBlogs": "Loading..."
+      },
+      "blog": {
+        "title": "Title",
+        "titlePlaceholder": "Enter the blog title",
+        "featuredImage": "Featured Image URL",
+        "featuredImagePlaceholder": "https://example.com/image.jpg",
+        "description": "Description",
+        "descriptionPlaceholder": "Write a short description for this blog"
+      }
+    },
+    "toast": {
+      "category": {
+        "success": "Category created successfully.",
+        "error": "Failed to create category."
+      },
+      "rootBlog": {
+        "success": "Root blog created successfully.",
+        "error": "Failed to create root blog."
+      },
+      "parentBlog": {
+        "success": "Parent blog created successfully.",
+        "error": "Failed to create parent blog."
+      }
+    },
+    "languages": {
+      "fa": "Persian",
+      "en": "English"
+    }
+  },
+
+  "login": {
+    "header": {
+      "title": "Ati Hoosh",
+      "subtitle": "Admin Panel"
+    },
+    "title": "Welcome back",
+    "description": "Sign in to access the Ati Hoosh control panel",
+    "form": {
+      "email": "Email Address",
+      "emailPlaceholder": "admin@atihoosh.com",
+      "password": "Password",
+      "passwordPlaceholder": "Enter your password"
+    },
+    "forgotPassword": "Forgot password?",
+    "invalidCredentials": "Invalid email or password.",
+    "submit": "Sign In to Dashboard",
+    "footer": {
+      "security": "256-bit TLS",
+      "adminOnly": "Admin access only"
+    }
+  },
+
+  "common": {
+    "deleteModal": {
+      "warning": "This action cannot be undone.",
+      "cancel": "Cancel",
+      "delete": "Delete",
+      "deleting": "Deleting..."
+    }
+  }
+}

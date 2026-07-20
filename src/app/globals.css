@@ -1,0 +1,319 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* =========================
+   TAILWIND THEME TOKENS
+========================= */
+@theme inline {
+  /** breakpoints **/
+  --breakpoint-xs: 20rem;
+  --breakpoint-xss: 25rem;
+  --breakpoint-s: 30rem;
+  --breakpoint-sm: 40rem;
+  --breakpoint-md: 48rem;
+  --breakpoint-mlg: 56rem;
+  --breakpoint-lg: 64rem;
+  --breakpoint-xl: 80rem;
+  --breakpoint-2xl: 96rem;
+  --breakpoint-3xl: 106rem;
+
+  /** font **/
+  --font-IRANYekanX: "IRANYekanX";
+
+  /** radius **/
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+
+  /* =========================
+     SHADCN CORE COLORS
+  ========================= */
+  --color-background: var(--background);
+  --color-secondary-bg: var(--secondary-bg);
+  --color-foreground: var(--foreground);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-destructive: var(--destructive);
+
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* =========================
+     CUSTOM TOKENS
+  ========================= */
+
+  /* brand */
+  --color-custom-primary: #1e9dbd;
+
+  --color-primary-hover: var(--primary-hover);
+  --color-secondary: var(--secondary);
+  --color-tertiary: var(--tertiary);
+
+  /* cards system */
+  --color-card-secondary: var(--card-secondary);
+  --color-card-tertiary: var(--card-tertiary);
+
+  --color-card-secondary-foreground: var(--card-secondary-foreground);
+  --color-card-tertiary-foreground: var(--card-tertiary-foreground);
+
+  /* borders */
+  --color-border: var(--border);
+  --color-border-secondary: var(--border-secondary);
+
+  /* links */
+  --color-footer-link-hover: var(--footer-link-hover);
+
+  /* Scrollbar */
+  --color-scrollbar: var(--scrollbar);
+  --color-scrollbar-hover: var(--scrollbar-hover);
+
+  /*** custom btn */
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
+
+  --color-destructive-foreground: var(--destructive-foreground);
+}
+
+/* =========================
+   LIGHT THEME
+========================= */
+:root {
+  --radius: 0.625rem;
+
+  /* background */
+  --background: #fcfeff;
+  --secondary-bg: #f5f5f5;
+  --foreground: #0a0a0a;
+
+  /* brand */
+  --primary: #002b53;
+  --primary-hover: #0a4a7a;
+  --secondary: #e6f0f7;
+  --tertiary: #f2f6fa;
+
+  /* text */
+  --muted-foreground: #737373;
+
+  /* cards */
+
+  --card: #2f6bff;
+  --card-secondary: #c9364f;
+  --card-tertiary: #6a2bbf;
+
+  --card-foreground: #60a5fa;
+  --card-secondary-foreground: #fb7185;
+  --card-tertiary-foreground: #c084fc;
+
+  /* borders */
+  --border: #e5e5e5;
+  --border-secondary: #c8e6ef;
+
+  /* input / ring */
+  --input: #e5e5e5;
+  --ring: #94a3b8;
+
+  /* --scrollbar: #c8e6ef;
+  --scrollbar-hover: #002b53; */
+
+  --scrollbar: #b8c7d9;
+  --scrollbar-hover: #6f8fb5;
+
+  /* ui extras */
+  --accent: #f3f4f6;
+  --accent-foreground: #111111;
+
+  --destructive: #ef4444;
+
+  --popover: #ffffff;
+  --popover-foreground: #111111;
+
+  /* links */
+  --footer-link-hover: #4b5563;
+
+  /** custom button **/
+  --primary-foreground: #ffffff;
+
+  --secondary-foreground: #002b53;
+
+  --destructive-foreground: #ffffff;
+
+  --success: #0d9488;
+  --success-foreground: #ffffff;
+
+  --warning: #f59e0b;
+  --warning-foreground: #111827;
+
+  --info: #2563eb;
+  --info-foreground: #ffffff;
+}
+
+/* =========================
+   DARK THEME
+========================= */
+.dark {
+  --background: #000000;
+  --secondary-bg: #101010;
+  --foreground: #ffffff;
+
+  /* brand */
+  --primary: #1e9dbd;
+  --primary-hover: #197c95;
+  --secondary: #0b313b;
+  --tertiary: #0b0f14;
+
+  /* text */
+  --muted-foreground: #737373;
+
+  /* cards */
+  --card: #0041f0;
+  --card-secondary: #901a30;
+  --card-tertiary: #460073;
+
+  --card-foreground: #60a5fa;
+  --card-secondary-foreground: #fb7185;
+  --card-tertiary-foreground: #c084fc;
+
+  /* borders */
+  --border: #131313;
+  --border-secondary: #0b313b;
+
+  --input: #2a2a2a;
+  --ring: #555555;
+
+  /* --scrollbar: #2a4b57;
+  --scrollbar-hover: #1e9dbd; */
+
+  --scrollbar: #36546a;
+  --scrollbar-hover: #1e9dbd;
+
+  /* ui extras */
+  --accent: #1a1a1a;
+  --accent-foreground: #ffffff;
+
+  --destructive: #ef4444;
+
+  --popover: #131313;
+  --popover-foreground: #ffffff;
+
+  /* links */
+  --footer-link-hover: #a2a2a0;
+
+  /** custom button **/
+
+  --primary-foreground: #ffffff;
+
+  --secondary-foreground: #ffffff;
+
+  --destructive-foreground: #ffffff;
+
+  --success: #14b8a6;
+  --success-foreground: #ffffff;
+
+  --warning: #fbbf24;
+  --warning-foreground: #111827;
+
+  --info: #60a5fa;
+  --info-foreground: #000000;
+}
+
+/* =========================
+   BASE
+========================= */
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* =========================
+   COMPONENTS
+========================= */
+@layer components {
+  @keyframes shimmer {
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  .shimmer {
+    position: relative;
+    overflow: hidden;
+    border-radius: 0.75rem;
+    background-color: #e5e7eb;
+  }
+
+  .shimmer::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    transform: translateX(-100%);
+    animation: shimmer 2s infinite;
+    background-image: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.6),
+      transparent
+    );
+  }
+
+  .w90 {
+    max-width: 1920px;
+    width: 90%;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  @keyframes aurora {
+    0%,
+    100% {
+      transform: translate(0, 0) scale(1);
+    }
+    25% {
+      transform: translate(60px, -40px) scale(1.1);
+    }
+    50% {
+      transform: translate(-40px, 50px) scale(0.95);
+    }
+    75% {
+      transform: translate(30px, 20px) scale(1.05);
+    }
+  }
+
+  .animate-aurora {
+    animation: aurora 22s ease-in-out infinite alternate;
+  }
+}
