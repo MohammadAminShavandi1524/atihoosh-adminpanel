@@ -24,8 +24,6 @@ const Page = ({}: PageProps) => {
 
   const [current, setCurrent] = useState<BlogTab>("parentBlog");
 
-  const [selectedTags, setSelectedTags] = useState<TagOption[]>([]);
-
   const tabOrder: Record<BlogTab, number> = {
     category: 0,
     rootBlog: 1,
@@ -45,12 +43,7 @@ const Page = ({}: PageProps) => {
         return <RootBlogForm />;
 
       case "parentBlog":
-        return (
-          <ParentBlogForm
-            selectedTags={selectedTags}
-            setSelectedTags={setSelectedTags}
-          />
-        );
+        return <ParentBlogForm />;
 
       case "blog":
         return <BlogForm />;

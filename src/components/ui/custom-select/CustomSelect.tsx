@@ -4,13 +4,14 @@ import { useEffect, useMemo, useRef, useState } from "react";
 
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
+import { useLocale } from "next-intl";
+import { FieldError } from "react-hook-form";
 
 import { cn } from "@/lib/utils";
 
+import { ScrollArea } from "../scroll-area";
 import CustomSelectItem from "./CustomSelectItem";
 import { CustomSelectProps } from "./types";
-import { ScrollArea } from "../scroll-area";
-import { useLocale } from "next-intl";
 
 const CustomSelect = <T extends string>({
   label,
@@ -18,9 +19,10 @@ const CustomSelect = <T extends string>({
   options,
   value,
   onChange,
+  error,
   disabled = false,
   className,
-}: CustomSelectProps<T>) => {
+}: CustomSelectProps<T> & { error?: FieldError }) => {
   const locale = useLocale();
 
   const [open, setOpen] = useState(false);
@@ -47,12 +49,16 @@ const CustomSelect = <T extends string>({
   }, []);
 
   return (
-    <div className={cn("flex flex-col gap-3", className)}>
-      {label && (
-        <label className="text-foreground ps-1.5 text-sm font-semibold">
-          {label}
-        </label>
-      )}
+    <div className={cn("relative flex flex-col gap-2.5", className)}>
+      <div className="relative flex items-center justify-between px-1.5">
+        {label?.trim() && (
+          <label className="text-foreground  text-sm font-semibold">
+            {label}
+          </label>
+        )}
+
+        {error && <p className="text-xs text-red-400">{error.message}</p>}
+      </div>
 
       <div ref={ref} className="relative">
         <button
@@ -60,8 +66,10 @@ const CustomSelect = <T extends string>({
           disabled={disabled}
           onClick={() => setOpen((prev) => !prev)}
           className={cn(
-            "bg-secondary-bg border-foreground/8 flex h-12 w-full cursor-pointer items-center justify-between rounded-lg border px-4 transition-all outline-none",
-            "focus:border-primary",
+            "bg-secondary-bg flex h-12 w-full cursor-pointer items-center justify-between rounded-lg border px-4 transition-all outline-none",
+            error
+              ? "border-red-500 focus:border-red-500"
+              : "border-foreground/8 focus:border-primary",
             disabled && "cursor-not-allowed opacity-60",
           )}
         >
@@ -75,12 +83,8 @@ const CustomSelect = <T extends string>({
           </span>
 
           <motion.div
-            animate={{
-              rotate: open ? 180 : 0,
-            }}
-            transition={{
-              duration: 0.2,
-            }}
+            animate={{ rotate: open ? 180 : 0 }}
+            transition={{ duration: 0.2 }}
           >
             <ChevronDown className="text-muted-foreground size-4" />
           </motion.div>

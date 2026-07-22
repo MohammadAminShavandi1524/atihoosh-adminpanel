@@ -1,5 +1,7 @@
 "use client";
 
+import { FieldError } from "react-hook-form";
+
 import { CustomSelect } from "../ui/custom-select";
 
 interface CategoryOption {
@@ -13,6 +15,7 @@ interface CategorySelectProps {
   value: string;
   onChange: (value: string) => void;
   placeholder?: string;
+  error?: FieldError;
 }
 
 export const CategorySelect = ({
@@ -21,6 +24,7 @@ export const CategorySelect = ({
   value,
   onChange,
   placeholder = "Select category...",
+  error,
 }: CategorySelectProps) => {
   return (
     <CustomSelect
@@ -29,6 +33,7 @@ export const CategorySelect = ({
       value={value}
       onChange={onChange}
       placeholder={placeholder}
+      error={error}
     />
   );
 };

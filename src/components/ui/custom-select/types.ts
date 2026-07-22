@@ -1,3 +1,5 @@
+import { FieldError } from "react-hook-form";
+
 export interface CustomSelectOption<T extends string = string> {
   label: string;
   value: T;
@@ -16,4 +18,6 @@ export interface CustomSelectProps<T extends string = string> {
   disabled?: boolean;
 
   className?: string;
+
+  error?: FieldError;
 }

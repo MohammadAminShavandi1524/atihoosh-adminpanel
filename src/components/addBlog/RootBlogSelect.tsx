@@ -1,7 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
+
+import { FieldError, ControllerRenderProps } from "react-hook-form";
 import { useTranslations } from "next-intl";
+
 import { CustomSelect } from "@/components/ui/custom-select";
 
 interface RootBlog {
@@ -10,11 +13,11 @@ interface RootBlog {
 }
 
 interface RootBlogSelectProps {
-  value: string;
-  onChange: (value: string) => void;
+  field: ControllerRenderProps<any, "root_blog">;
+  error?: FieldError;
 }
 
-const RootBlogSelect = ({ value, onChange }: RootBlogSelectProps) => {
+const RootBlogSelect = ({ field, error }: RootBlogSelectProps) => {
   const t = useTranslations("addBlog");
 
   const [rootBlogs, setRootBlogs] = useState<RootBlog[]>([]);
@@ -52,13 +55,14 @@ const RootBlogSelect = ({ value, onChange }: RootBlogSelectProps) => {
           ? t("forms.parentBlog.loadingRootBlogs")
           : t("forms.parentBlog.rootBlogPlaceholder")
       }
-      value={value}
-      onChange={onChange}
+      value={String(field.value || "")}
+      onChange={(value) => field.onChange(Number(value))}
       options={rootBlogs.map((item) => ({
         label: item.title,
         value: String(item.id),
       }))}
       disabled={loading}
+      error={error}
     />
   );
 };

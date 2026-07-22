@@ -1,5 +1,5 @@
 {
-   "Manifest": {
+  "Manifest": {
     "name": "آتی هوش",
     "shortName": "آتی هوش",
     "description": "طراحی و توسعه وب‌سایت و راهکارهای هوشمند دیجیتال"
@@ -343,7 +343,16 @@
         "languagePlaceholder": "زبان را انتخاب کنید",
         "rootBlog": "بلاگ اصلی",
         "rootBlogPlaceholder": "بلاگ اصلی را انتخاب کنید",
-        "loadingRootBlogs": "در حال بارگذاری..."
+        "loadingRootBlogs": "در حال بارگذاری...",
+        "validation": {
+          "rootBlogRequired": "لطفاً روت بلاگ را انتخاب کنید.",
+          "categoryRequired": "لطفاً دسته‌بندی را انتخاب کنید.",
+          "titleRequired": "عنوان الزامی است.",
+          "descriptionRequired": "توضیحات الزامی است.",
+          "imageInvalid": "لطفاً یک آدرس معتبر برای تصویر وارد کنید.",
+          "languageRequired": "لطفاً زبان را انتخاب کنید.",
+          "tagsRequired": "حداقل یک تگ انتخاب کنید."
+        }
       },
       "blog": {
         "title": "عنوان",
@@ -351,7 +360,18 @@
         "featuredImage": "آدرس تصویر شاخص",
         "featuredImagePlaceholder": "https://example.com/image.jpg",
         "description": "توضیحات",
-        "descriptionPlaceholder": "توضیح کوتاهی برای بلاگ بنویسید"
+        "descriptionPlaceholder": "توضیح کوتاهی برای بلاگ بنویسید",
+
+        "parentBlog": "مقاله والد",
+        "parentBlogPlaceholder": "مقاله والد را انتخاب کنید",
+        "loadingParentBlogs": "در حال دریافت مقالات والد...",
+
+        "validation": {
+          "parentBlogRequired": "لطفاً یک بلاگ والد انتخاب کنید.",
+          "titleRequired": "عنوان الزامی است.",
+          "descriptionRequired": "توضیحات الزامی است.",
+          "imageInvalid": "لطفاً یک آدرس معتبر برای تصویر وارد کنید."
+        }
       }
     },
     "toast": {
@@ -364,6 +384,10 @@
         "error": "خطا در ایجاد بلاگ اصلی."
       },
       "parentBlog": {
+        "success": "بلاگ با موفقیت ایجاد شد.",
+        "error": "خطا در ایجاد بلاگ."
+      },
+      "blog": {
         "success": "بلاگ با موفقیت ایجاد شد.",
         "error": "خطا در ایجاد بلاگ."
       }

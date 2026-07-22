@@ -1,12 +1,10 @@
 {
-
-   "Manifest": {
+  "Manifest": {
     "name": "AtiHoosh",
     "shortName": "AtiHoosh",
     "description": "Website design, development, and smart digital solutions"
   },
 
-  
   "Error": {
     "description": "<p>We've unfortunately encountered an error.</p><p>You can try to <retry>reload the page</retry> you were visiting.</p>",
     "title": "Something went wrong!"
@@ -344,7 +342,16 @@
         "languagePlaceholder": "Select language",
         "rootBlog": "Root Blog",
         "rootBlogPlaceholder": "Select root blog",
-        "loadingRootBlogs": "Loading..."
+        "loadingRootBlogs": "Loading...",
+        "validation": {
+          "rootBlogRequired": "Please select a root blog.",
+          "categoryRequired": "Please select a category.",
+          "titleRequired": "Title is required.",
+          "descriptionRequired": "Description is required.",
+          "imageInvalid": "Please enter a valid image URL.",
+          "languageRequired": "Please select a language.",
+          "tagsRequired": "Please select at least one tag."
+        }
       },
       "blog": {
         "title": "Title",
@@ -352,7 +359,18 @@
         "featuredImage": "Featured Image URL",
         "featuredImagePlaceholder": "https://example.com/image.jpg",
         "description": "Description",
-        "descriptionPlaceholder": "Write a short description for this blog"
+        "descriptionPlaceholder": "Write a short description for this blog",
+
+        "parentBlog": "Parent Blog",
+        "parentBlogPlaceholder": "Select a parent blog",
+        "loadingParentBlogs": "Loading parent blogs...",
+
+        "validation": {
+          "parentBlogRequired": "Please select a parent blog.",
+          "titleRequired": "Title is required.",
+          "descriptionRequired": "Description is required.",
+          "imageInvalid": "Please enter a valid image URL."
+        }
       }
     },
     "toast": {
@@ -367,6 +385,10 @@
       "parentBlog": {
         "success": "Parent blog created successfully.",
         "error": "Failed to create parent blog."
+      },
+      "blog": {
+        "success": "Blog created successfully.",
+        "error": "Failed to create blog."
       }
     },
     "languages": {
