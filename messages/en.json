@@ -97,6 +97,15 @@
     "empty": {
       "title": "No requests found",
       "description": "Try changing your search, service filter, or sorting."
+    },
+    "actions": {
+      "delete": "Delete"
+    },
+    "toast": {
+      "delete": {
+        "success": "Request deleted successfully.",
+        "error": "Failed to delete request."
+      }
     }
   },
 

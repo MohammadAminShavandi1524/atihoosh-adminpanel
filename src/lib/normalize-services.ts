@@ -4,6 +4,7 @@ export interface ApiRequest {
   phone: string;
   email: string | null;
   description: string | null;
+  created: string;
   services: ApiService[];
   seen: boolean;
   status: string;

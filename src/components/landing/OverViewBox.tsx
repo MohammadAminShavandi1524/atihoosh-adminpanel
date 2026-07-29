@@ -6,20 +6,26 @@ interface OverViewBoxProps {
   Icon: LucideIcon;
   title: string;
   qty: string;
-  label: string;
 }
 
-const OverViewBox = ({ Icon, label, qty, title }: OverViewBoxProps) => {
+const OverViewBox = ({ Icon, qty, title }: OverViewBoxProps) => {
   return (
-    <div className="bg-secondary-bg border-border-secondary flex flex-col rounded-xl border p-5">
-      <div className="flex items-center justify-between">
-        <div className="bg-secondary text-primary flex size-12 items-center justify-center rounded-md">
-          <Icon className="size-6" />
+    <div className="bg-secondary-bg border-border-secondary hover:border-primary/20 group rounded-2xl border p-6 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg">
+      <div className="flex items-start justify-between">
+        <div className="bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground flex size-14 items-center justify-center rounded-2xl transition-all duration-200">
+          <Icon className="size-7" />
         </div>
-        <div className="text-primary text-base">{label}</div>
+
+        <div className="text-right">
+          <div className="text-foreground text-4xl leading-none font-bold">
+            {qty}
+          </div>
+        </div>
       </div>
-      <div className="mt-4 text-3xl font-medium ps-0.5 mb-2">{qty}</div>
-      <div className="text-muted-foreground">{title}</div>
+
+      <div className="mt-6">
+        <p className="text-muted-foreground text-sm">{title}</p>
+      </div>
     </div>
   );
 };

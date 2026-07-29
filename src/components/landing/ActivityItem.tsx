@@ -1,77 +1,60 @@
 "use client";
 
-import { cn } from "@/lib/utils";
-import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
+import { Phone } from "lucide-react";
+import { useLocale } from "next-intl";
+
+import { formatDate } from "@/lib/utils";
 
 interface ActivityItemProps {
-  profileImage?: string;
+  id: number;
   userName: string;
-  RequestType: string;
-  status: string;
-  Date: string;
-  time: string;
+  phone: string;
+  created: string;
 }
 
 const ActivityItem = ({
-  Date,
-  RequestType,
-  status,
-  time,
+  id,
   userName,
+  phone,
+  created,
 }: ActivityItemProps) => {
-  const profileWords = userName
+  const locale = useLocale();
+
+  const initials = userName
     .split(" ")
     .slice(0, 2)
-    .map((word) => word[0])
-    .join("");
-
-  const { theme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) return null;
-
-  const isDark = theme === "dark";
+    .map((item) => item[0])
+    .join("")
+    .toUpperCase();
 
   return (
-    <div className="border-border-secondary shadow-secondary flex min-h-14 cursor-pointer items-center justify-between rounded-md border px-4 py-3 shadow-sm transition-colors">
-      <div className="flex gap-x-4">
-        <div className="bg-secondary text-primary flex size-12 items-center justify-center rounded-lg font-medium">
-          {profileWords}
+    <div className=" border-border-secondary hover:border-primary/20 hover:bg-secondary/70 flex items-center justify-between rounded-xl border px-5 py-4 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md">
+      <div className="flex items-center gap-4">
+        <div className="from-primary/20 to-primary/5 text-primary flex size-12 items-center justify-center rounded-xl bg-gradient-to-br text-sm font-bold">
+          {initials}
         </div>
 
-        <div className="flex flex-col">
-          <div className="font-medium">{userName}</div>
+        <div className="flex flex-col gap-1">
+          <div className="flex items-center gap-2">
+            <span className="bg-primary/10 text-primary rounded-md px-2 py-0.5 text-[11px] font-semibold">
+              #{id}
+            </span>
 
-          <div className="text-muted-foreground flex items-center gap-x-2.5 text-sm">
-            <span>{RequestType}</span>
-            <span>{Date}</span>
-            <span>{time}</span>
+            <span className="text-foreground font-semibold">
+              {userName}
+            </span>
+          </div>
+
+          <div className="text-muted-foreground flex items-center gap-2 text-sm">
+            <Phone className="size-3.5" />
+            <span>{phone}</span>
           </div>
         </div>
       </div>
 
-      {/* status */}
-      {/* <div
-        className={cn(
-          "rounded-full border px-2.5 py-1 text-xs font-medium",
-
-          (status === "New" || status === "جدید") &&
-            "border-[#f6d28b] bg-[#fff8ea] text-[#b66b00] dark:border-[#63461f] dark:bg-[#292014] dark:text-[#e8a13a]",
-
-          (status === "In Progress" || status === "در حال بررسی") &&
-            "border-[#cfc5ff] bg-[#f5f3ff] text-[#6d4aff] dark:border-[#32275b] dark:bg-[#1c182c] dark:text-[#b8a8ff]",
-
-          (status === "Done" || status === "انجام شده") &&
-            "border-[#b8ebcf] bg-[#edfdf3] text-[#15803d] dark:border-[#1a4831] dark:bg-[#13241c] dark:text-[#33c379]",
-        )}
-      >
-        {status}
-      </div> */}
+      <div className="bg-primary/10 text-primary  rounded-lg px-3 py-2 text-xs font-medium">
+        {formatDate(created, locale)}
+      </div>
     </div>
   );
 };

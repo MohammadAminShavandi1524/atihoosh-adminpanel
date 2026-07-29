@@ -19,7 +19,7 @@ interface pageProps {}
 const page = ({}: pageProps) => {
   const [search, setSearch] = useState("");
   const [sort, setSort] = useState<"newest" | "oldest">("newest");
-  const [service, setService] = useState("all");
+  const [service, setService] = useState<number | "all">("all");
 
   const t = useTranslations("clientRequests");
   const locale = useLocale();
@@ -52,6 +52,18 @@ const page = ({}: pageProps) => {
     fetchRequests();
   }, []);
 
+  const serviceOptions = useMemo(() => {
+    const map = new Map<number, ApiService>();
+
+    requests.forEach((request) => {
+      normalizeServices(request.services, locale).forEach((service) => {
+        map.set(service.id, service);
+      });
+    });
+
+    return [...map.values()];
+  }, [requests, locale]);
+
   const filteredClients = useMemo(() => {
     const normalizedSearch = search.trim().toLowerCase();
     const normalizedPhoneSearch = search.replace(/\s+/g, "");
@@ -62,7 +74,7 @@ const page = ({}: pageProps) => {
         fullName: request.full_name,
         phoneNumber: request.phone,
         description: request.description ?? "",
-        date: "",
+        date: request.created,
         services: normalizeServices(request.services, locale),
       }))
       .filter((client) => {
@@ -76,11 +88,18 @@ const page = ({}: pageProps) => {
 
         const matchesService =
           service === "all" ||
-          client.services.some((item) => item.name === service);
+          client.services.some((item) => item.id === service);
 
         return (matchesName || matchesPhone) && matchesService;
+      })
+      .sort((a, b) => {
+        if (sort === "newest") {
+          return new Date(b.date).getTime() - new Date(a.date).getTime();
+        }
+
+        return new Date(a.date).getTime() - new Date(b.date).getTime();
       });
-  }, [requests, search, service, locale]);
+  }, [requests, search, service, sort, locale]);
 
   return (
     <div className="flex flex-1 flex-col">
@@ -112,14 +131,18 @@ const page = ({}: pageProps) => {
 
                 <select
                   value={service}
-                  onChange={(e) => setService(e.target.value)}
+                  onChange={(e) =>
+                    setService(
+                      e.target.value === "all" ? "all" : Number(e.target.value),
+                    )
+                  }
                   className="bg-tertiary border-border-secondary focus:border-primary focus:ring-primary/15 h-12 min-w-[260px] cursor-pointer appearance-none rounded-xl border pr-9 pl-11 text-sm transition-all outline-none focus:ring-4"
                 >
                   <option value="all">{t("filters.allServices")}</option>
 
-                  {services.map((item) => (
-                    <option key={item} value={item}>
-                      {item}
+                  {serviceOptions.map((item) => (
+                    <option key={item.id} value={item.id}>
+                      {item.name}
                     </option>
                   ))}
                 </select>
@@ -147,13 +170,13 @@ const page = ({}: pageProps) => {
           <div className="border-border-secondary m-7 mt-7 h-full overflow-hidden rounded-xl border">
             {/* header */}
             <div className="border-b-border-secondary bg-tertiary border-b px-11">
-              <div className="text-muted-foreground grid h-14 grid-cols-[90px_1.5fr_1.5fr_2fr_1.75fr_140px_120px] items-center text-xs font-semibold tracking-wider uppercase">
+              <div className="text-muted-foreground grid h-14 grid-cols-[90px_1.5fr_1.5fr_2fr_1.75fr_140px_120px_100px] items-center text-xs font-semibold tracking-wider uppercase">
                 <div className="ps-1">{t("table.id")}</div>
                 <div className="ps-0.5">{t("table.fullName")}</div>
                 <div className="ps-1">{t("table.phoneNumber")}</div>
                 <div className="ps-1.5">{t("table.services")}</div>
                 <div className="pe-4">{t("table.description")}</div>
-                {/* <div className="text-center">{t("table.date")}</div> */}
+                <div className="text-center">{t("table.date")}</div>
                 <div className="text-center">{t("table.actions")}</div>
               </div>
             </div>
@@ -182,9 +205,9 @@ const page = ({}: pageProps) => {
                             fullName={fullName}
                             phoneNumber={phoneNumber}
                             description={description}
-                            // date={date}
+                            date={date}
                             services={services.map((item) => item.name)}
-                            onDelete={() => console.log("Delete:", id)}
+                            setRequests={setRequests}
                           />
                         ),
                       )}

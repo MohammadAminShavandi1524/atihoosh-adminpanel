@@ -2,8 +2,12 @@
 
 import { motion } from "framer-motion";
 import { Trash } from "lucide-react";
-import { formatDate } from "../blogs/CategoryRow";
+import { toast } from "sonner";
 import { CustomHoldButton } from "../ui/custom-button";
+import { formatDate } from "@/lib/utils";
+import { useLocale, useTranslations } from "next-intl";
+import { Dispatch, SetStateAction } from "react";
+import { ApiRequest } from "@/lib/normalize-services";
 
 interface ClientRowProps {
   id: number;
@@ -11,8 +15,8 @@ interface ClientRowProps {
   phoneNumber: string;
   services: string[];
   description: string;
-  // date: string;
-  onDelete: () => void;
+  date: string;
+  setRequests: Dispatch<SetStateAction<ApiRequest[]>>;
 }
 
 const ClientRow = ({
@@ -20,10 +24,36 @@ const ClientRow = ({
   fullName,
   phoneNumber,
   services,
-  // date,
+  date,
   description,
-  onDelete,
+  setRequests,
 }: ClientRowProps) => {
+ 
+  const locale = useLocale();
+  const t = useTranslations("clientRequests");
+
+  const handleDelete = async () => {
+    try {
+      const res = await fetch(`/api/requests/${id}`, {
+        method: "DELETE",
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        toast.error(data?.error ?? t("toast.delete.error"));
+        return;
+      }
+
+      toast.success(t("toast.delete.success"));
+
+      setRequests((prev) => prev.filter((request) => request.id !== id));
+    } catch (error) {
+      console.error(error);
+      toast.error(t("toast.delete.error"));
+    }
+  };
+
   return (
     <motion.div
       layout="position"
@@ -48,7 +78,7 @@ const ClientRow = ({
       }}
       className="mb-3 last:mb-0"
     >
-      <div className="border-border-secondary bg-secondary-bg hover:border-primary/20 group hover:bg-secondary/30 relative grid min-h-16 grid-cols-[90px_1.5fr_1.5fr_2fr_1.75fr_140px_120px] items-center rounded-xl border px-5 py-3 shadow-sm transition-all duration-200 hover:shadow-md">
+      <div className="border-border-secondary bg-secondary-bg hover:border-primary/20 group hover:bg-secondary/30 relative grid min-h-16 grid-cols-[90px_1.5fr_1.5fr_2fr_1.75fr_140px_120px_100px] items-center rounded-xl border px-5 py-3 shadow-sm transition-all duration-200 hover:shadow-md">
         {/* ID */}
         <div className="text-muted-foreground font-mono text-sm">#{id}</div>
 
@@ -78,9 +108,9 @@ const ClientRow = ({
         </div>
 
         {/* Date */}
-        {/* <div className="text-muted-foreground text-center text-sm">
-          {formatDate(date)}
-        </div> */}
+        <div className="text-muted-foreground text-center text-sm">
+          {formatDate(date, locale)}
+        </div>
 
         {/* Actions */}
         <div className="flex justify-center">
@@ -88,11 +118,11 @@ const ClientRow = ({
             intent="destructive"
             variant="soft"
             duration={800}
-            onComplete={onDelete}
+            onComplete={handleDelete}
             leftSection={<Trash className="size-4" />}
             className="group border-destructive/30 text-destructive hover:border-destructive/50 hover:bg-destructive/10"
           >
-            Delete
+            {t("actions.delete")}
           </CustomHoldButton>
         </div>
 

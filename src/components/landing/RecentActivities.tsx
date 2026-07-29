@@ -1,90 +1,105 @@
 "use client";
 
+import { useEffect, useMemo, useState } from "react";
 import { useTranslations } from "next-intl";
+
 import ActivityItem from "./ActivityItem";
 
-interface RecentActivitiesProps {}
+interface ApiRequest {
+  id: number;
+  full_name: string;
+  phone: string;
+  created: string;
+}
 
-type RequestItem = {
-  profileImage?: string;
-  userName: string;
-  RequestType: string;
-  status: string;
-  date: string;
-  time: string;
-};
+interface ApiResume {
+  id: number;
+  full_name: string;
+  phone: string;
+  created: string;
+}
 
-const requests: RequestItem[] = [
-  {
-    userName: "John Carter",
-    RequestType: "client",
-    status: "new",
-    date: "Jun 21",
-    time: "01:38 PM",
-  },
-  {
-    userName: "Sara Adams",
-    RequestType: "job",
-    status: "new",
-    date: "Jun 21",
-    time: "12:18 PM",
-  },
-  {
-    userName: "Parsian Trading Co.",
-    RequestType: "client",
-    status: "inProgress",
-    date: "Jun 21",
-    time: "09:18 AM",
-  },
-  {
-    userName: "Nora Hill",
-    RequestType: "client",
-    status: "done",
-    date: "Jun 20",
-    time: "02:18 PM",
-  },
-  {
-    userName: "Michael Reyes",
-    RequestType: "job",
-    status: "inProgress",
-    date: "Jun 20",
-    time: "08:18 AM",
-  },
-];
+interface Activity {
+  id: number;
+  type: "request" | "resume";
+  fullName: string;
+  phone: string;
+  created: string;
+}
 
-const RecentActivities = ({}: RecentActivitiesProps) => {
+const RecentActivities = () => {
   const t = useTranslations("Dashboard.recentActivities");
 
+  const [requests, setRequests] = useState<ApiRequest[]>([]);
+  const [resumes, setResumes] = useState<ApiResume[]>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [requestRes, resumeRes] = await Promise.all([
+          fetch("/api/requests", { cache: "no-store" }),
+          fetch("/api/resumes", { cache: "no-store" }),
+        ]);
+
+        if (requestRes.ok) {
+          setRequests(await requestRes.json());
+        }
+
+        if (resumeRes.ok) {
+          setResumes(await resumeRes.json());
+        }
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const activities = useMemo<Activity[]>(() => {
+    const requestItems: Activity[] = requests.map((item) => ({
+      id: item.id,
+      type: "request",
+      fullName: item.full_name,
+      phone: item.phone,
+      created: item.created,
+    }));
+
+    const resumeItems: Activity[] = resumes.map((item) => ({
+      id: item.id,
+      type: "resume",
+      fullName: item.full_name,
+      phone: item.phone,
+      created: item.created,
+    }));
+
+    return [...requestItems, ...resumeItems]
+      .sort(
+        (a, b) => new Date(b.created).getTime() - new Date(a.created).getTime(),
+      )
+      .slice(0, 5);
+  }, [requests, resumes]);
+
   return (
-    <div className=" bg-secondary-bg border-border-secondary flex min-h-125 w-full flex-col rounded-xl border">
-      <div className="border-b-border-secondary flex items-center justify-between border-b p-5">
-        <div>
-          <div className="text-lg">{t("title")}</div>
+    <div className="bg-secondary-bg border-border-secondary flex min-h-125 w-full flex-col rounded-xl border">
+      <div className="border-b-border-secondary border-b p-5">
+        <div className="text-lg">{t("title")}</div>
 
-          <div className="text-muted-foreground text-base">
-            {t("description")}
-          </div>
+        <div className="text-muted-foreground text-base">
+          {t("description")}
         </div>
-
-        {/* <button className="border-primary bg-secondary text-primary cursor-pointer rounded-md border px-4 py-1.5 text-sm">
-          {t("refresh")}
-        </button> */}
-
       </div>
 
       <div className="flex flex-col gap-y-2.5 px-5 pt-2.5 pb-4">
-        {requests.map(
-          ({ date, RequestType, status, time, userName }, index) => (
-            <ActivityItem
-              key={index}
-              userName={userName}
-              RequestType={t(`requestTypes.${RequestType}`)}
-              status={t(`status.${status}`)}
-              Date={date}
-              time={time}
-            />
-          ),
-        )}
+        {activities.map((item) => (
+          <ActivityItem
+            key={`${item.type}-${item.id}`}
+            id={item.id}
+            userName={item.fullName}
+            phone={item.phone}
+            created={item.created}
+          />
+        ))}
       </div>
     </div>
   );
