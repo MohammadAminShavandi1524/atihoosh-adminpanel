@@ -1,14 +1,17 @@
 "use client";
 
 import { useState } from "react";
-import { Edit, Tag, Trash, ChevronDown } from "lucide-react";
-import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
+import { ChevronDown, Edit, Tag, Trash } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
+
 import { ChildBlog } from "@/data/admins";
 import ChildBlogRow from "./ChildBlogRow";
+
 import { CustomButton, CustomHoldButton } from "../ui/custom-button";
 import { customButtonVariants } from "../ui/custom-button/custom-button-variants";
+
 import { cn, formatDate } from "@/lib/utils";
 
 interface BlogRowProps {
@@ -17,8 +20,7 @@ interface BlogRowProps {
   tags: string[];
   title: string;
   date: string;
-  children: ChildBlog[];
-  onDelete: () => void;
+  children?: ChildBlog[];
 }
 
 const BlogRow = ({
@@ -27,8 +29,7 @@ const BlogRow = ({
   id,
   tags,
   title,
-  onDelete,
-  children,
+  children = [],
 }: BlogRowProps) => {
   const locale = useLocale();
   const t = useTranslations("blogs.actions");
@@ -107,7 +108,7 @@ const BlogRow = ({
             intent="destructive"
             variant="soft"
             duration={1200}
-            onComplete={onDelete}
+            onComplete={() => {}}
             className="group"
             leftSection={<Trash className="size-4" />}
           >
@@ -133,7 +134,7 @@ const BlogRow = ({
           )}
         </div>
 
-        <div className="bg-primary absolute top-2 bottom-2 left-0 w-1 rounded-r-full opacity-0 transition-opacity group-hover:opacity-100" />
+        <div className="bg-primary absolute top-2 bottom-2 left-0 w-1 rounded-r-full opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
       </div>
 
       <AnimatePresence>
