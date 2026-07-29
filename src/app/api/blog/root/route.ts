@@ -4,7 +4,7 @@ import { NextRequest, NextResponse } from "next/server";
 export async function GET() {
   try {
     const data = await serverApi("/blog/get_blogs/root/");
-
+    console.log("ROOT BLOGS:", data);
     return NextResponse.json(data);
   } catch (error: any) {
     return NextResponse.json(

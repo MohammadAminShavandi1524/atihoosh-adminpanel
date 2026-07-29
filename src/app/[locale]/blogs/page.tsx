@@ -6,14 +6,21 @@ import CategoryRow from "@/components/blogs/CategoryRow";
 import Header from "@/components/blogs/Header";
 import { Tab } from "@/components/blogs/Tab";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { blogs, categories } from "@/data/admins";
+import { blogs } from "@/data/admins";
 import { BlogsTab } from "@/types/objectTypes";
 import { ArrowDownUp, Search, SearchX } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import DeleteModal from "@/components/blogs/DeleteModal";
 import { useLocale, useTranslations } from "next-intl";
 import HeaderLayout from "@/components/layout/HeaderLayout";
+import { toast } from "sonner";
+
+interface Category {
+  id: number;
+  name: string;
+  lang: "fa" | "en";
+}
 
 interface pageProps {}
 
@@ -29,16 +36,7 @@ const page = ({}: pageProps) => {
     type: "blog" | "category";
   } | null>(null);
 
-  const handleDelete = () => {
-    if (!selectedItem) return;
-
-    // اینجا بعداً API حذف رو صدا می‌زنی
-
-    setIsDeleteModalOpen(false);
-    setSelectedItem(null);
-  };
-
-  const [current, setCurrent] = useState<BlogsTab>("Blogs");
+  const [current, setCurrent] = useState<BlogsTab>("categories");
 
   const tabOrder: Record<BlogsTab, number> = {
     categories: 0,
@@ -63,6 +61,63 @@ const page = ({}: pageProps) => {
 
   // ?
 
+  // *** categories
+
+  const [categories, setCategories] = useState<Category[]>([]);
+
+  const getCategories = async () => {
+    try {
+      const [faRes, enRes] = await Promise.all([
+        fetch("/api/blog/category/fa"),
+        fetch("/api/blog/category/en"),
+      ]);
+
+      const faData = await faRes.json();
+      const enData = await enRes.json();
+
+      const merged = [
+        ...faData.map((item: any) => ({
+          ...item,
+          lang: "fa" as const,
+        })),
+        ...enData.map((item: any) => ({
+          ...item,
+          lang: "en" as const,
+        })),
+      ].sort((a, b) => a.id - b.id);
+
+      setCategories(merged);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    getCategories();
+  }, []);
+
+  const handleDelete = async (id: number) => {
+    try {
+      const res = await fetch(`/api/blog/category/delete/${id}`, {
+        method: "DELETE",
+      });
+
+      if (!res.ok) {
+        throw new Error("Delete failed");
+      }
+
+      toast.success(t("toast.deleteSuccess"));
+
+      getCategories();
+    } catch (error) {
+      console.error(error);
+
+      toast.error(t("toast.deleteError"));
+    }
+  };
+
+  // ****
+
   const renderSection = () => {
     switch (current) {
       case "categories":
@@ -70,11 +125,14 @@ const page = ({}: pageProps) => {
           <section className="bg-secondary-bg relative flex h-full flex-col overflow-hidden rounded-xl">
             <div className="border-b-border-secondary bg-tertiary border-b px-10">
               {/* header */}
-              <div className="text-muted-foreground grid h-14 grid-cols-4 items-center text-sm font-semibold tracking-wider uppercase">
-                <div className="ltr:ps-0.5">{t("categories.table.id")}</div>
+              <div className="text-muted-foreground grid h-14 grid-cols-4 items-center text-sm font-semibold tracking-wider">
+                <div>{t("categories.table.id")}</div>
+
                 <div>{t("categories.table.name")}</div>
-                <div className="">{t("categories.table.date")}</div>
-                <div className="">{t("categories.table.actions")}</div>
+
+                <div>{t("categories.table.language")}</div>
+
+                <div>{t("categories.table.actions")}</div>
               </div>
             </div>
 
@@ -85,28 +143,15 @@ const page = ({}: pageProps) => {
                 className="h-full w-full"
               >
                 <div className="pe-4.5">
-                  {categories.map(({ date, id, label }, index) => {
-                    return (
-                      <CategoryRow
-                        key={index}
-                        id={id}
-                        label={label}
-                        date={date}
-
-                        onDelete={() => {
-                          // console.log("clicked");
-
-                          setSelectedItem({
-                            id,
-                            name: label,
-                            type: "category",
-                          });
-
-                          setIsDeleteModalOpen(true);
-                        }}
-                      />
-                    );
-                  })}
+                  {categories.map((item) => (
+                    <CategoryRow
+                      key={`${item.lang}-${item.id}`}
+                      id={String(item.id)}
+                      label={item.name}
+                      lang={item.lang}
+                      onDelete={() => handleDelete(item.id)}
+                    />
+                  ))}
                 </div>
               </ScrollArea>
             </div>
@@ -281,19 +326,6 @@ const page = ({}: pageProps) => {
           {renderSection()}
         </AnimatedSections>
       </div>
-      <DeleteModal
-        open={isDeleteModalOpen}
-        onOpenChange={setIsDeleteModalOpen}
-        title={
-          selectedItem?.type === "blog"
-            ? t("deleteModal.deleteBlog")
-            : t("deleteModal.deleteCategory")
-        }
-        description={t("deleteModal.description", {
-          name: selectedItem?.name ?? "",
-        })}
-        onConfirm={handleDelete}
-      />
     </div>
   );
 };

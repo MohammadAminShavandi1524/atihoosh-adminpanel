@@ -22,7 +22,7 @@ const Page = ({}: PageProps) => {
   const t = useTranslations("addBlog");
   const t_header = useTranslations("addBlog.header");
 
-  const [current, setCurrent] = useState<BlogTab>("parentBlog");
+  const [current, setCurrent] = useState<BlogTab>("category");
 
   const tabOrder: Record<BlogTab, number> = {
     category: 0,

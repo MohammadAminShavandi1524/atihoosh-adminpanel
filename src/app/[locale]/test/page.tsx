@@ -1,78 +1,40 @@
 "use client";
 
-import HeaderLayout from "@/components/layout/HeaderLayout";
-import { CustomButton, CustomHoldButton } from "@/components/ui/custom-button";
-
-import { Trash, Save, Check, ArrowRight } from "lucide-react";
 import { useEffect, useState } from "react";
 
-import { toast } from "sonner";
+import HeaderLayout from "@/components/layout/HeaderLayout";
 
 export default function TestPage() {
-  const [user, setUser] = useState(null);
-  // console.log("🚀 ~ TestPage ~ user:", user)
+  const [rootBlogs, setRootBlogs] = useState<any[]>([]);
+  console.log("🚀 ~ TestPage ~ rootBlogs:", rootBlogs)
 
   useEffect(() => {
-    async function getUser() {
-      const res = await fetch("/api/me");
-      const data = await res.json();
+    const fetchRootBlogs = async () => {
+      try {
+        const res = await fetch("/api/blog/root", {
+          cache: "no-store",
+        });
 
-      setUser(data);
-    }
+        const data = await res.json();
 
-    getUser();
+        console.log("Root Blogs:", data);
+
+        setRootBlogs(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchRootBlogs();
   }, []);
+
   return (
     <div className="flex min-h-screen flex-col gap-8 p-10">
-      <HeaderLayout title="test page" descrption="" />
+      <HeaderLayout title="Root Blogs Test" descrption="" />
 
-      {/* <CustomHoldButton
-        intent="destructive"
-        variant="soft"
-        duration={1500}
-        onComplete={() => {
-          toast.error("Deleted");
-        }}
-        className="w-fit"
-      >
-        Delete User
-      </CustomHoldButton>
-
-      <CustomHoldButton
-        intent="primary"
-        variant="solid"
-        duration={1500}
-        onComplete={() => {
-          toast.success("Saved");
-        }}
-        className="w-fit"
-      >
-        Save
-      </CustomHoldButton>
-
-      <CustomHoldButton
-        intent="success"
-        variant="soft"
-        duration={1500}
-        onComplete={() => {
-          toast.success("Confirmed");
-        }}
-        className="w-fit"
-      >
-        Confirm
-      </CustomHoldButton>
-
-      <CustomHoldButton
-        intent="warning"
-        variant="soft"
-        duration={1500}
-        onComplete={() => {
-          toast.info("Warning");
-        }}
-        className="w-fit"
-      >
-        Warning
-      </CustomHoldButton> */}
+      <pre className="bg-secondary-bg overflow-auto rounded-xl p-6 text-sm">
+        {JSON.stringify(rootBlogs, null, 2)}
+      </pre>
     </div>
   );
 }

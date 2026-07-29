@@ -250,7 +250,7 @@
       "table": {
         "id": "ID",
         "name": "Name",
-        "date": "Date",
+        "language": "Language",
         "actions": "Actions"
       }
     },
@@ -276,10 +276,40 @@
       "deleteCategory": "Delete Category",
       "description": "Are you sure you want to delete \"{name}\"?"
     },
+    "toast": {
+      "deleteSuccess": "Category deleted successfully.",
+      "deleteError": "Failed to delete category."
+    },
     "actions": {
       "edit": "Edit",
       "delete": "Delete",
       "more": "More"
+    }
+  },
+
+  "editCategory": {
+    "header": {
+      "title": "Edit Category",
+      "description": "Update the category name."
+    },
+    "form": {
+      "name": {
+        "label": "Category Name",
+        "placeholder": "Enter category name"
+      },
+      "validation": {
+        "required": "Category name is required.",
+        "max": "Category name cannot exceed 30 characters."
+      },
+      "actions": {
+        "saveChanges": "Save Changes",
+        "saving": "Saving..."
+      }
+    },
+    "toast": {
+      "success": "Category updated successfully.",
+      "error": "Failed to update category.",
+      "loadError": "Failed to load category."
     }
   },
 

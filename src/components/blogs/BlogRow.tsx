@@ -4,13 +4,12 @@ import { useState } from "react";
 import { Edit, Tag, Trash, ChevronDown } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
-import { formatDate } from "./CategoryRow";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChildBlog } from "@/data/admins";
 import ChildBlogRow from "./ChildBlogRow";
 import { CustomButton, CustomHoldButton } from "../ui/custom-button";
 import { customButtonVariants } from "../ui/custom-button/custom-button-variants";
-import { cn } from "@/lib/utils";
+import { cn, formatDate } from "@/lib/utils";
 
 interface BlogRowProps {
   id: string;
@@ -83,7 +82,9 @@ const BlogRow = ({
         </div>
 
         {/* Date */}
-        <div className="text-muted-foreground text-sm">{formatDate(date)}</div>
+        <div className="text-muted-foreground text-sm">
+          {formatDate(date, locale)}
+        </div>
 
         {/* Actions */}
         <div className="flex gap-2">
