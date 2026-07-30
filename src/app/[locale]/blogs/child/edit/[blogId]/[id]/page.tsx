@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 import { useLocale, useTranslations } from "next-intl";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Controller, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 
 import HeaderLayout from "@/components/layout/HeaderLayout";
 import { FormField } from "@/components/FormField";
@@ -16,59 +16,21 @@ import { CustomButton } from "@/components/ui/custom-button";
 
 import { cn } from "@/lib/utils";
 
-import { tags } from "@/data/admins";
-
-import { CategorySelect } from "@/components/addBlog/CategorySelect";
-import { TagSelector } from "@/components/addBlog/TagSelector";
-
 interface PageProps {
   params: Promise<{
     id: string;
+    blogId: string;
   }>;
 }
 
-interface ParentBlog {
-  id: number;
-  title: string;
-  description: string;
-  image: string;
-
-  category: {
-    id: number;
-    name: string;
-  };
-
-  root_blog: number;
-
-  tags: string[];
-
-  lang: string;
-}
-
-type BlogLang = "fa" | "en";
-
-interface Category {
-  id: number;
-  name: string;
-}
-
 const Page = ({ params }: PageProps) => {
-  const t = useTranslations("editParentBlog");
+  const t = useTranslations("editChildBlog");
 
   const locale = useLocale();
 
   const router = useRouter();
 
   const [loading, setLoading] = useState(true);
-
-  const [categories, setCategories] = useState<Category[]>([]);
-
-  const [blogLang, setBlogLang] = useState<BlogLang>("fa");
-
-  const [parentMeta, setParentMeta] = useState<{
-    root_blog: string;
-    lang: BlogLang;
-  } | null>(null);
 
   const schema = z.object({
     title: z
@@ -77,25 +39,18 @@ const Page = ({ params }: PageProps) => {
       .min(1, t("form.validation.titleRequired"))
       .max(100, t("form.validation.titleMax")),
 
-    description: z.string().min(1, t("form.validation.descriptionRequired")),
+    description: z
+      .string()
+      .trim()
+      .min(1, t("form.validation.descriptionRequired")),
 
-    image: z.string(),
-
-    category: z.string().min(1, t("form.validation.categoryRequired")),
-
-    tags: z.array(
-      z.object({
-        id: z.string(),
-        label: z.string(),
-      }),
-    ),
+    image: z.string().optional(),
   });
 
   type FormValues = z.infer<typeof schema>;
 
   const {
     register,
-    control,
     reset,
     handleSubmit,
     formState: { errors, isSubmitting },
@@ -106,70 +61,39 @@ const Page = ({ params }: PageProps) => {
       title: "",
       description: "",
       image: "",
-      category: "",
-      tags: [],
     },
   });
 
   useEffect(() => {
-    const fetchBlog = async () => {
-      const { id } = await params;
+    const fetchChildBlog = async () => {
+      const { id, blogId } = await params;
 
       try {
-        const res = await fetch(`/api/blog/parent/${id}`, {
+        const res = await fetch(`/api/blog/child/${blogId}`, {
           cache: "no-store",
         });
+
+        const data = await res.json();
 
         if (!res.ok) {
-          throw new Error();
+          throw new Error(JSON.stringify(data));
         }
 
-        const data: ParentBlog = await res.json();
+        const blog = Array.isArray(data)
+          ? data.find((item) => String(item.id) === String(id))
+          : null;
 
-        const lang: BlogLang = data.lang === "en" ? "en" : "fa";
-
-        setBlogLang(lang);
-
-        setParentMeta({
-          root_blog: String(data.root_blog),
-          lang,
-        });
-
-        const categoryRes = await fetch(`/api/blog/category/${lang}`, {
-          cache: "no-store",
-        });
-
-        if (!categoryRes.ok) {
-          throw new Error();
+        if (!blog) {
+          throw new Error("Child blog not found");
         }
-
-        const categoryData: Category[] = await categoryRes.json();
-
-        setCategories(categoryData);
 
         reset({
-          title: data.title,
-
-          description: data.description ?? "",
-
-          image: data.image ?? "",
-
-          category: String(data.category.id),
-
-          tags:
-            data.tags?.map((tag) => {
-              const foundTag = tags[lang].find((item) => item.label === tag);
-
-              return (
-                foundTag ?? {
-                  id: tag,
-                  label: tag,
-                }
-              );
-            }) ?? [],
+          title: blog.title ?? "",
+          description: blog.description ?? "",
+          image: blog.image ?? "",
         });
       } catch (error) {
-        console.error(error);
+        console.error("FETCH CHILD BLOG ERROR =>", error);
 
         toast.error(t("toast.loadError"));
       } finally {
@@ -177,50 +101,33 @@ const Page = ({ params }: PageProps) => {
       }
     };
 
-    fetchBlog();
+    fetchChildBlog();
   }, [params, reset, t]);
 
   const onSubmit = async (data: FormValues) => {
     const { id } = await params;
 
-    if (!parentMeta) {
-      toast.error(t("toast.error"));
-      return;
-    }
-
     const payload = {
       title: data.title,
-
       description: data.description,
-
-      image: data.image,
-
-      tags: data.tags.map((item) => item.label),
-
-      root_blog: parentMeta.root_blog,
-
-      category: String(data.category),
-
-      lang: parentMeta.lang,
+      image: data.image?.trim() ? data.image : null,
     };
 
-    console.log("UPDATE BLOG PAYLOAD =>", payload);
+    console.log("UPDATE CHILD PAYLOAD =>", payload);
 
     try {
-      const res = await fetch(`/api/blog/parent/update/${id}`, {
+      const res = await fetch(`/api/blog/child/update/${id}`, {
         method: "PUT",
-
         headers: {
           "Content-Type": "application/json",
         },
-
         body: JSON.stringify(payload),
       });
 
       const result = await res.json();
 
       if (!res.ok) {
-        console.error("UPDATE ERROR =>", result);
+        console.error(result);
 
         toast.error(result?.error ?? t("toast.error"));
 
@@ -249,47 +156,6 @@ const Page = ({ params }: PageProps) => {
           onSubmit={handleSubmit(onSubmit)}
           className="bg-secondary-bg relative flex flex-1 flex-col gap-6 rounded-xl p-7"
         >
-          <Controller
-            control={control}
-            name="category"
-            render={({ field }) => (
-              <CategorySelect
-                label={t("form.category.label")}
-
-                options={categories.map((item) => ({
-                  label: item.name,
-                  value: String(item.id),
-                }))}
-
-                value={field.value}
-
-                onChange={field.onChange}
-
-                error={errors.category}
-              />
-            )}
-          />
-
-          <Controller
-            control={control}
-            name="tags"
-            render={({ field }) => (
-              <TagSelector
-                label={t("form.tags.label")}
-
-                options={tags[blogLang]}
-
-                lang={blogLang}
-
-                value={field.value}
-
-                onChange={field.onChange}
-
-                placeholder={t("form.tags.placeholder")}
-              />
-            )}
-          />
-
           <FormField
             varient="default"
             label={t("form.title.label")}
@@ -315,6 +181,7 @@ const Page = ({ params }: PageProps) => {
             register={register("description")}
             error={errors.description}
             as="textarea"
+            className="h-50"
           />
 
           <CustomButton
@@ -323,7 +190,7 @@ const Page = ({ params }: PageProps) => {
             variant="solid"
             disabled={loading || isSubmitting}
             className={cn(
-              "absolute right-7 bottom-7 h-12 px-5 font-semibold",
+              "absolute end-7 bottom-7 h-12 px-5 font-semibold",
               (loading || isSubmitting) && "cursor-not-allowed opacity-60",
             )}
           >

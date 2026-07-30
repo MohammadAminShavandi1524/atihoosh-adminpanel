@@ -237,75 +237,185 @@
     }
   },
 
- "blogs": {
-  "header": {
-    "title": "Blogs",
-    "description": "Manage blog posts and categories from one place."
-  },
-  "tabs": {
-    "categories": "Categories",
-    "blogs": "Blogs"
-  },
-  "categories": {
-    "table": {
-      "id": "ID",
-      "name": "Name",
-      "language": "Language",
-      "actions": "Actions"
-    }
-  },
-  "blogsTable": {
-    "searchPlaceholder": "Search blog title...",
-    "newestFirst": "Newest First",
-    "oldestFirst": "Oldest First",
-    "table": {
-      "id": "ID",
-      "title": "Title",
-      "category": "Category",
-      "tags": "Tags",
-      "date": "Date",
-      "actions": "Actions"
+  "blogs": {
+    "header": {
+      "title": "Blogs",
+      "description": "Manage blog posts and categories from one place."
     },
-    "empty": {
-      "title": "No blogs found",
-      "description": "Try another search keyword."
+    "tabs": {
+      "categories": "Categories",
+      "blogs": "Blogs"
+    },
+    "categories": {
+      "table": {
+        "id": "ID",
+        "name": "Name",
+        "language": "Language",
+        "actions": "Actions"
+      }
+    },
+    "blogsTable": {
+      "searchPlaceholder": "Search blog title...",
+      "newestFirst": "Newest First",
+      "oldestFirst": "Oldest First",
+      "table": {
+        "id": "ID",
+        "title": "Title",
+        "category": "Category",
+        "tags": "Tags",
+        "date": "Date",
+        "actions": "Actions"
+      },
+      "empty": {
+        "title": "No blogs found",
+        "description": "Try another search keyword."
+      }
+    },
+    "deleteModal": {
+      "deleteBlog": "Delete Blog",
+      "deleteCategory": "Delete Category",
+      "description": "Are you sure you want to delete \"{name}\"?"
+    },
+    "toast": {
+      "deleteSuccess": "Deleted successfully.",
+      "deleteError": "Failed to delete.",
+      "rootBlogDeleteSuccess": "Root blog deleted successfully.",
+      "rootBlogDeleteError": "Failed to delete root blog.",
+      "parentBlogDeleteSuccess": "Parent blog deleted successfully.",
+      "parentBlogDeleteError": "Failed to delete parent blog.",
+      "childBlogDeleteSuccess": "Child blog deleted successfully.",
+      "childBlogDeleteError": "Failed to delete child blog.",
+
+      "blogPublishedSuccess": "Blog published successfully.",
+      "blogUnpublishedSuccess": "Blog unpublished successfully.",
+      "blogPublishError": "Failed to change blog publish status."
+    },
+    "actions": {
+      "edit": "Edit",
+      "delete": "Delete",
+      "more": "More",
+      "publish": "Publish",
+      "unpublish": "Unpublish",
+      "downloadImage": "Download Image"
+    },
+    "hierarchy": {
+      "published": "Published",
+      "draft": "Draft",
+      "category": "Category",
+      "id": "ID",
+      "imageAttached": "Image attached",
+      "noChildBlogs": "No child blogs available.",
+      "rootBlog": "Root Blog",
+      "parentBlog": "Parent Blog",
+      "childBlog": "Child Blog"
     }
   },
-  "deleteModal": {
-    "deleteBlog": "Delete Blog",
-    "deleteCategory": "Delete Category",
-    "description": "Are you sure you want to delete \"{name}\"?"
+
+  "editRootBlog": {
+    "header": {
+      "title": "Edit Root Blog",
+      "description": "Update the root blog title."
+    },
+    "form": {
+      "title": {
+        "label": "Blog Title",
+        "placeholder": "Enter blog title"
+      },
+      "validation": {
+        "required": "Blog title is required.",
+        "max": "Blog title cannot exceed 100 characters."
+      },
+      "actions": {
+        "saveChanges": "Save Changes",
+        "saving": "Saving..."
+      }
+    },
+    "toast": {
+      "success": "Root blog updated successfully.",
+      "error": "Failed to update root blog.",
+      "loadError": "Failed to load root blog."
+    }
   },
- "toast": {
-  "deleteSuccess": "Deleted successfully.",
-  "deleteError": "Failed to delete.",
-  "rootBlogDeleteSuccess": "Root blog deleted successfully.",
-  "rootBlogDeleteError": "Failed to delete root blog.",
-  "parentBlogDeleteSuccess": "Parent blog deleted successfully.",
-  "parentBlogDeleteError": "Failed to delete parent blog.",
-  "childBlogDeleteSuccess": "Child blog deleted successfully.",
-  "childBlogDeleteError": "Failed to delete child blog."
-},
-  "actions": {
-    "edit": "Edit",
-    "delete": "Delete",
-    "more": "More",
-    "publish": "Publish",
-    "unpublish": "Unpublish",
-    "downloadImage": "Download Image"
+
+  "editParentBlog": {
+    "header": {
+      "title": "Edit Parent Blog",
+      "description": "Update the parent blog information."
+    },
+    "form": {
+      "title": {
+        "label": "Title",
+        "placeholder": "Enter blog title"
+      },
+      "description": {
+        "label": "Description",
+        "placeholder": "Enter blog description"
+      },
+      "image": {
+        "label": "Featured Image",
+        "placeholder": "Enter image URL"
+      },
+      "category": {
+        "label": "Category"
+      },
+      "tags": {
+        "label": "Tags",
+        "placeholder": "Select blog tags"
+      },
+      "validation": {
+        "titleRequired": "Blog title is required.",
+        "titleMax": "Blog title cannot exceed 100 characters.",
+        "descriptionRequired": "Blog description is required.",
+        "imageRequired": "Blog image is required.",
+        "categoryRequired": "Category is required.",
+        "tagsRequired": "At least one tag is required."
+      },
+      "actions": {
+        "saveChanges": "Save Changes",
+        "saving": "Saving..."
+      }
+    },
+    "toast": {
+      "success": "Parent blog updated successfully.",
+      "error": "Failed to update parent blog.",
+      "loadError": "Failed to load parent blog."
+    }
   },
-  "hierarchy": {
-    "published": "Published",
-    "draft": "Draft",
-    "category": "Category",
-    "id": "ID",
-    "imageAttached": "Image attached",
-    "noChildBlogs": "No child blogs available.",
-    "rootBlog": "Root Blog",
-    "parentBlog": "Parent Blog",
-    "childBlog": "Child Blog"
-  }
-},
+
+  "editChildBlog": {
+    "header": {
+      "title": "Edit Child Blog",
+      "description": "Update the child blog information."
+    },
+    "form": {
+      "title": {
+        "label": "Title",
+        "placeholder": "Enter blog title"
+      },
+      "description": {
+        "label": "Description",
+        "placeholder": "Enter blog description"
+      },
+      "image": {
+        "label": "Image",
+        "placeholder": "Enter image URL (optional)"
+      },
+      "validation": {
+        "titleRequired": "Blog title is required.",
+        "titleMax": "Blog title cannot exceed 100 characters.",
+        "descriptionRequired": "Blog description is required."
+      },
+      "actions": {
+        "saveChanges": "Save Changes",
+        "saving": "Saving..."
+      }
+    },
+    "toast": {
+      "success": "Child blog updated successfully.",
+      "error": "Failed to update child blog.",
+      "loadError": "Failed to load child blog."
+    }
+  },
 
   "editCategory": {
     "header": {

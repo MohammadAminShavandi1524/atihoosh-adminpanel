@@ -16,7 +16,7 @@ interface PageProps {}
 const Page = ({}: PageProps) => {
   const t = useTranslations("addBlog");
   const t_header = useTranslations("addBlog.header");
-  const [current, setCurrent] = useState<BlogTab>("category");
+  const [current, setCurrent] = useState<BlogTab>("parentBlog");
 
   const tabOrder: Record<BlogTab, number> = {
     category: 0,

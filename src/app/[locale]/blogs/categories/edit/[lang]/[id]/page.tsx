@@ -148,7 +148,7 @@ const Page = ({ params }: PageProps) => {
             variant="solid"
             disabled={loading || isSubmitting}
             className={cn(
-              "absolute right-7 bottom-7 h-12 px-5 font-semibold",
+              "absolute end-7 bottom-7 h-12 px-5 font-semibold",
               (loading || isSubmitting) && "cursor-not-allowed opacity-60",
             )}
           >

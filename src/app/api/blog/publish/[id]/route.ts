@@ -7,17 +7,17 @@ interface Params {
   }>;
 }
 
-export async function GET(req: NextRequest, { params }: Params) {
+export async function PATCH(req: NextRequest, { params }: Params) {
   try {
     const { id } = await params;
 
-    const data = await serverApi(`/blog/get_blog/root/${id}/`, {
-      method: "GET",
+    const data = await serverApi(`/blog/publish_blog/${id}/`, {
+      method: "PATCH",
     });
 
     return NextResponse.json(data);
   } catch (error: any) {
-    console.error("GET ROOT BLOG ERROR:", {
+    console.error("PUBLISH ERROR:", {
       status: error.status,
       body: error.body,
     });

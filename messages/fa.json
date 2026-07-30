@@ -285,7 +285,11 @@
       "parentBlogDeleteSuccess": "بلاگ والد با موفقیت حذف شد.",
       "parentBlogDeleteError": "حذف بلاگ والد با خطا مواجه شد.",
       "childBlogDeleteSuccess": "بلاگ فرزند با موفقیت حذف شد.",
-      "childBlogDeleteError": "حذف بلاگ فرزند با خطا مواجه شد."
+      "childBlogDeleteError": "حذف بلاگ فرزند با خطا مواجه شد.",
+
+      "blogPublishedSuccess": "مقاله با موفقیت منتشر شد.",
+      "blogUnpublishedSuccess": "انتشار مقاله با موفقیت لغو شد.",
+      "blogPublishError": "خطا در تغییر وضعیت انتشار مقاله."
     },
     "actions": {
       "edit": "ویرایش",
@@ -305,6 +309,112 @@
       "rootBlog": "بلاگ اصلی",
       "parentBlog": "بلاگ والد",
       "childBlog": "بلاگ فرزند"
+    }
+  },
+
+  "editRootBlog": {
+    "header": {
+      "title": "ویرایش بلاگ اصلی",
+      "description": "عنوان بلاگ اصلی را بروزرسانی کنید."
+    },
+    "form": {
+      "title": {
+        "label": "عنوان بلاگ",
+        "placeholder": "عنوان بلاگ را وارد کنید"
+      },
+      "validation": {
+        "required": "عنوان بلاگ الزامی است.",
+        "max": "عنوان بلاگ نمی‌تواند بیشتر از ۱۰۰ کاراکتر باشد."
+      },
+      "actions": {
+        "saveChanges": "ذخیره تغییرات",
+        "saving": "در حال ذخیره..."
+      }
+    },
+    "toast": {
+      "success": "بلاگ اصلی با موفقیت بروزرسانی شد.",
+      "error": "بروزرسانی بلاگ اصلی ناموفق بود.",
+      "loadError": "دریافت اطلاعات بلاگ اصلی ناموفق بود."
+    }
+  },
+
+  "editParentBlog": {
+    "header": {
+      "title": "ویرایش مقاله والد",
+      "description": "اطلاعات مقاله والد را به‌روزرسانی کنید."
+    },
+    "form": {
+      "title": {
+        "label": "عنوان",
+        "placeholder": "عنوان مقاله را وارد کنید"
+      },
+      "description": {
+        "label": "توضیحات",
+        "placeholder": "توضیحات مقاله را وارد کنید"
+      },
+      "image": {
+        "label": "تصویر شاخص",
+        "placeholder": "آدرس تصویر را وارد کنید"
+      },
+      "category": {
+        "label": "دسته‌بندی"
+      },
+      "tags": {
+        "label": "برچسب‌ها",
+        "placeholder": "برچسب‌های مقاله را انتخاب کنید"
+      },
+      "validation": {
+        "titleRequired": "عنوان مقاله الزامی است.",
+        "titleMax": "عنوان مقاله نمی‌تواند بیشتر از ۱۰۰ کاراکتر باشد.",
+        "descriptionRequired": "توضیحات مقاله الزامی است.",
+        "imageRequired": "تصویر مقاله الزامی است.",
+        "categoryRequired": "انتخاب دسته‌بندی الزامی است.",
+        "tagsRequired": "حداقل یک برچسب انتخاب کنید."
+      },
+      "actions": {
+        "saveChanges": "ذخیره تغییرات",
+        "saving": "در حال ذخیره..."
+      }
+    },
+    "toast": {
+      "success": "مقاله والد با موفقیت بروزرسانی شد.",
+      "error": "بروزرسانی مقاله والد ناموفق بود.",
+      "loadError": "دریافت اطلاعات مقاله والد ناموفق بود."
+    }
+  },
+
+  "editChildBlog": {
+    "header": {
+      "title": "ویرایش مقاله فرزند",
+      "description": "اطلاعات مقاله فرزند را به‌روزرسانی کنید."
+    },
+    "form": {
+      "title": {
+        "label": "عنوان",
+        "placeholder": "عنوان مقاله را وارد کنید"
+      },
+      "description": {
+        "label": "توضیحات",
+        "placeholder": "توضیحات مقاله را وارد کنید"
+      },
+      "image": {
+        "label": "تصویر",
+        "placeholder": "آدرس تصویر را وارد کنید (اختیاری)"
+      },
+      "validation": {
+        "titleRequired": "عنوان مقاله الزامی است.",
+        "titleMax": "عنوان مقاله نمی‌تواند بیشتر از ۱۰۰ کاراکتر باشد.",
+        "descriptionRequired": "توضیحات مقاله الزامی است."
+      },
+      "actions": {
+        "saveChanges": "ذخیره تغییرات",
+        "saving": "در حال ذخیره..."
+      }
+    },
+    "toast": {
+      "success": "مقاله فرزند با موفقیت بروزرسانی شد.",
+      "error": "بروزرسانی مقاله فرزند ناموفق بود.",
+      "loadError": "دریافت اطلاعات مقاله فرزند ناموفق بود."
     }
   },
 

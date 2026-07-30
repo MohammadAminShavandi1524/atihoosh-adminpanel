@@ -26,7 +26,7 @@ const SubmitButton = ({
       variant="solid"
       disabled={disabled}
       className={cn(
-        "absolute right-7 bottom-7 h-12 px-5 font-semibold",
+        "absolute end-7 bottom-7 h-12 px-5 font-semibold",
         disabled && "cursor-not-allowed opacity-60",
         className,
       )}

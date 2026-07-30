@@ -11,7 +11,7 @@ export async function DELETE(req: NextRequest, { params }: Params) {
   try {
     const { id } = await params;
 
-    const data = await serverApi(`/delete_blog/parent/${id}/`, {
+    const data = await serverApi(`/blog/delete_blog/parent/${id}/`, {
       method: "DELETE",
     });
 

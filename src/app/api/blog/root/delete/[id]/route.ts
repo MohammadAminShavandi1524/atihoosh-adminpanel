@@ -13,7 +13,7 @@ export async function DELETE(req: NextRequest, { params }: Params) {
 
     console.log("DELETE ROOT:", id);
 
-    const data = await serverApi(`/delete_blog/root/${id}/`, {
+    const data = await serverApi(`/blog/delete_blog/root/${id}/`, {
       method: "DELETE",
     });
 

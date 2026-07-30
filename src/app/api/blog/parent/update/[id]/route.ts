@@ -7,17 +7,23 @@ interface Params {
   }>;
 }
 
-export async function GET(req: NextRequest, { params }: Params) {
+export async function PUT(req: NextRequest, { params }: Params) {
   try {
     const { id } = await params;
 
-    const data = await serverApi(`/blog/get_blog/root/${id}/`, {
-      method: "GET",
+    const body = await req.json();
+
+    const data = await serverApi(`/blog/update_blog/parent/${id}/`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
     });
 
     return NextResponse.json(data);
   } catch (error: any) {
-    console.error("GET ROOT BLOG ERROR:", {
+    console.error("UPDATE PARENT BLOG ERROR:", {
       status: error.status,
       body: error.body,
     });

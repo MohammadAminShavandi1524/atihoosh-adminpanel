@@ -44,7 +44,9 @@ const RootBlogRow = ({ blog, parents }: Props) => {
 
       toast.success(t("toast.rootBlogDeleteSuccess"));
 
-      router.refresh();
+      setTimeout(() => {
+        window.location.reload();
+      }, 1800);
     } catch {
       toast.error(t("toast.rootBlogDeleteError"));
     }

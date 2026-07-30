@@ -25,14 +25,16 @@ import { useRouter } from "next/navigation";
 interface Props {
   blog: ChildBlog;
   parentLang: string;
+  parentId: number;
 }
 
-const ChildBlogRow = ({ blog, parentLang }: Props) => {
+const ChildBlogRow = ({ blog, parentLang, parentId }: Props) => {
   const locale = useLocale();
   const t = useTranslations("blogs");
 
   const imageAvailable = Boolean(blog.image);
   const router = useRouter();
+
   const handleDelete = async () => {
     try {
       const res = await fetch(`/api/blog/child/delete/${blog.id}`, {
@@ -45,7 +47,9 @@ const ChildBlogRow = ({ blog, parentLang }: Props) => {
 
       toast.success(t("toast.childBlogDeleteSuccess"));
 
-      router.refresh();
+      setTimeout(() => {
+        window.location.reload();
+      }, 1800);
     } catch {
       toast.error(t("toast.childBlogDeleteError"));
     }
@@ -128,7 +132,7 @@ const ChildBlogRow = ({ blog, parentLang }: Props) => {
           <div className="flex shrink-0 items-center gap-2">
             {/* EDIT */}
             <Link
-              href={`/${locale}/blogs/child/edit/${blog.id}`}
+              href={`/${locale}/blogs/child/edit/${parentId}/${blog.id}`}
               className={cn(
                 customButtonVariants({
                   intent: "info",

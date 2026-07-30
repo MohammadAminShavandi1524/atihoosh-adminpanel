@@ -11,13 +11,13 @@ export async function GET(req: NextRequest, { params }: Params) {
   try {
     const { id } = await params;
 
-    const data = await serverApi(`/blog/get_blog/root/${id}/`, {
+    const data = await serverApi(`/blog/get_blog/parent/staff/${id}/`, {
       method: "GET",
     });
 
     return NextResponse.json(data);
   } catch (error: any) {
-    console.error("GET ROOT BLOG ERROR:", {
+    console.error("GET PARENT BLOG ERROR:", {
       status: error.status,
       body: error.body,
     });

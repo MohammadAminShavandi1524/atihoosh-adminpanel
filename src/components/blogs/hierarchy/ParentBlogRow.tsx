@@ -79,8 +79,6 @@ const ParentBlogRow = ({ blog, onDelete }: Props) => {
     setOpen((prev) => !prev);
   };
 
-  const router = useRouter();
-
   const handleDelete = async () => {
     try {
       const res = await fetch(`/api/blog/parent/delete/${blog.id}`, {
@@ -93,11 +91,39 @@ const ParentBlogRow = ({ blog, onDelete }: Props) => {
 
       toast.success(t("toast.parentBlogDeleteSuccess"));
 
-      router.refresh();
+      setTimeout(() => {
+        window.location.reload();
+      }, 1800);
     } catch {
       toast.error(t("toast.parentBlogDeleteError"));
     }
   };
+
+  const handlePublish = async () => {
+    try {
+      const res = await fetch(`/api/blog/publish/${blog.id}`, {
+        method: "PATCH",
+      });
+
+      if (!res.ok) {
+        throw new Error();
+      }
+
+      toast.success(
+        blog.published
+          ? t("toast.blogUnpublishedSuccess")
+          : t("toast.blogPublishedSuccess"),
+      );
+
+      setTimeout(() => {
+        window.location.reload();
+      }, 1200);
+    } catch {
+      toast.error(t("toast.blogPublishError"));
+    }
+  };
+
+  console.log(blog.id, blog.published);
 
   return (
     <motion.div layout>
@@ -210,7 +236,11 @@ const ParentBlogRow = ({ blog, onDelete }: Props) => {
               </a>
             )}
 
-            <CustomButton intent="success" variant="soft">
+            <CustomButton
+              onClick={handlePublish}
+              intent="success"
+              variant="soft"
+            >
               {blog.published ? t("actions.unpublish") : t("actions.publish")}
             </CustomButton>
 
@@ -284,6 +314,7 @@ const ParentBlogRow = ({ blog, onDelete }: Props) => {
                   <ChildBlogRow
                     key={child.id}
                     parentLang={blog.lang}
+                    parentId={blog.id}
                     blog={child}
                   />
                 ))
