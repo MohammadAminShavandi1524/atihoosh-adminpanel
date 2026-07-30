@@ -5,35 +5,45 @@ import { useEffect, useState } from "react";
 import HeaderLayout from "@/components/layout/HeaderLayout";
 
 export default function TestPage() {
-  const [rootBlogs, setRootBlogs] = useState<any[]>([]);
-  console.log("🚀 ~ TestPage ~ rootBlogs:", rootBlogs)
+  const [childBlogs, setChildBlogs] = useState<any[]>([]);
+  console.log("🚀 ~ TestPage ~ childBlogs:", childBlogs);
 
   useEffect(() => {
-    const fetchRootBlogs = async () => {
+    const fetchChildBlogs = async () => {
       try {
-        const res = await fetch("/api/blog/root", {
+        // فعلا یه parent id واقعی که داری بزار
+        const parentId = 1;
+
+        const res = await fetch(`/api/blog/child/${parentId}`, {
           cache: "no-store",
         });
 
+        if (!res.ok) {
+          throw new Error("Failed to fetch child blogs");
+        }
+
         const data = await res.json();
 
-        console.log("Root Blogs:", data);
+        console.log("Child Blogs:", data);
 
-        setRootBlogs(data);
+        setChildBlogs(Array.isArray(data) ? data : []);
       } catch (error) {
         console.error(error);
       }
     };
 
-    fetchRootBlogs();
+    fetchChildBlogs();
   }, []);
 
   return (
     <div className="flex min-h-screen flex-col gap-8 p-10">
-      <HeaderLayout title="Root Blogs Test" descrption="" />
+      <HeaderLayout
+        title="Child Blogs Test"
+        descrption=""
+      />
 
       <pre className="bg-secondary-bg overflow-auto rounded-xl p-6 text-sm">
-        {JSON.stringify(rootBlogs, null, 2)}
+        {JSON.stringify(childBlogs, null, 2)}
       </pre>
     </div>
   );

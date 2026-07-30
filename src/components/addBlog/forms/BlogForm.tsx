@@ -63,7 +63,7 @@ const BlogForm = () => {
         image: "",
       });
 
-      console.log(result);
+      // console.log(result);
     } catch (error) {
       console.error(error);
       toast.error(t("toast.blog.error"));

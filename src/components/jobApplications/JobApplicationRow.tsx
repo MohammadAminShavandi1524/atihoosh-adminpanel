@@ -4,7 +4,6 @@ import { cn, formatDate, formatPhoneNumber } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { FileText, Trash } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
-import DeleteModal from "../blogs/DeleteModal";
 import { useState } from "react";
 
 interface JobApplicationRowProps {
@@ -111,25 +110,7 @@ export default function JobApplicationRow({
           <div className="bg-primary absolute top-2 bottom-2 w-1 rounded-r-full opacity-0 transition-opacity duration-200 group-hover:opacity-100 ltr:left-0 rtl:right-0" />
         </div>
       </motion.div>
-      {/* modal */}
-      {/* <DeleteModal
-        open={openDelete}
-        onOpenChange={setOpenDelete}
-        title={t("delete.title")}
-        description={t("delete.description")}
-        loading={loading}
-        onConfirm={async () => {
-          try {
-            setLoading(true);
-
-            await onDelete();
-
-            setOpenDelete(false);
-          } finally {
-            setLoading(false);
-          }
-        }}
-      /> */}
+    
     </>
   );
 }

@@ -1,22 +1,15 @@
 "use client";
 
 import AnimatedSections from "@/components/blogs/AnimatedSections";
-import BlogRow from "@/components/blogs/BlogRow";
-import CategoryRow from "@/components/blogs/CategoryRow";
-import Header from "@/components/blogs/Header";
 import { Tab } from "@/components/blogs/Tab";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import { blogs } from "@/data/admins";
 import { BlogsTab } from "@/types/objectTypes";
-import { ArrowDownUp, Search, SearchX } from "lucide-react";
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import DeleteModal from "@/components/blogs/DeleteModal";
 import { useLocale, useTranslations } from "next-intl";
 import HeaderLayout from "@/components/layout/HeaderLayout";
 import { toast } from "sonner";
 import CategoriesSection from "@/components/blogs/CategoriesSection";
-import BlogsSection from "@/components/blogs/BlogsSection";
+import BlogsHierarchy from "@/components/blogs/hierarchy/BlogsHierarchy";
 
 interface Category {
   id: number;
@@ -36,7 +29,7 @@ const page = ({}: pageProps) => {
     type: "blog" | "category";
   } | null>(null);
 
-  const [current, setCurrent] = useState<BlogsTab>("categories");
+  const [current, setCurrent] = useState<BlogsTab>("Blogs");
 
   const tabOrder: Record<BlogsTab, number> = {
     categories: 0,
@@ -126,22 +119,7 @@ const page = ({}: pageProps) => {
         );
 
       case "Blogs":
-        return (
-          <BlogsSection
-            search={search}
-            setSearch={setSearch}
-            sort={sort}
-            setSort={setSort}
-            blogs={filteredBlogs}
-            onDelete={(blog) => {
-              setSelectedItem({
-                id: blog.id,
-                name: blog.title,
-                type: "blog",
-              });
-            }}
-          />
-        );
+        return <BlogsHierarchy />;
     }
   };
 
@@ -155,7 +133,7 @@ const page = ({}: pageProps) => {
       {/* content */}
       <div className="flex flex-1 flex-col px-10 pb-10">
         {/* tabs */}
-        <div className="border-b-border-secondary mt-10 mb-6 flex border-b text-sm">
+        <div className="border-b-border-secondary mt-6 mb-6 flex border-b text-sm">
           <Tab
             label="categories"
             current={current}

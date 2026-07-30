@@ -32,6 +32,7 @@ const ParentBlogForm = () => {
     register,
     control,
     watch,
+    reset,
     handleSubmit,
     formState: { errors },
   } = useForm<ParentBlogFormValues>({
@@ -99,6 +100,16 @@ const ParentBlogForm = () => {
       }
 
       toast.success(t("toast.parentBlog.success"));
+
+      reset({
+        root_blog: 0,
+        category: "",
+        title: "",
+        description: "",
+        image: "",
+        lang: "fa",
+        tags: [],
+      });
     } catch (error) {
       console.error(error);
       toast.error(t("toast.parentBlog.error"));

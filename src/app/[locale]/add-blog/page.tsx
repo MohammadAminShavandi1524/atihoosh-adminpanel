@@ -1,17 +1,12 @@
 "use client";
 
 import AnimatedForm from "@/components/addBlog/AnimatedForm";
-import { CategorySelect } from "@/components/addBlog/CategorySelect";
 import BlogForm from "@/components/addBlog/forms/BlogForm";
 import CategoryForm from "@/components/addBlog/forms/CategoryForm";
 import ParentBlogForm from "@/components/addBlog/forms/ParentBlogForm";
 import RootBlogForm from "@/components/addBlog/forms/RootBlogForm";
-import SubmitButton from "@/components/addBlog/SubmitButton";
 import { Tab } from "@/components/addBlog/Tab";
-import { TagOption, TagSelector } from "@/components/addBlog/TagSelector";
-import { FormField } from "@/components/FormField";
 import HeaderLayout from "@/components/layout/HeaderLayout";
-import { tags } from "@/data/admins";
 import { BlogTab } from "@/types/objectTypes";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
@@ -21,7 +16,6 @@ interface PageProps {}
 const Page = ({}: PageProps) => {
   const t = useTranslations("addBlog");
   const t_header = useTranslations("addBlog.header");
-
   const [current, setCurrent] = useState<BlogTab>("category");
 
   const tabOrder: Record<BlogTab, number> = {

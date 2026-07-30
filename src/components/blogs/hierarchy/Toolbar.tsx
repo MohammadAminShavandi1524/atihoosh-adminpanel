@@ -4,19 +4,14 @@ import { motion } from "framer-motion";
 import { ArrowDownUp, Search } from "lucide-react";
 import { useTranslations } from "next-intl";
 
-interface BlogsToolbarProps {
+interface ToolbarProps {
   search: string;
   setSearch: (value: string) => void;
   sort: "newest" | "oldest";
   setSort: (value: "newest" | "oldest") => void;
 }
 
-const BlogsToolbar = ({
-  search,
-  setSearch,
-  sort,
-  setSort,
-}: BlogsToolbarProps) => {
+const Toolbar = ({ search, setSearch, sort, setSort }: ToolbarProps) => {
   const t = useTranslations("blogs");
 
   return (
@@ -41,7 +36,7 @@ const BlogsToolbar = ({
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           placeholder={t("blogsTable.searchPlaceholder")}
-          className="bg-tertiary border-border-secondary focus:border-primary focus:ring-primary/15 h-12 w-full rounded-xl border pr-5 pl-12 text-sm transition-all duration-300 outline-none focus:ring-4"
+          className="bg-tertiary border-border-secondary focus:border-primary focus:ring-primary/15 h-12 w-full rounded-lg border pr-5 pl-12 text-sm transition-all duration-300 outline-none focus:ring-4"
         />
       </motion.div>
 
@@ -56,9 +51,10 @@ const BlogsToolbar = ({
         <select
           value={sort}
           onChange={(e) => setSort(e.target.value as "newest" | "oldest")}
-          className="bg-tertiary border-border-secondary focus:border-primary focus:ring-primary/15 hover:border-primary/30 h-12 min-w-[180px] cursor-pointer appearance-none rounded-xl border pr-9 pl-11 text-sm transition-all duration-300 outline-none focus:ring-4"
+          className="bg-tertiary border-border-secondary focus:border-primary focus:ring-primary/15 hover:border-primary/30 h-12 min-w-[180px] cursor-pointer appearance-none rounded-lg border pr-9 pl-11 text-sm transition-all duration-300 outline-none focus:ring-4"
         >
           <option value="newest">{t("blogsTable.newestFirst")}</option>
+
           <option value="oldest">{t("blogsTable.oldestFirst")}</option>
         </select>
       </motion.div>
@@ -66,4 +62,4 @@ const BlogsToolbar = ({
   );
 };
 
-export default BlogsToolbar;
+export default Toolbar;

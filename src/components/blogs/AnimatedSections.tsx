@@ -22,7 +22,7 @@ export default function AnimatedSections({
   const slide = (isRTL ? -direction : direction) * 70;
 
   return (
-    <div className="relative min-h-[650px] overflow-hidden">
+    <div className="relative min-h-[666px] overflow-hidden">
       <AnimatePresence initial={false} mode="sync" custom={slide}>
         <motion.div
           key={formKey}

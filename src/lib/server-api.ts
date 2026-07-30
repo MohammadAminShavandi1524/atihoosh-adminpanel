@@ -18,8 +18,8 @@ export async function serverApi(endpoint: string, options: RequestInit = {}) {
 
   const text = await response.text();
 
-  console.log("STATUS:", response.status);
-  console.log("BODY:", text);
+  // console.log("STATUS:", response.status);
+  // console.log("BODY:", text);
 
   if (!response.ok) {
     throw {

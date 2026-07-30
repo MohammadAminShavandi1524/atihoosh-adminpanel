@@ -278,13 +278,33 @@
       "description": "آیا از حذف «{name}» اطمینان دارید؟"
     },
     "toast": {
-      "deleteSuccess": "دسته‌بندی با موفقیت حذف شد.",
-      "deleteError": "حذف دسته‌بندی با خطا مواجه شد."
+      "deleteSuccess": "با موفقیت حذف شد.",
+      "deleteError": "حذف با خطا مواجه شد.",
+      "rootBlogDeleteSuccess": "بلاگ اصلی با موفقیت حذف شد.",
+      "rootBlogDeleteError": "حذف بلاگ اصلی با خطا مواجه شد.",
+      "parentBlogDeleteSuccess": "بلاگ والد با موفقیت حذف شد.",
+      "parentBlogDeleteError": "حذف بلاگ والد با خطا مواجه شد.",
+      "childBlogDeleteSuccess": "بلاگ فرزند با موفقیت حذف شد.",
+      "childBlogDeleteError": "حذف بلاگ فرزند با خطا مواجه شد."
     },
     "actions": {
       "edit": "ویرایش",
       "delete": "حذف",
-      "more": "بیشتر"
+      "more": "بیشتر",
+      "publish": "انتشار",
+      "unpublish": "لغو انتشار",
+      "downloadImage": "دانلود تصویر"
+    },
+    "hierarchy": {
+      "published": "منتشر شده",
+      "draft": "پیش‌نویس",
+      "category": "دسته‌بندی",
+      "id": "شناسه",
+      "imageAttached": "تصویر پیوست شده",
+      "noChildBlogs": "بلاگ فرزندی وجود ندارد.",
+      "rootBlog": "بلاگ اصلی",
+      "parentBlog": "بلاگ والد",
+      "childBlog": "بلاگ فرزند"
     }
   },
 
