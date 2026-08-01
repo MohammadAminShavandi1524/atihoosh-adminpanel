@@ -100,15 +100,16 @@ const BlogForm = () => {
         error={errors.description}
         as="textarea"
       />
-
-      <FormField
-        varient="default"
-        label={t("forms.blog.featuredImage")}
-        placeholder={t("forms.blog.featuredImagePlaceholder")}
-        register={register("image")}
-        error={errors.image}
-        as="input"
-      />
+      <div className="hidden">
+        <FormField
+          varient="default"
+          label={t("forms.blog.featuredImage")}
+          placeholder={t("forms.blog.featuredImagePlaceholder")}
+          register={register("image")}
+          error={errors.image}
+          as="input"
+        />
+      </div>
 
       <SubmitButton current="blog" disabled={isSubmitting} />
     </form>

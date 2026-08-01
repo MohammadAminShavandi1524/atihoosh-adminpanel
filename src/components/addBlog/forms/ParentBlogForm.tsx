@@ -27,6 +27,7 @@ const ParentBlogForm = () => {
   const locale = useLocale();
 
   const [categories, setCategories] = useState<Category[]>([]);
+ 
 
   const {
     register,
@@ -63,7 +64,9 @@ const ParentBlogForm = () => {
 
         const data: Category[] = await res.json();
 
-        setCategories(data);
+        const sortedData = [...data].sort((a, b) => b.id - a.id);
+
+        setCategories(sortedData);
       } catch (error) {
         console.error(error);
       }

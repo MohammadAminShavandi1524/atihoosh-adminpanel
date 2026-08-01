@@ -123,7 +123,7 @@ const ParentBlogRow = ({ blog, onDelete }: Props) => {
     }
   };
 
-  console.log(blog.id, blog.published);
+ 
 
   return (
     <motion.div layout>

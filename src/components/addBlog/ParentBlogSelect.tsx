@@ -36,7 +36,9 @@ const ParentBlogSelect = ({ field, error }: ParentBlogSelectProps) => {
 
         const data = await res.json();
 
-        setParentBlogs(data);
+        const sortedData = [...data].sort((a, b) => b.id - a.id);
+
+        setParentBlogs(sortedData);
       } catch (error) {
         console.error(error);
       } finally {
@@ -61,7 +63,7 @@ const ParentBlogSelect = ({ field, error }: ParentBlogSelectProps) => {
         disabled={loading}
         options={parentBlogs.map((item) => ({
           label: item.title,
-         value: item.id,
+          value: item.id,
         }))}
       />
 

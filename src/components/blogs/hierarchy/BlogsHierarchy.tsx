@@ -21,7 +21,7 @@ const BlogsHierarchy = () => {
   const [loading, setLoading] = useState(true);
 
   const [search, setSearch] = useState("");
-  const [sort, setSort] = useState<"newest" | "oldest">("oldest");
+  const [sort, setSort] = useState<"newest" | "oldest">("newest");
 
   useEffect(() => {
     const fetchData = async () => {

@@ -20,14 +20,8 @@ interface Category {
 interface pageProps {}
 
 const page = ({}: pageProps) => {
+  
   const t = useTranslations("blogs");
-  const locale = useLocale();
-
-  const [selectedItem, setSelectedItem] = useState<{
-    id: string;
-    name: string;
-    type: "blog" | "category";
-  } | null>(null);
 
   const [current, setCurrent] = useState<BlogsTab>("Blogs");
 
@@ -39,20 +33,6 @@ const page = ({}: pageProps) => {
   const [previous, setPrevious] = useState(current);
   const direction = tabOrder[current] > tabOrder[previous] ? 1 : -1;
 
-  //? search and sort
-  const [search, setSearch] = useState("");
-  const [sort, setSort] = useState<"newest" | "oldest">("oldest");
-
-  const filteredBlogs = [...blogs]
-    .filter((blog) => blog.title.toLowerCase().includes(search.toLowerCase()))
-    .sort((a, b) => {
-      const first = new Date(a.date).getTime();
-      const second = new Date(b.date).getTime();
-
-      return sort === "newest" ? second - first : first - second;
-    });
-
-  // ?
 
   // *** categories
 

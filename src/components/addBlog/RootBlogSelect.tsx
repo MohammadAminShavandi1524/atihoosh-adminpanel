@@ -21,6 +21,7 @@ const RootBlogSelect = ({ field, error }: RootBlogSelectProps) => {
   const t = useTranslations("addBlog");
 
   const [rootBlogs, setRootBlogs] = useState<RootBlog[]>([]);
+ 
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -36,7 +37,9 @@ const RootBlogSelect = ({ field, error }: RootBlogSelectProps) => {
 
         const data = await res.json();
 
-        setRootBlogs(data);
+        const sortedData = [...data].sort((a, b) => b.id - a.id);
+
+        setRootBlogs(sortedData);
       } catch (error) {
         console.error(error);
       } finally {

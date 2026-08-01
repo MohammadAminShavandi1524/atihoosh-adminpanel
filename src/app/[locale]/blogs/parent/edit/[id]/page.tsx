@@ -204,7 +204,7 @@ const Page = ({ params }: PageProps) => {
       lang: parentMeta.lang,
     };
 
-    console.log("UPDATE BLOG PAYLOAD =>", payload);
+  
 
     try {
       const res = await fetch(`/api/blog/parent/update/${id}`, {

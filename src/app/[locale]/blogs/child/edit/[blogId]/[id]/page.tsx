@@ -113,7 +113,7 @@ const Page = ({ params }: PageProps) => {
       image: data.image?.trim() ? data.image : null,
     };
 
-    console.log("UPDATE CHILD PAYLOAD =>", payload);
+   
 
     try {
       const res = await fetch(`/api/blog/child/update/${id}`, {
@@ -164,15 +164,16 @@ const Page = ({ params }: PageProps) => {
             error={errors.title}
             as="input"
           />
-
-          <FormField
-            varient="default"
-            label={t("form.image.label")}
-            placeholder={t("form.image.placeholder")}
-            register={register("image")}
-            error={errors.image}
-            as="input"
-          />
+          <div className="hidden">
+            <FormField
+              varient="default"
+              label={t("form.image.label")}
+              placeholder={t("form.image.placeholder")}
+              register={register("image")}
+              error={errors.image}
+              as="input"
+            />
+          </div>
 
           <FormField
             varient="default"

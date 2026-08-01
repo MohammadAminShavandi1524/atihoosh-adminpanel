@@ -35,7 +35,7 @@ const trash = ({}: trashProps) => {
 
             <div className="bg-border-secondary flex flex-col gap-y-px">
               {users.map((user) => (
-                console.log("🚀 ~ Page ~ users:", users)
+               
                 <div
                   key={user.id}
                   className="bg-background text-foreground flex items-center justify-between px-3 py-3 text-sm"

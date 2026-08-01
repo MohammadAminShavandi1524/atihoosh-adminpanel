@@ -11,13 +11,13 @@ export async function DELETE(req: NextRequest, { params }: Params) {
   try {
     const { id } = await params;
 
-    console.log("DELETE ROOT:", id);
+  
 
     const data = await serverApi(`/blog/delete_blog/root/${id}/`, {
       method: "DELETE",
     });
 
-    console.log("DELETE RESPONSE:", data);
+  
 
     return NextResponse.json(data);
   } catch (error: any) {

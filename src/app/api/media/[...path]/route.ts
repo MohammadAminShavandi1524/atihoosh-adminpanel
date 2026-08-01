@@ -14,7 +14,7 @@ export async function GET(
 
     const url = `https://atihoosh.s3.ir-thr-at1.arvanstorage.ir/${filePath}`;
 
-    console.log("MEDIA URL:", url);
+  
 
     const response = await fetch(url);
 
