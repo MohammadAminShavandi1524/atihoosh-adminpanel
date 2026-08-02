@@ -29,7 +29,35 @@ export default function JobApplicationRow({
   const locale = useLocale();
   const t = useTranslations("jobApplications");
   const [openDelete, setOpenDelete] = useState(false);
+  const [resumeUrl, setResumeUrl] = useState<string | null>(null);
+  const [resumeLoading, setResumeLoading] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  const handleOpenResume = async () => {
+    if (resumeLoading) return;
+
+    try {
+      setResumeLoading(true);
+
+      const res = await fetch(`/api/resumes/${id}`, {
+        cache: "no-store",
+      });
+
+      if (!res.ok) {
+        throw new Error("Failed to get resume url");
+      }
+
+      const data = await res.json();
+
+      setResumeUrl(data.url);
+
+      window.open(data.url, "_blank", "noopener,noreferrer");
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setResumeLoading(false);
+    }
+  };
 
   return (
     <>
@@ -85,15 +113,17 @@ export default function JobApplicationRow({
 
           {/* Resume */}
           <div className="flex justify-center pe-3">
-            <a
-              href={file}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group/pdf bg-tertiary border-border-secondary hover:border-primary hover:bg-primary/10 inline-flex h-10 items-center justify-center gap-2 rounded-xl border px-4 text-sm font-medium transition-all duration-300 hover:-translate-y-0.5"
+            <button
+              onClick={handleOpenResume}
+              disabled={resumeLoading}
+              className="group/pdf bg-tertiary border-border-secondary hover:border-primary hover:bg-primary/10 inline-flex h-10 cursor-pointer items-center justify-center gap-2 rounded-xl border px-4 text-sm font-medium transition-all duration-300 hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-60"
             >
               <FileText className="text-primary size-4 transition-transform duration-300 group-hover/pdf:scale-110 group-hover/pdf:rotate-6" />
-              <span>{t("table.viewPdf")}</span>
-            </a>
+
+              <span>
+                {resumeLoading ? t("table.loading") : t("table.viewPdf")}
+              </span>
+            </button>
           </div>
 
           {/* Delete */}
@@ -110,7 +140,6 @@ export default function JobApplicationRow({
           <div className="bg-primary absolute top-2 bottom-2 w-1 rounded-r-full opacity-0 transition-opacity duration-200 group-hover:opacity-100 ltr:left-0 rtl:right-0" />
         </div>
       </motion.div>
-    
     </>
   );
 }

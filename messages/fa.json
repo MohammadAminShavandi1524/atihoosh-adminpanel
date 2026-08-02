@@ -35,7 +35,7 @@
   },
 
   "Dashboard": {
-    "greeting": "سلام، سهراب 👋",
+    "greeting": "سلام",
     "subtitle": "خلاصه‌ای از اتفاقات و فعالیت‌های امروز آتی‌هوش",
 
     "overviewBoxes": {
@@ -128,6 +128,7 @@
       "resume": "رزومه",
       "actions": "عملیات",
       "viewPdf": "مشاهده رزومه",
+      "loading": "در حال بارگذاری...",
       "delete": "حذف"
     },
     "empty": {

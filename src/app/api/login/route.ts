@@ -5,8 +5,6 @@ export async function POST(req: Request) {
   try {
     const body = await req.json();
 
- 
-
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/accounts/login/`,
       {
@@ -18,32 +16,21 @@ export async function POST(req: Request) {
       },
     );
 
- 
-
     const text = await response.text();
-
-   
 
     let data;
 
     try {
       data = JSON.parse(text);
     } catch {
-     
       data = { detail: text };
     }
 
-  
-
     if (!response.ok) {
-     
-
       return NextResponse.json(data, {
         status: response.status,
       });
     }
-
-   
 
     const cookieStore = await cookies();
 
@@ -54,8 +41,6 @@ export async function POST(req: Request) {
       path: "/",
       maxAge: 60 * 60,
     });
-
-  
 
     return NextResponse.json({
       detail: data.detail,

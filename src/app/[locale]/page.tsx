@@ -1,3 +1,4 @@
+import DashboardHeader from "@/components/landing/DashboardHeader";
 import OverViewBoxes from "@/components/landing/OverViewBoxes";
 import RecentActivities from "@/components/landing/RecentActivities";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
@@ -19,11 +20,9 @@ export default function IndexPage({ params }: PageProps<"/[locale]">) {
     <div className="flex flex-col pt-8">
       {/* header */}
 
-      <HeaderLayout
-        title={t("greeting")}
-        descrption={t("subtitle")}
-        className="border-b-0 ps-13"
-      />
+      <DashboardHeader />
+
+
       <div className="px-12">
         <OverViewBoxes />
 
