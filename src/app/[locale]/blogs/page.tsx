@@ -2,10 +2,9 @@
 
 import AnimatedSections from "@/components/blogs/AnimatedSections";
 import { Tab } from "@/components/blogs/Tab";
-import { blogs } from "@/data/admins";
 import { BlogsTab } from "@/types/objectTypes";
 import { useEffect, useState } from "react";
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import HeaderLayout from "@/components/layout/HeaderLayout";
 import { toast } from "sonner";
 import CategoriesSection from "@/components/blogs/CategoriesSection";
@@ -20,7 +19,6 @@ interface Category {
 interface pageProps {}
 
 const page = ({}: pageProps) => {
-  
   const t = useTranslations("blogs");
 
   const [current, setCurrent] = useState<BlogsTab>("Blogs");
@@ -32,7 +30,6 @@ const page = ({}: pageProps) => {
 
   const [previous, setPrevious] = useState(current);
   const direction = tabOrder[current] > tabOrder[previous] ? 1 : -1;
-
 
   // *** categories
 

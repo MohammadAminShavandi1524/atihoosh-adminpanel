@@ -3,7 +3,6 @@
 import ClientRow from "@/components/clientRequests/ClientRow";
 import HeaderLayout from "@/components/layout/HeaderLayout";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { clientRequests, services } from "@/data/admins";
 import {
   ApiRequest,
   ApiService,
@@ -40,8 +39,6 @@ const page = ({}: pageProps) => {
         }
 
         const data: ApiRequest[] = await res.json();
-
-        // console.log(data);
 
         setRequests(data);
       } catch (error) {
